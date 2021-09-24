@@ -6,7 +6,7 @@ Es soll eine Applikation entwickelt werden, die über eine einfach bedienbare GU
 - [Florian Kaiser](https://github.com/H4CK3R-01)
 - [Malte Horst](https://github.com/mhorst00)
 - [Lukas Ernst](https://github.com/Cyber-Luke)
-- [Linus Eickhof](https://github.com/Rripped)
+- [Linus Eickhoff](https://github.com/Rripped)
 
 # Tasks
 - Entwurf einer GUI und eines zugehörigen Usability-Konzepts
