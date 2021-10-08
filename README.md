@@ -2,7 +2,7 @@
 Es soll eine Applikation entwickelt werden, die über eine einfach bedienbare GUI das Anlegen eines Devices und das Hinzufügen von Geräteschnittstellen (z.B. physikalische  Ports) und Datei-Attachements ermöglicht. Das Anlegen eines Devices kann manuell erfolgen, aber auch durch Einlesen bestehender Gerätebeschreibungsdateien unter Zuhilfename des DD2AML-Converters. Als Ausgabe soll ein AutomationML-Package erzeugt werden, dass den Regeln für AML-Komponentenmodelle (AML-DDs) entspricht. Dabei kann ein Vorgängerprojekt als Grundlageverwendet  werden. Primär solleine Standalone-Applikation für Windows mit verbesserter GUI entwickelt und eine Unterstützung für die Modellierung von Sensoren nach IEC60947-5 angeboten werden.
 
 # Members
-- [Florian Kellermann](https://github.com/FlorianKellermann)
+- [Florian Kellermann](https://github.com/NormalParameter)
 - [Florian Kaiser](https://github.com/H4CK3R-01)
 - [Malte Horst](https://github.com/mhorst00)
 - [Lukas Ernst](https://github.com/Cyber-Luke)
