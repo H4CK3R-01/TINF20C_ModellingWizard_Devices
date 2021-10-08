@@ -1,1 +1,1 @@
-Link to MeetingMinutes: [Here](https://github.com/DekaAthlos/TINF19C-ModellingWizard/issues/9)
+Link to MeetingMinutes: [Here](https://github.com/H4CK3R-01/TINF20C_ModellingWizard_Devices/issues/1)
