@@ -18,9 +18,9 @@ Es soll eine Applikation entwickelt werden, die über eine einfach bedienbare GU
 - Eine ausführliche Benutzerdokumentation ist zu erstellen.
 
 # Links
+- https://github.com/DekaAthlos/TINF19C-ModellingWizard/tree/master
 - https://github.com/WAntonia/TINF18C_Team_3_DD2AML-Converter
 - https://www.automationml.org/download-archive/
-- https://github.com/DekaAthlos/TINF19C-ModellingWizard/tree/master
 - http://wwwlehre.dhbw-stuttgart.de/~rentschler/Publications/ETFA_2021_SensorModelling_with_AML.pdf
 - http://wwwlehre.dhbw-stuttgart.de/~rentschler/Publications/ETFA_2021_SensorModelling_Presentation.pdf
 - http://wwwlehre.dhbw-stuttgart.de/~rentschler/Publications/IndustrialSensorLibrary_CAEX3_v1_1_0.aml
