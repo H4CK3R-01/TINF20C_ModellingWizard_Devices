@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "JQVAG5bTYmyM22vsTwpg9spAupldinPoDX1is07SrApvEe01+R6F+zXpCf7SMfY6JoQe1cvU4tR3SaFiKRoYxA==",
+  "dgSpecHash": "XsEp1fSF1x+NfJyIZjzUuuovlMaP4nv57Yc0bgiC/PsBX3B2AATqc99NNSSkApgRHAwdu87depg3zznMl1hAhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Florian\\Source\\Repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Florian\\source\\repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Florian\\.nuget\\packages\\aml.engine\\1.6.1\\aml.engine.1.6.1.nupkg.sha512",
+    "C:\\Users\\Florian\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Florian\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\Florian\\.nuget\\packages\\system.io.packaging\\5.0.0\\system.io.packaging.5.0.0.nupkg.sha512",
+    "C:\\Users\\Florian\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\Florian\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

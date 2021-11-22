@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Florian\\Source\\Repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj": {}
+    "C:\\Users\\Florian\\source\\repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Florian\\Source\\Repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj": {
+    "C:\\Users\\Florian\\source\\repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Florian\\Source\\Repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj",
+        "projectUniqueName": "C:\\Users\\Florian\\source\\repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj",
         "projectName": "ModellingWizardForDeviceDescriptions",
-        "projectPath": "C:\\Users\\Florian\\Source\\Repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj",
+        "projectPath": "C:\\Users\\Florian\\source\\repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\ModellingWizardForDeviceDescriptions.csproj",
         "packagesPath": "C:\\Users\\Florian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Florian\\Source\\Repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\obj\\",
+        "outputPath": "C:\\Users\\Florian\\source\\repos\\TINF20C_ModellingWizard_Devices\\SOURCE\\ModellingWizardForDeviceDescriptions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Aml.Engine": {
+              "target": "Package",
+              "version": "[1.6.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

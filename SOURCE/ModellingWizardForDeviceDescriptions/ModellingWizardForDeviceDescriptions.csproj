@@ -6,6 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>ModellingWizardForDeviceDescriptions</AssemblyName>
     <RootNamespace>ModellingWizardForDeviceDescriptions</RootNamespace>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,4 +24,7 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aml.Engine" Version="1.6.1" />
+  </ItemGroup>
 </Project>
