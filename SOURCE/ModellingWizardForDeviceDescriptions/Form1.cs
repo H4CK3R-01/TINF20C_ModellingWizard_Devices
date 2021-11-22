@@ -176,12 +176,12 @@ namespace WinFormsApp1
             {
                 var documentInformation = Program.caexDocument.CAEXFile.SourceDocumentInformation[0];
 
-                fillDataGrid(dataGridView2, "Name", documentInformation.OriginProjectTitle, "", "", "", "", "SourceDocumentInformation");
-                fillDataGrid(dataGridView2, "Version", documentInformation.OriginVersion, "", "", "", "", "SourceDocumentInformation");
-                fillDataGrid(dataGridView2, "Release", documentInformation.OriginRelease, "", "", "", "", "SourceDocumentInformation");
-                fillDataGrid(dataGridView2, "Vendor", documentInformation.OriginVendor, "", "", "", "", "SourceDocumentInformation");
-                fillDataGrid(dataGridView2, "Vendor URL", documentInformation.OriginVendorURL, "", "", "", "", "SourceDocumentInformation");
-                fillDataGrid(dataGridView2, "Last write time", documentInformation.LastWritingDateTime.ToString(), "", "", "", "", "SourceDocumentInformation");
+                fillDataGrid(dataGridView2, "Name", "", documentInformation.OriginProjectTitle, "", "", "", "SourceDocumentInformation");
+                fillDataGrid(dataGridView2, "Version", "", documentInformation.OriginVersion, "", "", "", "SourceDocumentInformation");
+                fillDataGrid(dataGridView2, "Release", "", documentInformation.OriginRelease, "", "", "", "SourceDocumentInformation");
+                fillDataGrid(dataGridView2, "Vendor", "", documentInformation.OriginVendor, "", "", "", "SourceDocumentInformation");
+                fillDataGrid(dataGridView2, "Vendor URL", "", documentInformation.OriginVendorURL, "", "", "", "SourceDocumentInformation");
+                fillDataGrid(dataGridView2, "Last write time", "", documentInformation.LastWritingDateTime.ToString(), "", "", "", "SourceDocumentInformation");
 
                 textBoxVendor.Text = documentInformation.OriginVendor;
                 textBoxDevice.Text = documentInformation.OriginProjectTitle;
