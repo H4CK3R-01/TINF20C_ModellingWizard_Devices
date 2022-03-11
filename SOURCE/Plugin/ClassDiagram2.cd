@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
+  <Class Name="Aml.Editor.Plugin.About" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>About.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Aml.Editor.Plugin.AnimationClass" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAGCAAAEAEAAAAAAAAAEAAAAAACCQJAAAAQAA=</HashCode>
+      <FileName>AnimationClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.AutomationMLDataTables" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAIAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>AutomationMLDataTables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.ClassOfListsFromDataGridViews" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAACABAEggAAEIAAAIAQAAAAAAAACAAAgAAAAAAA=</HashCode>
+      <FileName>ClassOfListsFromDataGridViews.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.ClassOfListsFromReferencefile" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAACABAMigAAEIAAAIAQAAAAAEAACAAAgAAAAAAA=</HashCode>
+      <FileName>ClassOfListsFromReferencefile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.DeviceDescription" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>f+Lfxtcfg3/IeTb7yP335u3/aqvH3RPMf9bi+vq9ra4=</HashCode>
+      <FileName>DeviceDescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.ModellingWizard" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAExAAAgQBAAIgEAEIUIRAEIASCgAgAAgAAEAAAEA=</HashCode>
+      <FileName>ModellingWizard.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Aml.Editor.Plugin.MWController" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Members" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAACAAAAAAAAQAAAAQAAAgEAAAAggAAAAAAA=</HashCode>
+      <FileName>MWController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.MWData" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAAAAAAAgAgCAAAAAAAAEIAAAAABAACAJAAAAAAAAAA=</HashCode>
+      <FileName>MWData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.MWDevice" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABEAAAAAAAAgAAQCAICACAAEAEAAAAAEACAAQEAAA=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.DataGridParameters" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAEAAAAAAAQAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.ElectricalParameters" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAEAAACAAAEBAAAAAAAAAgQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.ElectricalParametersInElectricalDataDataGridView" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAEAAAAAAAQAAAAAAAAEAAgAAAAAAA=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.PinParametersInPinInfoDataGridView" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAEAAAAAAAQAAAAAAAAEAAgAAAAAAg=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.AttachablesDataGridViewParameters" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAJAAAAAAAA=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.ElectricalInterfaceParameters" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAACAAAMgAIAEAAAAIAAAAAAAAAAAEAAgAAAAAAA=</HashCode>
+      <FileName>MWDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.SearchAMLComponentFile" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAEAAAAAAABAQBAAgAAEAEBAAAAAEIBACA=</HashCode>
+      <FileName>SearchAMLComponentFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.SearchAMLLibraryFile" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAACCAAAwEAAAAgABEAASAAAGAAACEAAAEAEE=</HashCode>
+      <FileName>SearchAMLLibraryFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aml.Editor.Plugin.Properties.Resources" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAABAAAAAAABEJAAQQkAAIAAgAAAAAAAAIE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
