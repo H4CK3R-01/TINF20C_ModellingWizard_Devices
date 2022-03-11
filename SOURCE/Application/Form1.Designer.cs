@@ -29,6 +29,7 @@ namespace App
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.deviceDescription1 = new Aml.Editor.Plugin.DeviceDescription();
             this.SuspendLayout();
             // 
@@ -53,10 +54,11 @@ namespace App
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.deviceDescription1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Modelling Wizard für Gerätemodelle";
             this.ResumeLayout(false);
 
         }
