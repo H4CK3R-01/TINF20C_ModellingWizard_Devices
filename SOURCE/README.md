@@ -2,7 +2,7 @@
 
 ## Structure
 Der `SOURCE` Ordner enthält zwei unter Ordner: `Application` und `Plugin`.
-Der Ordner `Plugin` enthält den Source Code des Plugins aus dem Repository TINF19C-ModellingWizard](https://github.com/DekaAthlos/TINF19C-ModellingWizard).
+Der Ordner `Plugin` enthält den Source Code des Plugins aus dem Repository [TINF19C-ModellingWizard](https://github.com/DekaAthlos/TINF19C-ModellingWizard).
 Der Ordner `Application` entählt die eigentliche Windows-Forms Anwendung, die die Klasse `DeviceDescription` aus dem Ordner `Plugin` nutzt.
 
 ## Development
