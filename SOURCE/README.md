@@ -10,3 +10,5 @@ Um Änderungen an der Anwendung vorzunehmen muss zuerst Visual Studio 2019 insta
 In Visual Studio 2019 muss dann die Datei `Application.sln` aus dem `Application`-Ordner geöffnet werden.
 
 In der Projektmappen-Ansicht ist dann zum einen die Applikation als auch das Plugin (ModellingWizard) zu sehen.
+
+Um die Anwendung kompilieren zu können, muss über den NuGet-Paketmanager eventuel noch das `AML.Engine`-Paket in der Version 1.5.8 installiert werden.
