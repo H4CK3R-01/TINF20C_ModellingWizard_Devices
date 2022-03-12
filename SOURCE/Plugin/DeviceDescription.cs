@@ -4680,5 +4680,10 @@ namespace Aml.Editor.Plugin
         {
 
         }
+
+        private void filePathLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

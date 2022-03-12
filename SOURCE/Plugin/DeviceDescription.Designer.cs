@@ -37,7 +37,7 @@ namespace Aml.Editor.Plugin
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviceDescription));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,17 +48,6 @@ namespace Aml.Editor.Plugin
             this.importGSDFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadLibraryFile = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileNameLabel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.filePathLabel = new System.Windows.Forms.ToolStripLabel();
-            this.vendorNameTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.deviceNameTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.librariesSplitButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.automationComponentLibraryv100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +55,14 @@ namespace Aml.Editor.Plugin
             this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.electricConnectorLibraryv100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.industrialSensorLibraryv100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileNameLabel = new System.Windows.Forms.ToolStripLabel();
+            this.vendorNameTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.filePathLabel = new System.Windows.Forms.ToolStripLabel();
+            this.deviceNameTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Page0_FullWindow = new System.Windows.Forms.Panel();
             this.Page0_FullWindowPanel2 = new System.Windows.Forms.Panel();
@@ -187,13 +184,11 @@ namespace Aml.Editor.Plugin
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip7 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator41 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.treeViewInterfaceClassLibPanel = new System.Windows.Forms.Panel();
             this.treeViewInterfaceClassLib = new System.Windows.Forms.TreeView();
             this.toolStrip9 = new System.Windows.Forms.ToolStrip();
             this.InterfaceClassLibLabel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator42 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -298,40 +293,24 @@ namespace Aml.Editor.Plugin
             // 
             // toolStrip1
             // 
-            this.toolStrip1.AutoSize = false;
-            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileButton,
-            this.toolStripSeparator8,
+            this.librariesSplitButton,
             this.helpButton,
             this.fileNameLabel,
-            this.toolStripSeparator3,
-            this.filePathLabel,
             this.vendorNameTextBox,
-            this.toolStripSeparator6,
-            this.toolStripLabel4,
+            this.filePathLabel,
             this.deviceNameTextBox,
-            this.librariesSplitButton});
-            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.toolStripLabel4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.MinimumSize = new System.Drawing.Size(0, 40);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1750, 40);
+            this.toolStrip1.Size = new System.Drawing.Size(1750, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // fileButton
             // 
-            this.fileButton.AutoSize = false;
-            this.fileButton.BackColor = System.Drawing.Color.Transparent;
-            this.fileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fileButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
@@ -340,37 +319,36 @@ namespace Aml.Editor.Plugin
             this.importToolStripMenuItem,
             this.loadLibraryFile,
             this.exitToolStripMenuItem});
-            this.fileButton.ForeColor = System.Drawing.Color.DarkOrange;
-            this.fileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileButton.Name = "fileButton";
-            this.fileButton.Size = new System.Drawing.Size(75, 42);
+            this.fileButton.ShowDropDownArrow = false;
+            this.fileButton.Size = new System.Drawing.Size(29, 20);
             this.fileButton.Text = "File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveeToolStripMenuItem
             // 
             this.saveeToolStripMenuItem.Name = "saveeToolStripMenuItem";
-            this.saveeToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.saveeToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.saveeToolStripMenuItem.Text = "Save and Close File";
             this.saveeToolStripMenuItem.Click += new System.EventHandler(this.saveeToolStripMenuItem_Click);
             // 
@@ -380,56 +358,101 @@ namespace Aml.Editor.Plugin
             this.importIODDFileToolStripMenuItem,
             this.importGSDFileToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // importIODDFileToolStripMenuItem
             // 
             this.importIODDFileToolStripMenuItem.Name = "importIODDFileToolStripMenuItem";
-            this.importIODDFileToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.importIODDFileToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.importIODDFileToolStripMenuItem.Text = "Import  IODD-File";
             this.importIODDFileToolStripMenuItem.Click += new System.EventHandler(this.importIODDFileToolStripMenuItem_Click);
             // 
             // importGSDFileToolStripMenuItem
             // 
             this.importGSDFileToolStripMenuItem.Name = "importGSDFileToolStripMenuItem";
-            this.importGSDFileToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.importGSDFileToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.importGSDFileToolStripMenuItem.Text = "Import GSD-File";
             this.importGSDFileToolStripMenuItem.Click += new System.EventHandler(this.importGSDFileToolStripMenuItem_Click);
             // 
             // loadLibraryFile
             // 
             this.loadLibraryFile.Name = "loadLibraryFile";
-            this.loadLibraryFile.Size = new System.Drawing.Size(188, 22);
+            this.loadLibraryFile.Size = new System.Drawing.Size(174, 22);
             this.loadLibraryFile.Text = "Load Library";
             this.loadLibraryFile.Click += new System.EventHandler(this.loadLibraryFile_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // toolStripSeparator8
+            // librariesSplitButton
             // 
-            this.toolStripSeparator8.AutoSize = false;
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(12, 30);
+            this.librariesSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.automationComponentLibraryv100ToolStripMenuItem,
+            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem,
+            this.automationComponentLibraryv100FullToolStripMenuItem,
+            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem,
+            this.electricConnectorLibraryv100ToolStripMenuItem,
+            this.industrialSensorLibraryv100ToolStripMenuItem});
+            this.librariesSplitButton.Name = "librariesSplitButton";
+            this.librariesSplitButton.ShowDropDownArrow = false;
+            this.librariesSplitButton.Size = new System.Drawing.Size(55, 20);
+            this.librariesSplitButton.Text = "Libraries";
+            // 
+            // automationComponentLibraryv100ToolStripMenuItem
+            // 
+            this.automationComponentLibraryv100ToolStripMenuItem.Name = "automationComponentLibraryv100ToolStripMenuItem";
+            this.automationComponentLibraryv100ToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.automationComponentLibraryv100ToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0";
+            this.automationComponentLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100ToolStripMenuItem_Click);
+            // 
+            // automationComponentLibraryv100CAEX3BETAToolStripMenuItem
+            // 
+            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Name = "automationComponentLibraryv100CAEX3BETAToolStripMenuItem";
+            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0_CAEX3_BETA";
+            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem_Click);
+            // 
+            // automationComponentLibraryv100FullToolStripMenuItem
+            // 
+            this.automationComponentLibraryv100FullToolStripMenuItem.Name = "automationComponentLibraryv100FullToolStripMenuItem";
+            this.automationComponentLibraryv100FullToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.automationComponentLibraryv100FullToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0_Full";
+            this.automationComponentLibraryv100FullToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100FullToolStripMenuItem_Click);
+            // 
+            // automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem
+            // 
+            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Name = "automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem";
+            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0_Full_CAEX3_BETA";
+            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem_Click);
+            // 
+            // electricConnectorLibraryv100ToolStripMenuItem
+            // 
+            this.electricConnectorLibraryv100ToolStripMenuItem.Name = "electricConnectorLibraryv100ToolStripMenuItem";
+            this.electricConnectorLibraryv100ToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.electricConnectorLibraryv100ToolStripMenuItem.Text = "ElectricConnectorLibrary_v1_0_0";
+            this.electricConnectorLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.electricConnectorLibraryv100ToolStripMenuItem_Click);
+            // 
+            // industrialSensorLibraryv100ToolStripMenuItem
+            // 
+            this.industrialSensorLibraryv100ToolStripMenuItem.Name = "industrialSensorLibraryv100ToolStripMenuItem";
+            this.industrialSensorLibraryv100ToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.industrialSensorLibraryv100ToolStripMenuItem.Text = "IndustrialSensorLibrary_v1_0_0";
+            this.industrialSensorLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.industrialSensorLibraryv100ToolStripMenuItem_Click);
             // 
             // helpButton
             // 
-            this.helpButton.AutoSize = false;
-            this.helpButton.BackColor = System.Drawing.Color.Transparent;
-            this.helpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.helpButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
             this.manualToolStripMenuItem});
-            this.helpButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.helpButton.ForeColor = System.Drawing.Color.DarkOrange;
-            this.helpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(75, 42);
+            this.helpButton.ShowDropDownArrow = false;
+            this.helpButton.Size = new System.Drawing.Size(36, 20);
             this.helpButton.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -453,112 +476,39 @@ namespace Aml.Editor.Plugin
             this.fileNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.fileNameLabel.ForeColor = System.Drawing.Color.Black;
             this.fileNameLabel.Name = "fileNameLabel";
-            this.fileNameLabel.Size = new System.Drawing.Size(0, 37);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.AutoSize = false;
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(12, 30);
-            // 
-            // filePathLabel
-            // 
-            this.filePathLabel.ForeColor = System.Drawing.Color.DarkOrange;
-            this.filePathLabel.Name = "filePathLabel";
-            this.filePathLabel.Size = new System.Drawing.Size(89, 37);
-            this.filePathLabel.Text = "Vendor Name";
+            this.fileNameLabel.Size = new System.Drawing.Size(0, 20);
             // 
             // vendorNameTextBox
             // 
+            this.vendorNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.vendorNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.vendorNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.vendorNameTextBox.Name = "vendorNameTextBox";
-            this.vendorNameTextBox.Size = new System.Drawing.Size(219, 40);
+            this.vendorNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.vendorNameTextBox.TextChanged += new System.EventHandler(this.vendorNameTextBox_TextChanged);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.AutoSize = false;
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(12, 30);
             // 
             // toolStripLabel4
             // 
-            this.toolStripLabel4.ForeColor = System.Drawing.Color.DarkOrange;
+            this.toolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(85, 37);
-            this.toolStripLabel4.Text = "Device Name";
+            this.toolStripLabel4.Size = new System.Drawing.Size(80, 20);
+            this.toolStripLabel4.Text = "Device Name:";
+            // 
+            // filePathLabel
+            // 
+            this.filePathLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.filePathLabel.Name = "filePathLabel";
+            this.filePathLabel.Size = new System.Drawing.Size(53, 20);
+            this.filePathLabel.Text = "  Vendor:";
+            this.filePathLabel.Click += new System.EventHandler(this.filePathLabel_Click);
             // 
             // deviceNameTextBox
             // 
+            this.deviceNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.deviceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.deviceNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.deviceNameTextBox.Name = "deviceNameTextBox";
-            this.deviceNameTextBox.Size = new System.Drawing.Size(219, 40);
+            this.deviceNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.deviceNameTextBox.TextChanged += new System.EventHandler(this.deviceNameTextBox_TextChanged);
-            // 
-            // librariesSplitButton
-            // 
-            this.librariesSplitButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.librariesSplitButton.BackColor = System.Drawing.Color.Transparent;
-            this.librariesSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.librariesSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.automationComponentLibraryv100ToolStripMenuItem,
-            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem,
-            this.automationComponentLibraryv100FullToolStripMenuItem,
-            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem,
-            this.electricConnectorLibraryv100ToolStripMenuItem,
-            this.industrialSensorLibraryv100ToolStripMenuItem});
-            this.librariesSplitButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.librariesSplitButton.ForeColor = System.Drawing.Color.DarkOrange;
-            this.librariesSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.librariesSplitButton.Name = "librariesSplitButton";
-            this.librariesSplitButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.librariesSplitButton.Size = new System.Drawing.Size(128, 37);
-            this.librariesSplitButton.Text = "Standard Libraries";
-            this.librariesSplitButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // automationComponentLibraryv100ToolStripMenuItem
-            // 
-            this.automationComponentLibraryv100ToolStripMenuItem.Name = "automationComponentLibraryv100ToolStripMenuItem";
-            this.automationComponentLibraryv100ToolStripMenuItem.Size = new System.Drawing.Size(393, 22);
-            this.automationComponentLibraryv100ToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0";
-            this.automationComponentLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100ToolStripMenuItem_Click);
-            // 
-            // automationComponentLibraryv100CAEX3BETAToolStripMenuItem
-            // 
-            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Name = "automationComponentLibraryv100CAEX3BETAToolStripMenuItem";
-            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Size = new System.Drawing.Size(393, 22);
-            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0_CAEX3_BETA";
-            this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100CAEX3BETAToolStripMenuItem_Click);
-            // 
-            // automationComponentLibraryv100FullToolStripMenuItem
-            // 
-            this.automationComponentLibraryv100FullToolStripMenuItem.Name = "automationComponentLibraryv100FullToolStripMenuItem";
-            this.automationComponentLibraryv100FullToolStripMenuItem.Size = new System.Drawing.Size(393, 22);
-            this.automationComponentLibraryv100FullToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0_Full";
-            this.automationComponentLibraryv100FullToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100FullToolStripMenuItem_Click);
-            // 
-            // automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem
-            // 
-            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Name = "automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem";
-            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Size = new System.Drawing.Size(393, 22);
-            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Text = "AutomationComponentLibrary_v1_0_0_Full_CAEX3_BETA";
-            this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem.Click += new System.EventHandler(this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem_Click);
-            // 
-            // electricConnectorLibraryv100ToolStripMenuItem
-            // 
-            this.electricConnectorLibraryv100ToolStripMenuItem.Name = "electricConnectorLibraryv100ToolStripMenuItem";
-            this.electricConnectorLibraryv100ToolStripMenuItem.Size = new System.Drawing.Size(393, 22);
-            this.electricConnectorLibraryv100ToolStripMenuItem.Text = "ElectricConnectorLibrary_v1_0_0";
-            this.electricConnectorLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.electricConnectorLibraryv100ToolStripMenuItem_Click);
-            // 
-            // industrialSensorLibraryv100ToolStripMenuItem
-            // 
-            this.industrialSensorLibraryv100ToolStripMenuItem.Name = "industrialSensorLibraryv100ToolStripMenuItem";
-            this.industrialSensorLibraryv100ToolStripMenuItem.Size = new System.Drawing.Size(393, 22);
-            this.industrialSensorLibraryv100ToolStripMenuItem.Text = "IndustrialSensorLibrary_v1_0_0";
-            this.industrialSensorLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.industrialSensorLibraryv100ToolStripMenuItem_Click);
             // 
             // Page0_FullWindow
             // 
@@ -588,10 +538,10 @@ namespace Aml.Editor.Plugin
             this.Page0_FastFullWindow.BackColor = System.Drawing.SystemColors.Control;
             this.Page0_FastFullWindow.Controls.Add(this.Page0_FastFullWindow2);
             this.Page0_FastFullWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Page0_FastFullWindow.Location = new System.Drawing.Point(0, 40);
+            this.Page0_FastFullWindow.Location = new System.Drawing.Point(0, 27);
             this.Page0_FastFullWindow.Margin = new System.Windows.Forms.Padding(0);
             this.Page0_FastFullWindow.Name = "Page0_FastFullWindow";
-            this.Page0_FastFullWindow.Size = new System.Drawing.Size(1750, 826);
+            this.Page0_FastFullWindow.Size = new System.Drawing.Size(1750, 839);
             this.Page0_FastFullWindow.TabIndex = 3;
             // 
             // Page0_FastFullWindow2
@@ -601,7 +551,7 @@ namespace Aml.Editor.Plugin
             this.Page0_FastFullWindow2.Location = new System.Drawing.Point(0, 0);
             this.Page0_FastFullWindow2.Margin = new System.Windows.Forms.Padding(0);
             this.Page0_FastFullWindow2.Name = "Page0_FastFullWindow2";
-            this.Page0_FastFullWindow2.Size = new System.Drawing.Size(1750, 826);
+            this.Page0_FastFullWindow2.Size = new System.Drawing.Size(1750, 839);
             this.Page0_FastFullWindow2.TabIndex = 2;
             // 
             // splitContainer1
@@ -621,7 +571,7 @@ namespace Aml.Editor.Plugin
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.treeViewPanel);
-            this.splitContainer1.Size = new System.Drawing.Size(1750, 826);
+            this.splitContainer1.Size = new System.Drawing.Size(1750, 839);
             this.splitContainer1.SplitterDistance = 1333;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
@@ -640,7 +590,7 @@ namespace Aml.Editor.Plugin
             this.dataTabControl.Margin = new System.Windows.Forms.Padding(0);
             this.dataTabControl.Name = "dataTabControl";
             this.dataTabControl.SelectedIndex = 0;
-            this.dataTabControl.Size = new System.Drawing.Size(1333, 826);
+            this.dataTabControl.Size = new System.Drawing.Size(1333, 839);
             this.dataTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.dataTabControl.TabIndex = 0;
             this.dataTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.dataTabControl_DrawItem);
@@ -654,7 +604,7 @@ namespace Aml.Editor.Plugin
             this.genericData.Location = new System.Drawing.Point(4, 26);
             this.genericData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.genericData.Name = "genericData";
-            this.genericData.Size = new System.Drawing.Size(1373, 818);
+            this.genericData.Size = new System.Drawing.Size(1325, 809);
             this.genericData.TabIndex = 7;
             this.genericData.Text = "Generic Data";
             // 
@@ -669,7 +619,7 @@ namespace Aml.Editor.Plugin
             this.Page1_MainPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page1_MainPanel.MinimumSize = new System.Drawing.Size(686, 100);
             this.Page1_MainPanel.Name = "Page1_MainPanel";
-            this.Page1_MainPanel.Size = new System.Drawing.Size(1373, 818);
+            this.Page1_MainPanel.Size = new System.Drawing.Size(1325, 809);
             this.Page1_MainPanel.TabIndex = 1;
             this.Page1_MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_FrontPage_Paint);
             // 
@@ -684,7 +634,7 @@ namespace Aml.Editor.Plugin
             this.Page1_BottomPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Page1_BottomPanel.MinimumSize = new System.Drawing.Size(0, 400);
             this.Page1_BottomPanel.Name = "Page1_BottomPanel";
-            this.Page1_BottomPanel.Size = new System.Drawing.Size(1373, 400);
+            this.Page1_BottomPanel.Size = new System.Drawing.Size(1325, 400);
             this.Page1_BottomPanel.TabIndex = 10;
             // 
             // tabControl1
@@ -696,7 +646,7 @@ namespace Aml.Editor.Plugin
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1373, 375);
+            this.tabControl1.Size = new System.Drawing.Size(1325, 375);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -707,7 +657,7 @@ namespace Aml.Editor.Plugin
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1365, 345);
+            this.tabPage1.Size = new System.Drawing.Size(1317, 345);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
             // 
@@ -729,7 +679,7 @@ namespace Aml.Editor.Plugin
             this.genericparametersAttrDataGridView.Name = "genericparametersAttrDataGridView";
             this.genericparametersAttrDataGridView.RowHeadersWidth = 50;
             this.genericparametersAttrDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.genericparametersAttrDataGridView.Size = new System.Drawing.Size(1361, 339);
+            this.genericparametersAttrDataGridView.Size = new System.Drawing.Size(1313, 339);
             this.genericparametersAttrDataGridView.TabIndex = 8;
             this.genericparametersAttrDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericParametersAttrDataGridView_CellClick);
             this.genericparametersAttrDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericParametersAttrDataGridView_CellContentClick);
@@ -788,7 +738,7 @@ namespace Aml.Editor.Plugin
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage2.Size = new System.Drawing.Size(1365, 345);
+            this.tabPage2.Size = new System.Drawing.Size(1317, 345);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Header";
             // 
@@ -828,67 +778,67 @@ namespace Aml.Editor.Plugin
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1361, 300);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1313, 300);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // genericDataNameTxtBx
             // 
             this.genericDataNameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataNameTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataNameTxtBx.Location = new System.Drawing.Point(397, 263);
+            this.genericDataNameTxtBx.Location = new System.Drawing.Point(383, 263);
             this.genericDataNameTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataNameTxtBx.Name = "genericDataNameTxtBx";
-            this.genericDataNameTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataNameTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataNameTxtBx.TabIndex = 24;
             // 
             // genericDataIDTxtBx
             // 
             this.genericDataIDTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataIDTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataIDTxtBx.Location = new System.Drawing.Point(397, 219);
+            this.genericDataIDTxtBx.Location = new System.Drawing.Point(383, 219);
             this.genericDataIDTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataIDTxtBx.Name = "genericDataIDTxtBx";
-            this.genericDataIDTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataIDTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataIDTxtBx.TabIndex = 23;
             // 
             // genericDataAttributePathTxtBx
             // 
             this.genericDataAttributePathTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataAttributePathTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataAttributePathTxtBx.Location = new System.Drawing.Point(397, 177);
+            this.genericDataAttributePathTxtBx.Location = new System.Drawing.Point(383, 177);
             this.genericDataAttributePathTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataAttributePathTxtBx.Name = "genericDataAttributePathTxtBx";
-            this.genericDataAttributePathTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataAttributePathTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataAttributePathTxtBx.TabIndex = 22;
             // 
             // genericDataRefBaseClassPathTxtBx
             // 
             this.genericDataRefBaseClassPathTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataRefBaseClassPathTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataRefBaseClassPathTxtBx.Location = new System.Drawing.Point(397, 135);
+            this.genericDataRefBaseClassPathTxtBx.Location = new System.Drawing.Point(383, 135);
             this.genericDataRefBaseClassPathTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataRefBaseClassPathTxtBx.Name = "genericDataRefBaseClassPathTxtBx";
-            this.genericDataRefBaseClassPathTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataRefBaseClassPathTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataRefBaseClassPathTxtBx.TabIndex = 21;
             // 
             // genericDataRefClassNameTxtBx
             // 
             this.genericDataRefClassNameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataRefClassNameTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataRefClassNameTxtBx.Location = new System.Drawing.Point(397, 93);
+            this.genericDataRefClassNameTxtBx.Location = new System.Drawing.Point(383, 93);
             this.genericDataRefClassNameTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataRefClassNameTxtBx.Name = "genericDataRefClassNameTxtBx";
-            this.genericDataRefClassNameTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataRefClassNameTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataRefClassNameTxtBx.TabIndex = 20;
             // 
             // genericDataCopyrightTxtBx
             // 
             this.genericDataCopyrightTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataCopyrightTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataCopyrightTxtBx.Location = new System.Drawing.Point(397, 51);
+            this.genericDataCopyrightTxtBx.Location = new System.Drawing.Point(383, 51);
             this.genericDataCopyrightTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataCopyrightTxtBx.Name = "genericDataCopyrightTxtBx";
-            this.genericDataCopyrightTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataCopyrightTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataCopyrightTxtBx.TabIndex = 19;
             // 
             // TableHeader_lbl_Name
@@ -900,7 +850,7 @@ namespace Aml.Editor.Plugin
             this.TableHeader_lbl_Name.Location = new System.Drawing.Point(3, 253);
             this.TableHeader_lbl_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TableHeader_lbl_Name.Name = "TableHeader_lbl_Name";
-            this.TableHeader_lbl_Name.Size = new System.Drawing.Size(391, 46);
+            this.TableHeader_lbl_Name.Size = new System.Drawing.Size(377, 46);
             this.TableHeader_lbl_Name.TabIndex = 12;
             this.TableHeader_lbl_Name.Text = "Name";
             this.TableHeader_lbl_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -913,7 +863,7 @@ namespace Aml.Editor.Plugin
             this.label2.Location = new System.Drawing.Point(3, 211);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(391, 41);
+            this.label2.Size = new System.Drawing.Size(377, 41);
             this.label2.TabIndex = 10;
             this.label2.Text = "ID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -926,7 +876,7 @@ namespace Aml.Editor.Plugin
             this.label3.Location = new System.Drawing.Point(3, 169);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(391, 41);
+            this.label3.Size = new System.Drawing.Size(377, 41);
             this.label3.TabIndex = 8;
             this.label3.Text = "Attribute Path";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -939,7 +889,7 @@ namespace Aml.Editor.Plugin
             this.label4.Location = new System.Drawing.Point(3, 127);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(391, 41);
+            this.label4.Size = new System.Drawing.Size(377, 41);
             this.label4.TabIndex = 6;
             this.label4.Text = "Referenced Base Class Path";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -952,7 +902,7 @@ namespace Aml.Editor.Plugin
             this.label5.Location = new System.Drawing.Point(3, 85);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(391, 41);
+            this.label5.Size = new System.Drawing.Size(377, 41);
             this.label5.TabIndex = 4;
             this.label5.Text = "Referenced Class Name";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -965,7 +915,7 @@ namespace Aml.Editor.Plugin
             this.label6.Location = new System.Drawing.Point(3, 43);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(391, 41);
+            this.label6.Size = new System.Drawing.Size(377, 41);
             this.label6.TabIndex = 2;
             this.label6.Text = "Copyright";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -978,7 +928,7 @@ namespace Aml.Editor.Plugin
             this.label7.Location = new System.Drawing.Point(3, 1);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(391, 41);
+            this.label7.Size = new System.Drawing.Size(377, 41);
             this.label7.TabIndex = 0;
             this.label7.Text = "Description";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -987,10 +937,10 @@ namespace Aml.Editor.Plugin
             // 
             this.genericDataDescriptionTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genericDataDescriptionTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataDescriptionTxtBx.Location = new System.Drawing.Point(397, 9);
+            this.genericDataDescriptionTxtBx.Location = new System.Drawing.Point(383, 9);
             this.genericDataDescriptionTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.genericDataDescriptionTxtBx.Name = "genericDataDescriptionTxtBx";
-            this.genericDataDescriptionTxtBx.Size = new System.Drawing.Size(963, 25);
+            this.genericDataDescriptionTxtBx.Size = new System.Drawing.Size(929, 25);
             this.genericDataDescriptionTxtBx.TabIndex = 18;
             // 
             // toolStrip5
@@ -1003,7 +953,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip5.Location = new System.Drawing.Point(0, 0);
             this.toolStrip5.Name = "toolStrip5";
             this.toolStrip5.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip5.Size = new System.Drawing.Size(1373, 25);
+            this.toolStrip5.Size = new System.Drawing.Size(1325, 25);
             this.toolStrip5.TabIndex = 10;
             this.toolStrip5.Text = "toolStrip5";
             // 
@@ -1027,7 +977,7 @@ namespace Aml.Editor.Plugin
             this.Page1_TopPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page1_TopPanel.MinimumSize = new System.Drawing.Size(0, 400);
             this.Page1_TopPanel.Name = "Page1_TopPanel";
-            this.Page1_TopPanel.Size = new System.Drawing.Size(1373, 454);
+            this.Page1_TopPanel.Size = new System.Drawing.Size(1325, 454);
             this.Page1_TopPanel.TabIndex = 1;
             this.Page1_TopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Page1_TopPanel_Paint);
             // 
@@ -1038,7 +988,7 @@ namespace Aml.Editor.Plugin
             this.split_GenericDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.split_GenericDataGrid.Location = new System.Drawing.Point(0, 379);
             this.split_GenericDataGrid.Name = "split_GenericDataGrid";
-            this.split_GenericDataGrid.Size = new System.Drawing.Size(1373, 0);
+            this.split_GenericDataGrid.Size = new System.Drawing.Size(1325, 0);
             this.split_GenericDataGrid.SplitterDistance = 457;
             this.split_GenericDataGrid.TabIndex = 2;
             // 
@@ -1053,7 +1003,7 @@ namespace Aml.Editor.Plugin
             this.genericInformationtreeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.genericInformationtreeView.Name = "genericInformationtreeView";
             this.genericInformationtreeView.SelectedImageIndex = 0;
-            this.genericInformationtreeView.Size = new System.Drawing.Size(1373, 75);
+            this.genericInformationtreeView.Size = new System.Drawing.Size(1325, 75);
             this.genericInformationtreeView.TabIndex = 0;
             this.genericInformationtreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.genericInformationtreeView_AfterSelect);
             this.genericInformationtreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.genericInformationtreeView_NodeMouseClick);
@@ -1087,7 +1037,7 @@ namespace Aml.Editor.Plugin
             this.genericInformationDataGridView.RowHeadersWidth = 51;
             this.genericInformationDataGridView.RowTemplate.Height = 24;
             this.genericInformationDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.genericInformationDataGridView.Size = new System.Drawing.Size(1373, 354);
+            this.genericInformationDataGridView.Size = new System.Drawing.Size(1325, 354);
             this.genericInformationDataGridView.TabIndex = 1;
             this.genericInformationDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericInformationDataGridView_CellClick);
             this.genericInformationDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericInformationDataGridView_CellContentClick);
@@ -1148,7 +1098,7 @@ namespace Aml.Editor.Plugin
             this.deleteRoleClassesButton.Location = new System.Drawing.Point(0, 0);
             this.deleteRoleClassesButton.Name = "deleteRoleClassesButton";
             this.deleteRoleClassesButton.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.deleteRoleClassesButton.Size = new System.Drawing.Size(1373, 25);
+            this.deleteRoleClassesButton.Size = new System.Drawing.Size(1325, 25);
             this.deleteRoleClassesButton.TabIndex = 0;
             this.deleteRoleClassesButton.Text = "toolStrip25";
             // 
@@ -1182,7 +1132,7 @@ namespace Aml.Editor.Plugin
             this.Interface.Location = new System.Drawing.Point(4, 26);
             this.Interface.Margin = new System.Windows.Forms.Padding(0);
             this.Interface.Name = "Interface";
-            this.Interface.Size = new System.Drawing.Size(1373, 818);
+            this.Interface.Size = new System.Drawing.Size(1325, 809);
             this.Interface.TabIndex = 6;
             this.Interface.Text = "Interfaces";
             // 
@@ -1197,7 +1147,7 @@ namespace Aml.Editor.Plugin
             this.electricalInterfacesPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.electricalInterfacesPanel.MinimumSize = new System.Drawing.Size(686, 22);
             this.electricalInterfacesPanel.Name = "electricalInterfacesPanel";
-            this.electricalInterfacesPanel.Size = new System.Drawing.Size(1373, 818);
+            this.electricalInterfacesPanel.Size = new System.Drawing.Size(1325, 809);
             this.electricalInterfacesPanel.TabIndex = 0;
             this.electricalInterfacesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.electricalInterfacesPanel_Paint);
             // 
@@ -1212,7 +1162,7 @@ namespace Aml.Editor.Plugin
             this.Page3_BottomPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page3_BottomPanel.MinimumSize = new System.Drawing.Size(0, 400);
             this.Page3_BottomPanel.Name = "Page3_BottomPanel";
-            this.Page3_BottomPanel.Size = new System.Drawing.Size(1373, 400);
+            this.Page3_BottomPanel.Size = new System.Drawing.Size(1325, 400);
             this.Page3_BottomPanel.TabIndex = 10;
             // 
             // tabControlElectricalAttributes
@@ -1224,7 +1174,7 @@ namespace Aml.Editor.Plugin
             this.tabControlElectricalAttributes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControlElectricalAttributes.Name = "tabControlElectricalAttributes";
             this.tabControlElectricalAttributes.SelectedIndex = 0;
-            this.tabControlElectricalAttributes.Size = new System.Drawing.Size(1373, 375);
+            this.tabControlElectricalAttributes.Size = new System.Drawing.Size(1325, 375);
             this.tabControlElectricalAttributes.TabIndex = 9;
             // 
             // attributestab
@@ -1234,7 +1184,7 @@ namespace Aml.Editor.Plugin
             this.attributestab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.attributestab.Name = "attributestab";
             this.attributestab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.attributestab.Size = new System.Drawing.Size(1365, 345);
+            this.attributestab.Size = new System.Drawing.Size(1317, 345);
             this.attributestab.TabIndex = 0;
             this.attributestab.Text = "Attributes";
             this.attributestab.UseVisualStyleBackColor = true;
@@ -1257,7 +1207,7 @@ namespace Aml.Editor.Plugin
             this.elecInterAttDataGridView.Name = "elecInterAttDataGridView";
             this.elecInterAttDataGridView.RowHeadersWidth = 51;
             this.elecInterAttDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.elecInterAttDataGridView.Size = new System.Drawing.Size(1361, 339);
+            this.elecInterAttDataGridView.Size = new System.Drawing.Size(1313, 339);
             this.elecInterAttDataGridView.TabIndex = 8;
             this.elecInterAttDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elecInterAttDataGridView_CellClick);
             this.elecInterAttDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elecInterAttDataGridView_CellContentClick);
@@ -1316,7 +1266,7 @@ namespace Aml.Editor.Plugin
             this.header.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.header.Name = "header";
             this.header.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.header.Size = new System.Drawing.Size(1365, 345);
+            this.header.Size = new System.Drawing.Size(1317, 345);
             this.header.TabIndex = 1;
             this.header.Text = "Header";
             // 
@@ -1356,67 +1306,67 @@ namespace Aml.Editor.Plugin
             this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.headerpanelTabelLayoutPanel.Size = new System.Drawing.Size(1361, 300);
+            this.headerpanelTabelLayoutPanel.Size = new System.Drawing.Size(1313, 300);
             this.headerpanelTabelLayoutPanel.TabIndex = 0;
             // 
             // nameTxtBxElecAttri
             // 
             this.nameTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameTxtBxElecAttri.Location = new System.Drawing.Point(396, 263);
+            this.nameTxtBxElecAttri.Location = new System.Drawing.Point(382, 263);
             this.nameTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.nameTxtBxElecAttri.Name = "nameTxtBxElecAttri";
-            this.nameTxtBxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.nameTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.nameTxtBxElecAttri.TabIndex = 24;
             // 
             // idTxtBxElecAttri
             // 
             this.idTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.idTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.idTxtBxElecAttri.Location = new System.Drawing.Point(396, 219);
+            this.idTxtBxElecAttri.Location = new System.Drawing.Point(382, 219);
             this.idTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.idTxtBxElecAttri.Name = "idTxtBxElecAttri";
-            this.idTxtBxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.idTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.idTxtBxElecAttri.TabIndex = 23;
             // 
             // attributepathTxtBxElecAttri
             // 
             this.attributepathTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.attributepathTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.attributepathTxtBxElecAttri.Location = new System.Drawing.Point(396, 177);
+            this.attributepathTxtBxElecAttri.Location = new System.Drawing.Point(382, 177);
             this.attributepathTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.attributepathTxtBxElecAttri.Name = "attributepathTxtBxElecAttri";
-            this.attributepathTxtBxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.attributepathTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.attributepathTxtBxElecAttri.TabIndex = 22;
             // 
             // RefBaseClassPathTxtBxElecAttri
             // 
             this.RefBaseClassPathTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.RefBaseClassPathTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RefBaseClassPathTxtBxElecAttri.Location = new System.Drawing.Point(396, 135);
+            this.RefBaseClassPathTxtBxElecAttri.Location = new System.Drawing.Point(382, 135);
             this.RefBaseClassPathTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.RefBaseClassPathTxtBxElecAttri.Name = "RefBaseClassPathTxtBxElecAttri";
-            this.RefBaseClassPathTxtBxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.RefBaseClassPathTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.RefBaseClassPathTxtBxElecAttri.TabIndex = 21;
             // 
             // RefClassNameTxtBxElecAttri
             // 
             this.RefClassNameTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.RefClassNameTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RefClassNameTxtBxElecAttri.Location = new System.Drawing.Point(396, 93);
+            this.RefClassNameTxtBxElecAttri.Location = new System.Drawing.Point(382, 93);
             this.RefClassNameTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.RefClassNameTxtBxElecAttri.Name = "RefClassNameTxtBxElecAttri";
-            this.RefClassNameTxtBxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.RefClassNameTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.RefClassNameTxtBxElecAttri.TabIndex = 20;
             // 
             // copyrightTxtBxElecAttri
             // 
             this.copyrightTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.copyrightTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.copyrightTxtBxElecAttri.Location = new System.Drawing.Point(396, 51);
+            this.copyrightTxtBxElecAttri.Location = new System.Drawing.Point(382, 51);
             this.copyrightTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.copyrightTxtBxElecAttri.Name = "copyrightTxtBxElecAttri";
-            this.copyrightTxtBxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.copyrightTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.copyrightTxtBxElecAttri.TabIndex = 19;
             // 
             // label31
@@ -1427,7 +1377,7 @@ namespace Aml.Editor.Plugin
             this.label31.Location = new System.Drawing.Point(3, 253);
             this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(390, 46);
+            this.label31.Size = new System.Drawing.Size(376, 46);
             this.label31.TabIndex = 12;
             this.label31.Text = "Name";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1440,7 +1390,7 @@ namespace Aml.Editor.Plugin
             this.label29.Location = new System.Drawing.Point(3, 211);
             this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(390, 41);
+            this.label29.Size = new System.Drawing.Size(376, 41);
             this.label29.TabIndex = 10;
             this.label29.Text = "ID";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1453,7 +1403,7 @@ namespace Aml.Editor.Plugin
             this.label27.Location = new System.Drawing.Point(3, 169);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(390, 41);
+            this.label27.Size = new System.Drawing.Size(376, 41);
             this.label27.TabIndex = 8;
             this.label27.Text = "Attribute Path";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1466,7 +1416,7 @@ namespace Aml.Editor.Plugin
             this.label25.Location = new System.Drawing.Point(3, 127);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(390, 41);
+            this.label25.Size = new System.Drawing.Size(376, 41);
             this.label25.TabIndex = 6;
             this.label25.Text = "Referenced Base Class Path";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1479,7 +1429,7 @@ namespace Aml.Editor.Plugin
             this.label21.Location = new System.Drawing.Point(3, 85);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(390, 41);
+            this.label21.Size = new System.Drawing.Size(376, 41);
             this.label21.TabIndex = 4;
             this.label21.Text = "Referenced Class Name";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1492,7 +1442,7 @@ namespace Aml.Editor.Plugin
             this.TableHeader_lbl_Copyright.Location = new System.Drawing.Point(3, 43);
             this.TableHeader_lbl_Copyright.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TableHeader_lbl_Copyright.Name = "TableHeader_lbl_Copyright";
-            this.TableHeader_lbl_Copyright.Size = new System.Drawing.Size(390, 41);
+            this.TableHeader_lbl_Copyright.Size = new System.Drawing.Size(376, 41);
             this.TableHeader_lbl_Copyright.TabIndex = 2;
             this.TableHeader_lbl_Copyright.Text = "Copyright";
             this.TableHeader_lbl_Copyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1505,7 +1455,7 @@ namespace Aml.Editor.Plugin
             this.TableHeader_lbl_Description.Location = new System.Drawing.Point(3, 1);
             this.TableHeader_lbl_Description.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TableHeader_lbl_Description.Name = "TableHeader_lbl_Description";
-            this.TableHeader_lbl_Description.Size = new System.Drawing.Size(390, 41);
+            this.TableHeader_lbl_Description.Size = new System.Drawing.Size(376, 41);
             this.TableHeader_lbl_Description.TabIndex = 0;
             this.TableHeader_lbl_Description.Text = "Description";
             this.TableHeader_lbl_Description.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1514,10 +1464,10 @@ namespace Aml.Editor.Plugin
             // 
             this.descriptionTxtBoxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionTxtBoxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.descriptionTxtBoxElecAttri.Location = new System.Drawing.Point(396, 9);
+            this.descriptionTxtBoxElecAttri.Location = new System.Drawing.Point(382, 9);
             this.descriptionTxtBoxElecAttri.Margin = new System.Windows.Forms.Padding(0);
             this.descriptionTxtBoxElecAttri.Name = "descriptionTxtBoxElecAttri";
-            this.descriptionTxtBoxElecAttri.Size = new System.Drawing.Size(964, 25);
+            this.descriptionTxtBoxElecAttri.Size = new System.Drawing.Size(930, 25);
             this.descriptionTxtBoxElecAttri.TabIndex = 18;
             // 
             // toolStrip2
@@ -1530,7 +1480,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(1373, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1325, 25);
             this.toolStrip2.TabIndex = 7;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -1553,7 +1503,7 @@ namespace Aml.Editor.Plugin
             this.Page3_TopPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page3_TopPanel.MinimumSize = new System.Drawing.Size(0, 400);
             this.Page3_TopPanel.Name = "Page3_TopPanel";
-            this.Page3_TopPanel.Size = new System.Drawing.Size(1373, 454);
+            this.Page3_TopPanel.Size = new System.Drawing.Size(1325, 454);
             this.Page3_TopPanel.TabIndex = 1;
             // 
             // treeViewElectricalInterfaces
@@ -1567,7 +1517,7 @@ namespace Aml.Editor.Plugin
             this.treeViewElectricalInterfaces.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeViewElectricalInterfaces.Name = "treeViewElectricalInterfaces";
             this.treeViewElectricalInterfaces.SelectedImageIndex = 0;
-            this.treeViewElectricalInterfaces.Size = new System.Drawing.Size(1373, 75);
+            this.treeViewElectricalInterfaces.Size = new System.Drawing.Size(1325, 75);
             this.treeViewElectricalInterfaces.TabIndex = 0;
             this.treeViewElectricalInterfaces.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRoleClassLib_AfterSelect);
             this.treeViewElectricalInterfaces.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewElectricalInterfaces_NodeMouseClick);
@@ -1594,7 +1544,7 @@ namespace Aml.Editor.Plugin
             this.electricalInterfacesCollectionDataGridView.RowHeadersWidth = 51;
             this.electricalInterfacesCollectionDataGridView.RowTemplate.Height = 24;
             this.electricalInterfacesCollectionDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.electricalInterfacesCollectionDataGridView.Size = new System.Drawing.Size(1373, 354);
+            this.electricalInterfacesCollectionDataGridView.Size = new System.Drawing.Size(1325, 354);
             this.electricalInterfacesCollectionDataGridView.TabIndex = 1;
             this.electricalInterfacesCollectionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.electricalInterfacesCollectionDataGridView_CellClick);
             this.electricalInterfacesCollectionDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.electricalInterfacesCollectionDataGridView_CellContentClick);
@@ -1654,7 +1604,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip24.Location = new System.Drawing.Point(0, 0);
             this.toolStrip24.Name = "toolStrip24";
             this.toolStrip24.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip24.Size = new System.Drawing.Size(1373, 25);
+            this.toolStrip24.Size = new System.Drawing.Size(1325, 25);
             this.toolStrip24.TabIndex = 0;
             this.toolStrip24.Text = "toolStrip24";
             // 
@@ -1690,7 +1640,7 @@ namespace Aml.Editor.Plugin
             this.DocsTabPage.Location = new System.Drawing.Point(4, 26);
             this.DocsTabPage.Margin = new System.Windows.Forms.Padding(0);
             this.DocsTabPage.Name = "DocsTabPage";
-            this.DocsTabPage.Size = new System.Drawing.Size(1325, 796);
+            this.DocsTabPage.Size = new System.Drawing.Size(1325, 809);
             this.DocsTabPage.TabIndex = 4;
             this.DocsTabPage.Text = "Attachments";
             // 
@@ -1703,7 +1653,7 @@ namespace Aml.Editor.Plugin
             this.addPicturesandDocsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.addPicturesandDocsPanel.MinimumSize = new System.Drawing.Size(691, 22);
             this.addPicturesandDocsPanel.Name = "addPicturesandDocsPanel";
-            this.addPicturesandDocsPanel.Size = new System.Drawing.Size(1325, 796);
+            this.addPicturesandDocsPanel.Size = new System.Drawing.Size(1325, 809);
             this.addPicturesandDocsPanel.TabIndex = 0;
             this.addPicturesandDocsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.addPicturesAndDocsPanel_Paint);
             // 
@@ -1719,7 +1669,7 @@ namespace Aml.Editor.Plugin
             this.Page2_BottomPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page2_BottomPanel.MinimumSize = new System.Drawing.Size(0, 750);
             this.Page2_BottomPanel.Name = "Page2_BottomPanel";
-            this.Page2_BottomPanel.Size = new System.Drawing.Size(1325, 796);
+            this.Page2_BottomPanel.Size = new System.Drawing.Size(1325, 809);
             this.Page2_BottomPanel.TabIndex = 3;
             // 
             // attachablesInfoDataGridView
@@ -1737,7 +1687,7 @@ namespace Aml.Editor.Plugin
             this.attachablesInfoDataGridView.Name = "attachablesInfoDataGridView";
             this.attachablesInfoDataGridView.RowHeadersWidth = 51;
             this.attachablesInfoDataGridView.RowTemplate.Height = 24;
-            this.attachablesInfoDataGridView.Size = new System.Drawing.Size(1325, 655);
+            this.attachablesInfoDataGridView.Size = new System.Drawing.Size(1325, 668);
             this.attachablesInfoDataGridView.TabIndex = 4;
             // 
             // ElementName
@@ -1841,6 +1791,8 @@ namespace Aml.Editor.Plugin
             // 
             // toolStripSeparator29
             // 
+            this.toolStripSeparator29.BackColor = System.Drawing.Color.Red;
+            this.toolStripSeparator29.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.toolStripSeparator29.Name = "toolStripSeparator29";
             this.toolStripSeparator29.Size = new System.Drawing.Size(6, 30);
             // 
@@ -1975,7 +1927,7 @@ namespace Aml.Editor.Plugin
             this.treeViewPanel.Location = new System.Drawing.Point(0, 0);
             this.treeViewPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeViewPanel.Name = "treeViewPanel";
-            this.treeViewPanel.Size = new System.Drawing.Size(414, 826);
+            this.treeViewPanel.Size = new System.Drawing.Size(414, 839);
             this.treeViewPanel.TabIndex = 1;
             // 
             // splitContainer3
@@ -1993,8 +1945,8 @@ namespace Aml.Editor.Plugin
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.treeViewInterfaceClassLibPanel);
-            this.splitContainer3.Size = new System.Drawing.Size(414, 826);
-            this.splitContainer3.SplitterDistance = 468;
+            this.splitContainer3.Size = new System.Drawing.Size(414, 839);
+            this.splitContainer3.SplitterDistance = 474;
             this.splitContainer3.TabIndex = 0;
             // 
             // Page0_RoleClassPanel
@@ -2006,7 +1958,7 @@ namespace Aml.Editor.Plugin
             this.Page0_RoleClassPanel.Location = new System.Drawing.Point(0, 0);
             this.Page0_RoleClassPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page0_RoleClassPanel.Name = "Page0_RoleClassPanel";
-            this.Page0_RoleClassPanel.Size = new System.Drawing.Size(414, 468);
+            this.Page0_RoleClassPanel.Size = new System.Drawing.Size(414, 474);
             this.Page0_RoleClassPanel.TabIndex = 0;
             // 
             // treeViewRoleClassLib
@@ -2021,7 +1973,7 @@ namespace Aml.Editor.Plugin
             this.treeViewRoleClassLib.Name = "treeViewRoleClassLib";
             this.treeViewRoleClassLib.SelectedImageKey = "RCL.JPG";
             this.treeViewRoleClassLib.ShowNodeToolTips = true;
-            this.treeViewRoleClassLib.Size = new System.Drawing.Size(414, 443);
+            this.treeViewRoleClassLib.Size = new System.Drawing.Size(414, 449);
             this.treeViewRoleClassLib.TabIndex = 9;
             this.treeViewRoleClassLib.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewRoleClassLib_ItemDrag);
             this.treeViewRoleClassLib.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRoleClassLib_AfterSelect);
@@ -2041,7 +1993,6 @@ namespace Aml.Editor.Plugin
             this.toolStrip7.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripSeparator41,
             this.toolStripTextBox1});
             this.toolStrip7.Location = new System.Drawing.Point(0, 0);
             this.toolStrip7.Name = "toolStrip7";
@@ -2055,11 +2006,6 @@ namespace Aml.Editor.Plugin
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(99, 22);
             this.toolStripLabel1.Text = "Role Class Library";
-            // 
-            // toolStripSeparator41
-            // 
-            this.toolStripSeparator41.Name = "toolStripSeparator41";
-            this.toolStripSeparator41.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripTextBox1
             // 
@@ -2076,7 +2022,7 @@ namespace Aml.Editor.Plugin
             this.treeViewInterfaceClassLibPanel.Location = new System.Drawing.Point(0, 0);
             this.treeViewInterfaceClassLibPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeViewInterfaceClassLibPanel.Name = "treeViewInterfaceClassLibPanel";
-            this.treeViewInterfaceClassLibPanel.Size = new System.Drawing.Size(414, 354);
+            this.treeViewInterfaceClassLibPanel.Size = new System.Drawing.Size(414, 361);
             this.treeViewInterfaceClassLibPanel.TabIndex = 1;
             // 
             // treeViewInterfaceClassLib
@@ -2090,7 +2036,7 @@ namespace Aml.Editor.Plugin
             this.treeViewInterfaceClassLib.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeViewInterfaceClassLib.Name = "treeViewInterfaceClassLib";
             this.treeViewInterfaceClassLib.SelectedImageKey = "ICL.JPG";
-            this.treeViewInterfaceClassLib.Size = new System.Drawing.Size(414, 329);
+            this.treeViewInterfaceClassLib.Size = new System.Drawing.Size(414, 336);
             this.treeViewInterfaceClassLib.TabIndex = 10;
             this.treeViewInterfaceClassLib.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewInterfaceClassLib_ItemDrag);
             this.treeViewInterfaceClassLib.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewInterfaceClassLib_BeforeSelect);
@@ -2107,7 +2053,6 @@ namespace Aml.Editor.Plugin
             this.toolStrip9.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip9.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InterfaceClassLibLabel,
-            this.toolStripSeparator42,
             this.toolStripTextBox2});
             this.toolStrip9.Location = new System.Drawing.Point(0, 0);
             this.toolStrip9.Name = "toolStrip9";
@@ -2121,11 +2066,6 @@ namespace Aml.Editor.Plugin
             this.InterfaceClassLibLabel.Name = "InterfaceClassLibLabel";
             this.InterfaceClassLibLabel.Size = new System.Drawing.Size(122, 22);
             this.InterfaceClassLibLabel.Text = "Interface Class Library";
-            // 
-            // toolStripSeparator42
-            // 
-            this.toolStripSeparator42.Name = "toolStripSeparator42";
-            this.toolStripSeparator42.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripTextBox2
             // 
@@ -2511,6 +2451,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip1.PerformLayout();
             this.Page0_FullWindow.ResumeLayout(false);
             this.Page0_FullWindowPanel2.ResumeLayout(false);
+            this.Page0_FullWindowPanel2.PerformLayout();
             this.Page0_FastFullWindow.ResumeLayout(false);
             this.Page0_FastFullWindow2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -2596,7 +2537,7 @@ namespace Aml.Editor.Plugin
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.MenuStrip toolStrip1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel Page0_FullWindow;
         private System.Windows.Forms.Panel Page0_FullWindowPanel2;
@@ -2626,7 +2567,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.TreeView treeViewRoleClassLib;
         private System.Windows.Forms.ToolStrip toolStrip7;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator41;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ImageList imageListRCL;
         private System.Windows.Forms.ImageList imageList2;
@@ -2758,9 +2698,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.ToolStripTextBox vendorNameTextBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripTextBox deviceNameTextBox;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView genericparametersAttrDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
@@ -2792,7 +2729,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.TreeView treeViewInterfaceClassLib;
         private System.Windows.Forms.ToolStrip toolStrip9;
         private System.Windows.Forms.ToolStripLabel InterfaceClassLibLabel;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator42;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.SplitContainer split_GenericDataGrid;
     }
