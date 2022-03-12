@@ -16,5 +16,10 @@ namespace App
         {
             InitializeComponent();
         }
+
+        private void deviceDescription1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

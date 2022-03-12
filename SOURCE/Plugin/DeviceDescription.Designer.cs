@@ -60,9 +60,9 @@ namespace Aml.Editor.Plugin
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileNameLabel = new System.Windows.Forms.ToolStripLabel();
             this.vendorNameTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.filePathLabel = new System.Windows.Forms.ToolStripLabel();
             this.deviceNameTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Page0_FullWindow = new System.Windows.Forms.Panel();
             this.Page0_FullWindowPanel2 = new System.Windows.Forms.Panel();
@@ -184,12 +184,10 @@ namespace Aml.Editor.Plugin
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip7 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.treeViewInterfaceClassLibPanel = new System.Windows.Forms.Panel();
             this.treeViewInterfaceClassLib = new System.Windows.Forms.TreeView();
             this.toolStrip9 = new System.Windows.Forms.ToolStrip();
             this.InterfaceClassLibLabel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.imageListRCL = new System.Windows.Forms.ImageList(this.components);
@@ -487,13 +485,6 @@ namespace Aml.Editor.Plugin
             this.vendorNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.vendorNameTextBox.TextChanged += new System.EventHandler(this.vendorNameTextBox_TextChanged);
             // 
-            // toolStripLabel4
-            // 
-            this.toolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(80, 20);
-            this.toolStripLabel4.Text = "Device Name:";
-            // 
             // filePathLabel
             // 
             this.filePathLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -506,9 +497,17 @@ namespace Aml.Editor.Plugin
             // 
             this.deviceNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.deviceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.deviceNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.deviceNameTextBox.Name = "deviceNameTextBox";
             this.deviceNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.deviceNameTextBox.TextChanged += new System.EventHandler(this.deviceNameTextBox_TextChanged);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(80, 20);
+            this.toolStripLabel4.Text = "Device Name:";
             // 
             // Page0_FullWindow
             // 
@@ -556,7 +555,6 @@ namespace Aml.Editor.Plugin
             // 
             // splitContainer1
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1946,7 +1944,7 @@ namespace Aml.Editor.Plugin
             // 
             this.splitContainer3.Panel2.Controls.Add(this.treeViewInterfaceClassLibPanel);
             this.splitContainer3.Size = new System.Drawing.Size(414, 839);
-            this.splitContainer3.SplitterDistance = 474;
+            this.splitContainer3.SplitterDistance = 419;
             this.splitContainer3.TabIndex = 0;
             // 
             // Page0_RoleClassPanel
@@ -1958,7 +1956,7 @@ namespace Aml.Editor.Plugin
             this.Page0_RoleClassPanel.Location = new System.Drawing.Point(0, 0);
             this.Page0_RoleClassPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Page0_RoleClassPanel.Name = "Page0_RoleClassPanel";
-            this.Page0_RoleClassPanel.Size = new System.Drawing.Size(414, 474);
+            this.Page0_RoleClassPanel.Size = new System.Drawing.Size(414, 419);
             this.Page0_RoleClassPanel.TabIndex = 0;
             // 
             // treeViewRoleClassLib
@@ -1973,7 +1971,7 @@ namespace Aml.Editor.Plugin
             this.treeViewRoleClassLib.Name = "treeViewRoleClassLib";
             this.treeViewRoleClassLib.SelectedImageKey = "RCL.JPG";
             this.treeViewRoleClassLib.ShowNodeToolTips = true;
-            this.treeViewRoleClassLib.Size = new System.Drawing.Size(414, 449);
+            this.treeViewRoleClassLib.Size = new System.Drawing.Size(414, 394);
             this.treeViewRoleClassLib.TabIndex = 9;
             this.treeViewRoleClassLib.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewRoleClassLib_ItemDrag);
             this.treeViewRoleClassLib.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRoleClassLib_AfterSelect);
@@ -1992,8 +1990,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip7.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip7.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.toolStripTextBox1});
+            this.toolStripLabel1});
             this.toolStrip7.Location = new System.Drawing.Point(0, 0);
             this.toolStrip7.Name = "toolStrip7";
             this.toolStrip7.Size = new System.Drawing.Size(414, 25);
@@ -2007,12 +2004,6 @@ namespace Aml.Editor.Plugin
             this.toolStripLabel1.Size = new System.Drawing.Size(99, 22);
             this.toolStripLabel1.Text = "Role Class Library";
             // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(88, 25);
-            // 
             // treeViewInterfaceClassLibPanel
             // 
             this.treeViewInterfaceClassLibPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
@@ -2022,7 +2013,7 @@ namespace Aml.Editor.Plugin
             this.treeViewInterfaceClassLibPanel.Location = new System.Drawing.Point(0, 0);
             this.treeViewInterfaceClassLibPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeViewInterfaceClassLibPanel.Name = "treeViewInterfaceClassLibPanel";
-            this.treeViewInterfaceClassLibPanel.Size = new System.Drawing.Size(414, 361);
+            this.treeViewInterfaceClassLibPanel.Size = new System.Drawing.Size(414, 416);
             this.treeViewInterfaceClassLibPanel.TabIndex = 1;
             // 
             // treeViewInterfaceClassLib
@@ -2036,7 +2027,7 @@ namespace Aml.Editor.Plugin
             this.treeViewInterfaceClassLib.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeViewInterfaceClassLib.Name = "treeViewInterfaceClassLib";
             this.treeViewInterfaceClassLib.SelectedImageKey = "ICL.JPG";
-            this.treeViewInterfaceClassLib.Size = new System.Drawing.Size(414, 336);
+            this.treeViewInterfaceClassLib.Size = new System.Drawing.Size(414, 391);
             this.treeViewInterfaceClassLib.TabIndex = 10;
             this.treeViewInterfaceClassLib.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewInterfaceClassLib_ItemDrag);
             this.treeViewInterfaceClassLib.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewInterfaceClassLib_BeforeSelect);
@@ -2052,8 +2043,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip9.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip9.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip9.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.InterfaceClassLibLabel,
-            this.toolStripTextBox2});
+            this.InterfaceClassLibLabel});
             this.toolStrip9.Location = new System.Drawing.Point(0, 0);
             this.toolStrip9.Name = "toolStrip9";
             this.toolStrip9.Size = new System.Drawing.Size(414, 25);
@@ -2066,12 +2056,6 @@ namespace Aml.Editor.Plugin
             this.InterfaceClassLibLabel.Name = "InterfaceClassLibLabel";
             this.InterfaceClassLibLabel.Size = new System.Drawing.Size(122, 22);
             this.InterfaceClassLibLabel.Text = "Interface Class Library";
-            // 
-            // toolStripTextBox2
-            // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(116, 25);
             // 
             // imageList3
             // 
@@ -2443,8 +2427,6 @@ namespace Aml.Editor.Plugin
             this.Controls.Add(this.Page0_FullWindow);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.MaximumSize = new System.Drawing.Size(1750, 866);
-            this.MinimumSize = new System.Drawing.Size(1750, 866);
             this.Name = "DeviceDescription";
             this.Size = new System.Drawing.Size(1750, 866);
             this.toolStrip1.ResumeLayout(false);
@@ -2567,7 +2549,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.TreeView treeViewRoleClassLib;
         private System.Windows.Forms.ToolStrip toolStrip7;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ImageList imageListRCL;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ImageList imageList1;
@@ -2729,7 +2710,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.TreeView treeViewInterfaceClassLib;
         private System.Windows.Forms.ToolStrip toolStrip9;
         private System.Windows.Forms.ToolStripLabel InterfaceClassLibLabel;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.SplitContainer split_GenericDataGrid;
     }
 }

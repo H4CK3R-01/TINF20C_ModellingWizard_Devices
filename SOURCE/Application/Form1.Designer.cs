@@ -41,11 +41,10 @@ namespace App
             this.deviceDescription1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deviceDescription1.Location = new System.Drawing.Point(0, 0);
             this.deviceDescription1.Margin = new System.Windows.Forms.Padding(0);
-            this.deviceDescription1.MaximumSize = new System.Drawing.Size(1750, 866);
-            this.deviceDescription1.MinimumSize = new System.Drawing.Size(1750, 866);
             this.deviceDescription1.Name = "deviceDescription1";
-            this.deviceDescription1.Size = new System.Drawing.Size(1750, 866);
+            this.deviceDescription1.Size = new System.Drawing.Size(884, 461);
             this.deviceDescription1.TabIndex = 0;
+            this.deviceDescription1.Load += new System.EventHandler(this.deviceDescription1_Load);
             // 
             // Form1
             // 
