@@ -58,7 +58,6 @@ namespace Aml.Editor.Plugin
             this.helpButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileNameLabel = new System.Windows.Forms.ToolStripLabel();
             this.vendorNameTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.filePathLabel = new System.Windows.Forms.ToolStripLabel();
             this.deviceNameTextBox = new System.Windows.Forms.ToolStripTextBox();
@@ -295,7 +294,6 @@ namespace Aml.Editor.Plugin
             this.fileButton,
             this.librariesSplitButton,
             this.helpButton,
-            this.fileNameLabel,
             this.vendorNameTextBox,
             this.filePathLabel,
             this.deviceNameTextBox,
@@ -467,14 +465,6 @@ namespace Aml.Editor.Plugin
             this.manualToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.manualToolStripMenuItem.Text = "Manual";
             this.manualToolStripMenuItem.Click += new System.EventHandler(this.manualToolStripMenuItem_Click);
-            // 
-            // fileNameLabel
-            // 
-            this.fileNameLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.fileNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.fileNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.fileNameLabel.Name = "fileNameLabel";
-            this.fileNameLabel.Size = new System.Drawing.Size(0, 20);
             // 
             // vendorNameTextBox
             // 
@@ -1105,8 +1095,8 @@ namespace Aml.Editor.Plugin
             this.toolStripLabel20.BackColor = System.Drawing.Color.Transparent;
             this.toolStripLabel20.ForeColor = System.Drawing.Color.Black;
             this.toolStripLabel20.Name = "toolStripLabel20";
-            this.toolStripLabel20.Size = new System.Drawing.Size(122, 22);
-            this.toolStripLabel20.Text = "Generic Information 2";
+            this.toolStripLabel20.Size = new System.Drawing.Size(113, 22);
+            this.toolStripLabel20.Text = "Generic Information";
             // 
             // deleteRoleClassButton
             // 
@@ -2626,7 +2616,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.Label TableHeader_lbl_Copyright;
         private System.Windows.Forms.Label TableHeader_lbl_Description;
         private System.Windows.Forms.TextBox descriptionTxtBoxElecAttri;
-        private System.Windows.Forms.ToolStripLabel fileNameLabel;
         private System.Windows.Forms.TreeView treeViewElectricalInterfaces;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;

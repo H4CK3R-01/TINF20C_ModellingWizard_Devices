@@ -28,7 +28,7 @@ namespace Aml.Editor.Plugin
 
         public ModellingWizard()
         {
-            mWController = new MWController(this);
+            mWController = new MWController();
             
             // Defines the Command list, which will contain user commands, which a user can select
             // via the PlugIn Menu.

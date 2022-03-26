@@ -28,12 +28,9 @@ namespace Aml.Editor.Plugin
         /// <summary>
         /// Init the controller and reload all amlx devices
         /// </summary>
-        /// <param name="modellingWizard"></param>
-        public MWController(ModellingWizard modellingWizard)
+        public MWController()
         {
-            this.modellingWizard = modellingWizard;
             mWData = new MWData(this);
-           
         }
 
         /// <summary>
@@ -101,6 +98,7 @@ namespace Aml.Editor.Plugin
         /// <param name="targetGUI">the GUI Type to display</param>
         public void ChangeGui(MWGUIType targetGUI)
         {
+            // TODO modellingWizard is null
             switch (targetGUI)
             {
                

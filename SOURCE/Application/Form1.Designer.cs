@@ -30,7 +30,7 @@ namespace App
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.deviceDescription1 = new Aml.Editor.Plugin.DeviceDescription();
+            this.deviceDescription1 = new Aml.Editor.Plugin.DeviceDescription(new Aml.Editor.Plugin.MWController());
             this.SuspendLayout();
             // 
             // deviceDescription1

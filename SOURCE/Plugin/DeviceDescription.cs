@@ -1614,7 +1614,7 @@ namespace Aml.Editor.Plugin
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-                // saveFileDialog.Filter = "AML Files( *.amlx )| *.amlx;";
+                saveFileDialog.Filter = "AML Files( *.amlx )| *.amlx;";
                 saveFileDialog.FileName = vendorNameTextBox.Text + "-" + deviceNameTextBox.Text + "-V.1.0-" + DateTime.Now.Date.ToShortDateString();
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -1622,11 +1622,9 @@ namespace Aml.Editor.Plugin
 
                     device.filepath = Path.GetDirectoryName(saveFileDialog.FileName);
                     device.environment = Path.GetDirectoryName(saveFileDialog.FileName);
-                    //filePathLabel.Text = Path.GetDirectoryName(saveFileDialog.FileName);
                     device.fileName = saveFileDialog.FileName;
 
 
-                    fileNameLabel.Text = "";
                     // storing user defined values of Attachebles data grid view in to list 
 
                     // Pass the device to the controller
@@ -1750,7 +1748,6 @@ namespace Aml.Editor.Plugin
                     device.fileName = saveFileDialog.FileName;
 
 
-                    fileNameLabel.Text = "";
                     // storing user defined values of Attachebles data grid view in to list 
 
                     // Pass the device to the controller
@@ -2076,7 +2073,6 @@ namespace Aml.Editor.Plugin
                             document = CAEXDocument.LoadFromStream(part.GetStream());
                         }
 
-                        fileNameLabel.Text = fileInfo.Name;
                         getAllInterfaces(treeViewInterfaceClassLib.Nodes);
 
                         foreach (var classLibType in document.CAEXFile.SystemUnitClassLib)
@@ -3590,7 +3586,6 @@ namespace Aml.Editor.Plugin
         {
             vendorNameTextBox.Text = "";
             deviceNameTextBox.Text = "";
-            fileNameLabel.Text = "";
             genericDataHeaderLabel.Text = "";
             electricalInterfacesHeaderlabel.Text = "";
             genericInformationDataGridView.Rows.Clear();
