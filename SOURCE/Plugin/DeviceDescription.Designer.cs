@@ -55,6 +55,8 @@ namespace Aml.Editor.Plugin
             this.automationComponentLibraryv100FullCAEX3BETAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.electricConnectorLibraryv100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.industrialSensorLibraryv100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advancedModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -226,8 +228,6 @@ namespace Aml.Editor.Plugin
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.Page0_FullWindow.SuspendLayout();
             this.Page0_FullWindowPanel2.SuspendLayout();
@@ -442,6 +442,21 @@ namespace Aml.Editor.Plugin
             this.industrialSensorLibraryv100ToolStripMenuItem.Text = "IndustrialSensorLibrary_v1_0_0";
             this.industrialSensorLibraryv100ToolStripMenuItem.Click += new System.EventHandler(this.industrialSensorLibraryv100ToolStripMenuItem_Click);
             // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.advancedModeToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 23);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // advancedModeToolStripMenuItem
+            // 
+            this.advancedModeToolStripMenuItem.Name = "advancedModeToolStripMenuItem";
+            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.advancedModeToolStripMenuItem.Text = "Advanced Mode";
+            this.advancedModeToolStripMenuItem.Click += new System.EventHandler(this.advancedModeToolStripMenuItem_Click);
+            // 
             // helpButton
             // 
             this.helpButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -471,6 +486,7 @@ namespace Aml.Editor.Plugin
             // 
             this.vendorNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.vendorNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.vendorNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.vendorNameTextBox.Name = "vendorNameTextBox";
             this.vendorNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.vendorNameTextBox.TextChanged += new System.EventHandler(this.vendorNameTextBox_TextChanged);
@@ -487,6 +503,7 @@ namespace Aml.Editor.Plugin
             // 
             this.deviceNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.deviceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.deviceNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.deviceNameTextBox.Name = "deviceNameTextBox";
             this.deviceNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.deviceNameTextBox.TextChanged += new System.EventHandler(this.deviceNameTextBox_TextChanged);
@@ -676,6 +693,7 @@ namespace Aml.Editor.Plugin
             this.genericInformationDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.genericInformationDataGridView.Size = new System.Drawing.Size(1325, 176);
             this.genericInformationDataGridView.TabIndex = 5;
+            this.genericInformationDataGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.genericInformationDataGridView_MouseUp);
             // 
             // dataGridViewTextBoxColumn31
             // 
@@ -756,6 +774,7 @@ namespace Aml.Editor.Plugin
             this.deleteRoleClassButton.Name = "deleteRoleClassButton";
             this.deleteRoleClassButton.Size = new System.Drawing.Size(49, 22);
             this.deleteRoleClassButton.Text = "Delete";
+            this.deleteRoleClassButton.Click += new System.EventHandler(this.deleteRoleClassButton_Click_1);
             // 
             // tabControl1
             // 
@@ -1932,7 +1951,7 @@ namespace Aml.Editor.Plugin
             this.treeViewRoleClassLib.Size = new System.Drawing.Size(414, 394);
             this.treeViewRoleClassLib.TabIndex = 9;
             this.treeViewRoleClassLib.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewRoleClassLib_ItemDrag);
-            this.treeViewRoleClassLib.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRoleClassLib_AfterSelect);
+            this.treeViewRoleClassLib.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewRoleClassLib_DragOver);
             // 
             // imageList1
             // 
@@ -2375,21 +2394,6 @@ namespace Aml.Editor.Plugin
             this.toolStripButton15.Name = "toolStripButton15";
             this.toolStripButton15.Size = new System.Drawing.Size(44, 24);
             this.toolStripButton15.Text = "Save";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.advancedModeToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 23);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // advancedModeToolStripMenuItem
-            // 
-            this.advancedModeToolStripMenuItem.Name = "advancedModeToolStripMenuItem";
-            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.advancedModeToolStripMenuItem.Text = "Advanced Mode";
-            this.advancedModeToolStripMenuItem.Click += new System.EventHandler(this.advancedModeToolStripMenuItem_Click);
             // 
             // DeviceDescription
             // 

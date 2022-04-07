@@ -346,9 +346,7 @@ namespace Aml.Editor.Plugin
 
         private void treeViewInterfaceClassLib_MouseDown(object sender, MouseEventArgs e)
         {
-
             //this.treeViewInterfaceClassLib.MouseDown += new MouseEventHandler(this.tree_MouseDown);
-
         }
 
         private void treeViewInterfaceClassLib_DragOver(object sender, DragEventArgs e)
@@ -360,6 +358,17 @@ namespace Aml.Editor.Plugin
 
             // Select the node at the mouse position.
             treeViewInterfaceClassLib.SelectedNode = treeViewInterfaceClassLib.GetNodeAt(targetPoint);
+        }
+
+        private void treeViewRoleClassLib_DragOver(object sender, DragEventArgs e)
+        {
+            // this.treeViewInterfaceClassLib.DragOver += new DragEventHandler(this.tree_DragOver);
+
+            // Retrieve the client coordinates of the mouse position.
+            Point targetPoint = treeViewRoleClassLib.PointToClient(new Point(e.X, e.Y));
+
+            // Select the node at the mouse position.
+            treeViewRoleClassLib.SelectedNode = treeViewRoleClassLib.GetNodeAt(targetPoint);
         }
 
         private void treeViewInterfaceClassLib_DragDrop(object sender, DragEventArgs e)
@@ -395,6 +404,8 @@ namespace Aml.Editor.Plugin
             }
             else
             {
+                Cursor = Cursors.Hand;
+
                 if (treeViewInterfaceClassLib.SelectedNode.ImageIndex == 2)
                 {
                     return;
@@ -419,10 +430,6 @@ namespace Aml.Editor.Plugin
 
         }
 
-
-
-
-
         private void treeViewRoleClassLib_ItemDrag(object sender, ItemDragEventArgs e)
         {
             if (treeViewRoleClassLib.SelectedNode == null)
@@ -431,6 +438,8 @@ namespace Aml.Editor.Plugin
             }
             else
             {
+                Cursor = Cursors.Hand;
+
                 if (treeViewRoleClassLib.SelectedNode.ImageIndex == 2)
                 {
                     return;
@@ -983,14 +992,14 @@ namespace Aml.Editor.Plugin
                         }
                     }
                     dragging = false;
-                    //set your cursor back to the deafault
-
                 }
                 catch (Exception)
                 {
                     dragging = false;
                     return;
                 }
+
+                Cursor = Cursors.Default;
             }
         }
 
@@ -1007,6 +1016,7 @@ namespace Aml.Editor.Plugin
 
         private void genericInformationDataGridView_MouseUp(object sender, MouseEventArgs e)
         {
+
             if (dragging)
             {
                 try
@@ -1062,6 +1072,8 @@ namespace Aml.Editor.Plugin
                     dragging = false;
                     return;
                 }
+
+                Cursor = Cursors.Default;
             }
         }
 
@@ -1427,45 +1439,52 @@ namespace Aml.Editor.Plugin
         {
             try
             {
-                if (electricalInterfacesCollectionDataGridView.CurrentCell != null)
+                if (electricalInterfacesCollectionDataGridView.CurrentCell != null && electricalInterfacesCollectionDataGridView.Rows.Count != 0)
                 {
                     int rowIndex = electricalInterfacesCollectionDataGridView.CurrentCell.RowIndex;
                     electricalInterfacesCollectionDataGridView.CurrentRow.Selected = true;
-                    string interfaceSerialNumber = electricalInterfacesCollectionDataGridView.Rows[rowIndex].Cells[0].Value.ToString();
-                    string interfaceClass = electricalInterfacesCollectionDataGridView.Rows[rowIndex].Cells[1].Value.ToString();
 
-                    try
-                    {
-                        if (device.DictionaryForInterfaceClassesInElectricalInterfaces.ContainsKey("(" + interfaceSerialNumber + ")" + interfaceClass))
-                        {
-                            device.DictionaryForInterfaceClassesInElectricalInterfaces.Remove("(" + interfaceSerialNumber + ")" + interfaceClass);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        throw;
-                    }
+                    DataGridViewCell dataGridCell0 = electricalInterfacesCollectionDataGridView.Rows[rowIndex].Cells[0];
+                    DataGridViewCell dataGridCell1 = electricalInterfacesCollectionDataGridView.Rows[rowIndex].Cells[1];
 
-                    foreach (var pair in searchAMLLibraryFile.DictionaryForExternalInterfacesInstanceAttributesofInterfaceClassLib)
+                    if (dataGridCell0.Value != null && dataGridCell1.Value != null)
                     {
-                        if (pair.Key.Contains(interfaceClass))
+                        string interfaceSerialNumber = dataGridCell0.Value.ToString();
+                        string interfaceClass = dataGridCell1.Value.ToString();
+
+                        try
                         {
-                            try
+                            if (device.DictionaryForInterfaceClassesInElectricalInterfaces.ContainsKey("(" + interfaceSerialNumber + ")" + interfaceClass))
                             {
-                                if (device.DictionaryForExternalInterfacesUnderInterfaceClassInElectricalInterfaces.ContainsKey("(" + interfaceSerialNumber + ")" + pair.Key.ToString()))
+                                device.DictionaryForInterfaceClassesInElectricalInterfaces.Remove("(" + interfaceSerialNumber + ")" + interfaceClass);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+
+                        foreach (var pair in searchAMLLibraryFile.DictionaryForExternalInterfacesInstanceAttributesofInterfaceClassLib)
+                        {
+                            if (pair.Key.Contains(interfaceClass))
+                            {
+                                try
                                 {
-                                    device.DictionaryForExternalInterfacesUnderInterfaceClassInElectricalInterfaces.Remove("(" + interfaceSerialNumber + ")" + pair.Key.ToString());
+                                    if (device.DictionaryForExternalInterfacesUnderInterfaceClassInElectricalInterfaces.ContainsKey("(" + interfaceSerialNumber + ")" + pair.Key.ToString()))
+                                    {
+                                        device.DictionaryForExternalInterfacesUnderInterfaceClassInElectricalInterfaces.Remove("(" + interfaceSerialNumber + ")" + pair.Key.ToString());
+
+                                    }
 
                                 }
-
-                            }
-                            catch (Exception)
-                            {
-                                throw;
+                                catch (Exception)
+                                {
+                                    throw;
+                                }
                             }
                         }
+                        electricalInterfacesCollectionDataGridView.Rows.RemoveAt(rowIndex);
                     }
-                    electricalInterfacesCollectionDataGridView.Rows.RemoveAt(rowIndex);
                 }
             }
             catch (Exception) { }
@@ -4729,6 +4748,71 @@ namespace Aml.Editor.Plugin
             elecInterAttDataGridView.Columns[4].Visible = expertMode;
             elecInterAttDataGridView.Columns[5].Visible = expertMode;
 
+        }
+
+        private void deleteRoleClassButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (genericInformationDataGridView.CurrentCell != null)
+                {
+                    int rowIndex = genericInformationDataGridView.CurrentCell.RowIndex;
+                    genericInformationDataGridView.CurrentRow.Selected = true;
+
+                    DataGridViewCell dataGridCell0 = genericInformationDataGridView.Rows[rowIndex].Cells[0];
+                    DataGridViewCell dataGridCell1 = genericInformationDataGridView.Rows[rowIndex].Cells[1];
+
+                    if (dataGridCell0.Value != null && dataGridCell1.Value != null)
+                    {
+                        string interfaceSerialNumber = dataGridCell0.Value.ToString();
+                        string interfaceClass = dataGridCell1.Value.ToString();
+
+
+                        try
+                        {
+                            if (device.DictionaryForRoleClassofComponent.ContainsKey("(" + interfaceSerialNumber + ")" + interfaceClass))
+                            {
+                                device.DictionaryForRoleClassofComponent.Remove("(" + interfaceSerialNumber + ")" + interfaceClass);
+
+                            }
+
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+
+                        foreach (var pair in searchAMLLibraryFile.DictionaryForExternalInterfacesInstancesAttributesOfRoleClassLib)
+                        {
+                            if (pair.Key.Contains(interfaceClass))
+                            {
+                                try
+                                {
+                                    if (device.DictionaryForExternalInterfacesUnderRoleClassofComponent.ContainsKey("(" + interfaceSerialNumber + ")" + pair.Key.ToString()))
+                                    {
+                                        device.DictionaryForExternalInterfacesUnderRoleClassofComponent.Remove("(" + interfaceSerialNumber + ")" + pair.Key.ToString());
+
+                                    }
+
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
+
+                            }
+                        }
+
+                        genericInformationDataGridView.Rows.RemoveAt(rowIndex);
+
+                    }
+                }
+
+            }
+            catch (Exception) { }
         }
     }
 }
