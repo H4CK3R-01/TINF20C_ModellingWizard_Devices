@@ -71,7 +71,18 @@ namespace Aml.Editor.Plugin
             this.dataTabControl = new System.Windows.Forms.TabControl();
             this.genericData = new System.Windows.Forms.TabPage();
             this.Page1_MainPanel = new System.Windows.Forms.Panel();
-            this.Page1_BottomPanel = new System.Windows.Forms.Panel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.genericInformationtreeView = new System.Windows.Forms.TreeView();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.genericInformationDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loadfromLibrary = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.loadFromComponentFile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.deleteRoleClassesButton = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel20 = new System.Windows.Forms.ToolStripLabel();
+            this.deleteRoleClassButton = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.genericparametersAttrDataGridView = new System.Windows.Forms.DataGridView();
@@ -99,19 +110,6 @@ namespace Aml.Editor.Plugin
             this.genericDataDescriptionTxtBx = new System.Windows.Forms.TextBox();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.genericDataHeaderLabel = new System.Windows.Forms.ToolStripLabel();
-            this.Page1_TopPanel = new System.Windows.Forms.Panel();
-            this.split_GenericDataGrid = new System.Windows.Forms.SplitContainer();
-            this.genericInformationtreeView = new System.Windows.Forms.TreeView();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.genericInformationDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loadfromLibrary = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.loadFromComponentFile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.deleteRoleClassesButton = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel20 = new System.Windows.Forms.ToolStripLabel();
-            this.deleteRoleClassButton = new System.Windows.Forms.ToolStripButton();
             this.Interface = new System.Windows.Forms.TabPage();
             this.electricalInterfacesPanel = new System.Windows.Forms.Panel();
             this.Page3_BottomPanel = new System.Windows.Forms.Panel();
@@ -240,18 +238,18 @@ namespace Aml.Editor.Plugin
             this.dataTabControl.SuspendLayout();
             this.genericData.SuspendLayout();
             this.Page1_MainPanel.SuspendLayout();
-            this.Page1_BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.genericInformationDataGridView)).BeginInit();
+            this.deleteRoleClassesButton.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genericparametersAttrDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip5.SuspendLayout();
-            this.Page1_TopPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.split_GenericDataGrid)).BeginInit();
-            this.split_GenericDataGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.genericInformationDataGridView)).BeginInit();
-            this.deleteRoleClassesButton.SuspendLayout();
             this.Interface.SuspendLayout();
             this.electricalInterfacesPanel.SuspendLayout();
             this.Page3_BottomPanel.SuspendLayout();
@@ -470,7 +468,6 @@ namespace Aml.Editor.Plugin
             // 
             this.vendorNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.vendorNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.vendorNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.vendorNameTextBox.Name = "vendorNameTextBox";
             this.vendorNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.vendorNameTextBox.TextChanged += new System.EventHandler(this.vendorNameTextBox_TextChanged);
@@ -487,7 +484,6 @@ namespace Aml.Editor.Plugin
             // 
             this.deviceNameTextBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.deviceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.deviceNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.deviceNameTextBox.Name = "deviceNameTextBox";
             this.deviceNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.deviceNameTextBox.TextChanged += new System.EventHandler(this.deviceNameTextBox_TextChanged);
@@ -600,8 +596,7 @@ namespace Aml.Editor.Plugin
             // 
             this.Page1_MainPanel.AutoScroll = true;
             this.Page1_MainPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Page1_MainPanel.Controls.Add(this.Page1_BottomPanel);
-            this.Page1_MainPanel.Controls.Add(this.Page1_TopPanel);
+            this.Page1_MainPanel.Controls.Add(this.splitContainer2);
             this.Page1_MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Page1_MainPanel.Location = new System.Drawing.Point(0, 0);
             this.Page1_MainPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -611,19 +606,153 @@ namespace Aml.Editor.Plugin
             this.Page1_MainPanel.TabIndex = 1;
             this.Page1_MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_FrontPage_Paint);
             // 
-            // Page1_BottomPanel
+            // splitContainer2
             // 
-            this.Page1_BottomPanel.AutoSize = true;
-            this.Page1_BottomPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Page1_BottomPanel.Controls.Add(this.tabControl1);
-            this.Page1_BottomPanel.Controls.Add(this.toolStrip5);
-            this.Page1_BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Page1_BottomPanel.Location = new System.Drawing.Point(0, 454);
-            this.Page1_BottomPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.Page1_BottomPanel.MinimumSize = new System.Drawing.Size(0, 400);
-            this.Page1_BottomPanel.Name = "Page1_BottomPanel";
-            this.Page1_BottomPanel.Size = new System.Drawing.Size(1325, 400);
-            this.Page1_BottomPanel.TabIndex = 10;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.genericInformationtreeView);
+            this.splitContainer2.Panel1.Controls.Add(this.genericInformationDataGridView);
+            this.splitContainer2.Panel1.Controls.Add(this.deleteRoleClassesButton);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer2.Panel2.Controls.Add(this.toolStrip5);
+            this.splitContainer2.Size = new System.Drawing.Size(1325, 809);
+            this.splitContainer2.SplitterDistance = 404;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // genericInformationtreeView
+            // 
+            this.genericInformationtreeView.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.genericInformationtreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.genericInformationtreeView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.genericInformationtreeView.ImageIndex = 0;
+            this.genericInformationtreeView.ImageList = this.imageList2;
+            this.genericInformationtreeView.Location = new System.Drawing.Point(0, 329);
+            this.genericInformationtreeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.genericInformationtreeView.Name = "genericInformationtreeView";
+            this.genericInformationtreeView.SelectedImageIndex = 0;
+            this.genericInformationtreeView.Size = new System.Drawing.Size(1325, 75);
+            this.genericInformationtreeView.TabIndex = 6;
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "ICL.JPG");
+            this.imageList2.Images.SetKeyName(1, "IC.JPG");
+            this.imageList2.Images.SetKeyName(2, "Interface.JPG");
+            // 
+            // genericInformationDataGridView
+            // 
+            this.genericInformationDataGridView.AllowDrop = true;
+            this.genericInformationDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.genericInformationDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.genericInformationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.genericInformationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn31,
+            this.dataGridViewTextBoxColumn32,
+            this.loadfromLibrary,
+            this.loadFromComponentFile,
+            this.dataGridViewCheckBoxColumn2});
+            this.genericInformationDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.genericInformationDataGridView.GridColor = System.Drawing.SystemColors.Control;
+            this.genericInformationDataGridView.Location = new System.Drawing.Point(0, 25);
+            this.genericInformationDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.genericInformationDataGridView.Name = "genericInformationDataGridView";
+            this.genericInformationDataGridView.ReadOnly = true;
+            this.genericInformationDataGridView.RowHeadersWidth = 51;
+            this.genericInformationDataGridView.RowTemplate.Height = 24;
+            this.genericInformationDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.genericInformationDataGridView.Size = new System.Drawing.Size(1325, 176);
+            this.genericInformationDataGridView.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.HeaderText = "Index";
+            this.dataGridViewTextBoxColumn31.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            this.dataGridViewTextBoxColumn31.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn32.HeaderText = "Role ";
+            this.dataGridViewTextBoxColumn32.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            this.dataGridViewTextBoxColumn32.ReadOnly = true;
+            // 
+            // loadfromLibrary
+            // 
+            this.loadfromLibrary.HeaderText = "LoadfromLibrary";
+            this.loadfromLibrary.MinimumWidth = 6;
+            this.loadfromLibrary.Name = "loadfromLibrary";
+            this.loadfromLibrary.ReadOnly = true;
+            this.loadfromLibrary.Visible = false;
+            this.loadfromLibrary.Width = 125;
+            // 
+            // loadFromComponentFile
+            // 
+            this.loadFromComponentFile.HeaderText = "LoadFromComponentFile";
+            this.loadFromComponentFile.MinimumWidth = 6;
+            this.loadFromComponentFile.Name = "loadFromComponentFile";
+            this.loadFromComponentFile.ReadOnly = true;
+            this.loadFromComponentFile.Visible = false;
+            this.loadFromComponentFile.Width = 125;
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.HeaderText = "Add to AML-File";
+            this.dataGridViewCheckBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn2.Visible = false;
+            this.dataGridViewCheckBoxColumn2.Width = 125;
+            // 
+            // deleteRoleClassesButton
+            // 
+            this.deleteRoleClassesButton.AllowMerge = false;
+            this.deleteRoleClassesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.deleteRoleClassesButton.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.deleteRoleClassesButton.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.deleteRoleClassesButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel20,
+            this.deleteRoleClassButton});
+            this.deleteRoleClassesButton.Location = new System.Drawing.Point(0, 0);
+            this.deleteRoleClassesButton.Name = "deleteRoleClassesButton";
+            this.deleteRoleClassesButton.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.deleteRoleClassesButton.Size = new System.Drawing.Size(1325, 25);
+            this.deleteRoleClassesButton.TabIndex = 4;
+            this.deleteRoleClassesButton.Text = "toolStrip25";
+            // 
+            // toolStripLabel20
+            // 
+            this.toolStripLabel20.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripLabel20.ForeColor = System.Drawing.Color.Black;
+            this.toolStripLabel20.Name = "toolStripLabel20";
+            this.toolStripLabel20.Size = new System.Drawing.Size(113, 22);
+            this.toolStripLabel20.Text = "Generic Information";
+            // 
+            // deleteRoleClassButton
+            // 
+            this.deleteRoleClassButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.deleteRoleClassButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.deleteRoleClassButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.deleteRoleClassButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.deleteRoleClassButton.ForeColor = System.Drawing.Color.Black;
+            this.deleteRoleClassButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteRoleClassButton.Image")));
+            this.deleteRoleClassButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteRoleClassButton.Name = "deleteRoleClassButton";
+            this.deleteRoleClassButton.Size = new System.Drawing.Size(49, 22);
+            this.deleteRoleClassButton.Text = "Delete";
             // 
             // tabControl1
             // 
@@ -634,8 +763,8 @@ namespace Aml.Editor.Plugin
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1325, 375);
-            this.tabControl1.TabIndex = 9;
+            this.tabControl1.Size = new System.Drawing.Size(1325, 376);
+            this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
             // 
@@ -645,7 +774,7 @@ namespace Aml.Editor.Plugin
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1317, 345);
+            this.tabPage1.Size = new System.Drawing.Size(1317, 346);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
             // 
@@ -667,11 +796,8 @@ namespace Aml.Editor.Plugin
             this.genericparametersAttrDataGridView.Name = "genericparametersAttrDataGridView";
             this.genericparametersAttrDataGridView.RowHeadersWidth = 50;
             this.genericparametersAttrDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.genericparametersAttrDataGridView.Size = new System.Drawing.Size(1313, 339);
+            this.genericparametersAttrDataGridView.Size = new System.Drawing.Size(1313, 340);
             this.genericparametersAttrDataGridView.TabIndex = 8;
-            this.genericparametersAttrDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericParametersAttrDataGridView_CellClick);
-            this.genericparametersAttrDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericParametersAttrDataGridView_CellContentClick);
-            this.genericparametersAttrDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericParametersAttrDataGridView_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn24
             // 
@@ -726,7 +852,7 @@ namespace Aml.Editor.Plugin
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage2.Size = new System.Drawing.Size(1317, 345);
+            this.tabPage2.Size = new System.Drawing.Size(1317, 346);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Header";
             // 
@@ -942,7 +1068,7 @@ namespace Aml.Editor.Plugin
             this.toolStrip5.Name = "toolStrip5";
             this.toolStrip5.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip5.Size = new System.Drawing.Size(1325, 25);
-            this.toolStrip5.TabIndex = 10;
+            this.toolStrip5.TabIndex = 12;
             this.toolStrip5.Text = "toolStrip5";
             // 
             // genericDataHeaderLabel
@@ -950,167 +1076,6 @@ namespace Aml.Editor.Plugin
             this.genericDataHeaderLabel.BackColor = System.Drawing.Color.Transparent;
             this.genericDataHeaderLabel.Name = "genericDataHeaderLabel";
             this.genericDataHeaderLabel.Size = new System.Drawing.Size(0, 22);
-            // 
-            // Page1_TopPanel
-            // 
-            this.Page1_TopPanel.AutoScroll = true;
-            this.Page1_TopPanel.AutoSize = true;
-            this.Page1_TopPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Page1_TopPanel.Controls.Add(this.split_GenericDataGrid);
-            this.Page1_TopPanel.Controls.Add(this.genericInformationtreeView);
-            this.Page1_TopPanel.Controls.Add(this.genericInformationDataGridView);
-            this.Page1_TopPanel.Controls.Add(this.deleteRoleClassesButton);
-            this.Page1_TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Page1_TopPanel.Location = new System.Drawing.Point(0, 0);
-            this.Page1_TopPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Page1_TopPanel.MinimumSize = new System.Drawing.Size(0, 400);
-            this.Page1_TopPanel.Name = "Page1_TopPanel";
-            this.Page1_TopPanel.Size = new System.Drawing.Size(1325, 454);
-            this.Page1_TopPanel.TabIndex = 1;
-            this.Page1_TopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Page1_TopPanel_Paint);
-            // 
-            // split_GenericDataGrid
-            // 
-            this.split_GenericDataGrid.BackColor = System.Drawing.Color.Maroon;
-            this.split_GenericDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.split_GenericDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.split_GenericDataGrid.Location = new System.Drawing.Point(0, 379);
-            this.split_GenericDataGrid.Name = "split_GenericDataGrid";
-            this.split_GenericDataGrid.Size = new System.Drawing.Size(1325, 0);
-            this.split_GenericDataGrid.SplitterDistance = 457;
-            this.split_GenericDataGrid.TabIndex = 2;
-            // 
-            // genericInformationtreeView
-            // 
-            this.genericInformationtreeView.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.genericInformationtreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.genericInformationtreeView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.genericInformationtreeView.ImageIndex = 0;
-            this.genericInformationtreeView.ImageList = this.imageList2;
-            this.genericInformationtreeView.Location = new System.Drawing.Point(0, 379);
-            this.genericInformationtreeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.genericInformationtreeView.Name = "genericInformationtreeView";
-            this.genericInformationtreeView.SelectedImageIndex = 0;
-            this.genericInformationtreeView.Size = new System.Drawing.Size(1325, 75);
-            this.genericInformationtreeView.TabIndex = 0;
-            this.genericInformationtreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.genericInformationtreeView_AfterSelect);
-            this.genericInformationtreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.genericInformationtreeView_NodeMouseClick);
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "ICL.JPG");
-            this.imageList2.Images.SetKeyName(1, "IC.JPG");
-            this.imageList2.Images.SetKeyName(2, "Interface.JPG");
-            // 
-            // genericInformationDataGridView
-            // 
-            this.genericInformationDataGridView.AllowDrop = true;
-            this.genericInformationDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.genericInformationDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.genericInformationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.genericInformationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn31,
-            this.dataGridViewTextBoxColumn32,
-            this.loadfromLibrary,
-            this.loadFromComponentFile,
-            this.dataGridViewCheckBoxColumn2});
-            this.genericInformationDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.genericInformationDataGridView.GridColor = System.Drawing.SystemColors.Control;
-            this.genericInformationDataGridView.Location = new System.Drawing.Point(0, 25);
-            this.genericInformationDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.genericInformationDataGridView.Name = "genericInformationDataGridView";
-            this.genericInformationDataGridView.ReadOnly = true;
-            this.genericInformationDataGridView.RowHeadersWidth = 51;
-            this.genericInformationDataGridView.RowTemplate.Height = 24;
-            this.genericInformationDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.genericInformationDataGridView.Size = new System.Drawing.Size(1325, 354);
-            this.genericInformationDataGridView.TabIndex = 1;
-            this.genericInformationDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericInformationDataGridView_CellClick);
-            this.genericInformationDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericInformationDataGridView_CellContentClick);
-            this.genericInformationDataGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.genericInformationDataGridView_MouseUp);
-            // 
-            // dataGridViewTextBoxColumn31
-            // 
-            this.dataGridViewTextBoxColumn31.HeaderText = "Index";
-            this.dataGridViewTextBoxColumn31.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
-            this.dataGridViewTextBoxColumn31.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn32
-            // 
-            this.dataGridViewTextBoxColumn32.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn32.HeaderText = "Role ";
-            this.dataGridViewTextBoxColumn32.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
-            this.dataGridViewTextBoxColumn32.ReadOnly = true;
-            // 
-            // loadfromLibrary
-            // 
-            this.loadfromLibrary.HeaderText = "LoadfromLibrary";
-            this.loadfromLibrary.MinimumWidth = 6;
-            this.loadfromLibrary.Name = "loadfromLibrary";
-            this.loadfromLibrary.ReadOnly = true;
-            this.loadfromLibrary.Visible = false;
-            this.loadfromLibrary.Width = 125;
-            // 
-            // loadFromComponentFile
-            // 
-            this.loadFromComponentFile.HeaderText = "LoadFromComponentFile";
-            this.loadFromComponentFile.MinimumWidth = 6;
-            this.loadFromComponentFile.Name = "loadFromComponentFile";
-            this.loadFromComponentFile.ReadOnly = true;
-            this.loadFromComponentFile.Visible = false;
-            this.loadFromComponentFile.Width = 125;
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.HeaderText = "Add to AML-File";
-            this.dataGridViewCheckBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn2.Visible = false;
-            this.dataGridViewCheckBoxColumn2.Width = 125;
-            // 
-            // deleteRoleClassesButton
-            // 
-            this.deleteRoleClassesButton.AllowMerge = false;
-            this.deleteRoleClassesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
-            this.deleteRoleClassesButton.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.deleteRoleClassesButton.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.deleteRoleClassesButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel20,
-            this.deleteRoleClassButton});
-            this.deleteRoleClassesButton.Location = new System.Drawing.Point(0, 0);
-            this.deleteRoleClassesButton.Name = "deleteRoleClassesButton";
-            this.deleteRoleClassesButton.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.deleteRoleClassesButton.Size = new System.Drawing.Size(1325, 25);
-            this.deleteRoleClassesButton.TabIndex = 0;
-            this.deleteRoleClassesButton.Text = "toolStrip25";
-            // 
-            // toolStripLabel20
-            // 
-            this.toolStripLabel20.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripLabel20.ForeColor = System.Drawing.Color.Black;
-            this.toolStripLabel20.Name = "toolStripLabel20";
-            this.toolStripLabel20.Size = new System.Drawing.Size(113, 22);
-            this.toolStripLabel20.Text = "Generic Information";
-            // 
-            // deleteRoleClassButton
-            // 
-            this.deleteRoleClassButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.deleteRoleClassButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteRoleClassButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.deleteRoleClassButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.deleteRoleClassButton.ForeColor = System.Drawing.Color.Black;
-            this.deleteRoleClassButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteRoleClassButton.Image")));
-            this.deleteRoleClassButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.deleteRoleClassButton.Name = "deleteRoleClassButton";
-            this.deleteRoleClassButton.Size = new System.Drawing.Size(49, 22);
-            this.deleteRoleClassButton.Text = "Delete";
-            this.deleteRoleClassButton.Click += new System.EventHandler(this.deleteRoleClassButton_Click);
             // 
             // Interface
             // 
@@ -2433,9 +2398,15 @@ namespace Aml.Editor.Plugin
             this.dataTabControl.ResumeLayout(false);
             this.genericData.ResumeLayout(false);
             this.Page1_MainPanel.ResumeLayout(false);
-            this.Page1_MainPanel.PerformLayout();
-            this.Page1_BottomPanel.ResumeLayout(false);
-            this.Page1_BottomPanel.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.genericInformationDataGridView)).EndInit();
+            this.deleteRoleClassesButton.ResumeLayout(false);
+            this.deleteRoleClassesButton.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.genericparametersAttrDataGridView)).EndInit();
@@ -2445,13 +2416,6 @@ namespace Aml.Editor.Plugin
             this.tableLayoutPanel1.PerformLayout();
             this.toolStrip5.ResumeLayout(false);
             this.toolStrip5.PerformLayout();
-            this.Page1_TopPanel.ResumeLayout(false);
-            this.Page1_TopPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.split_GenericDataGrid)).EndInit();
-            this.split_GenericDataGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.genericInformationDataGridView)).EndInit();
-            this.deleteRoleClassesButton.ResumeLayout(false);
-            this.deleteRoleClassesButton.PerformLayout();
             this.Interface.ResumeLayout(false);
             this.electricalInterfacesPanel.ResumeLayout(false);
             this.electricalInterfacesPanel.PerformLayout();
@@ -2628,31 +2592,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.Label AMLURLLabel;
         private System.Windows.Forms.TabPage genericData;
         private System.Windows.Forms.Panel Page1_MainPanel;
-        private System.Windows.Forms.Panel Page1_BottomPanel;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox genericDataNameTxtBx;
-        private System.Windows.Forms.TextBox genericDataIDTxtBx;
-        private System.Windows.Forms.TextBox genericDataAttributePathTxtBx;
-        private System.Windows.Forms.TextBox genericDataRefBaseClassPathTxtBx;
-        private System.Windows.Forms.TextBox genericDataRefClassNameTxtBx;
-        private System.Windows.Forms.TextBox genericDataCopyrightTxtBx;
-        private System.Windows.Forms.Label TableHeader_lbl_Name;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox genericDataDescriptionTxtBx;
-        private System.Windows.Forms.ToolStrip toolStrip5;
-        private System.Windows.Forms.ToolStripLabel genericDataHeaderLabel;
-        private System.Windows.Forms.Panel Page1_TopPanel;
-        private System.Windows.Forms.TreeView genericInformationtreeView;
-        private System.Windows.Forms.DataGridView genericInformationDataGridView;
-        private System.Windows.Forms.ToolStrip deleteRoleClassesButton;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel20;
-        private System.Windows.Forms.ToolStripButton deleteRoleClassButton;
         private System.Windows.Forms.ToolStripDropDownButton fileButton;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -2663,24 +2602,10 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.ToolStripMenuItem importGSDFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadLibraryFile;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripLabel filePathLabel;
         private System.Windows.Forms.ToolStripTextBox vendorNameTextBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripTextBox deviceNameTextBox;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView genericparametersAttrDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn loadfromLibrary;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn loadFromComponentFile;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SerialNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedClassorInterface;
         private System.Windows.Forms.DataGridViewCheckBoxColumn libraryFile;
@@ -2699,6 +2624,43 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.TreeView treeViewInterfaceClassLib;
         private System.Windows.Forms.ToolStrip toolStrip9;
         private System.Windows.Forms.ToolStripLabel InterfaceClassLibLabel;
-        private System.Windows.Forms.SplitContainer split_GenericDataGrid;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TreeView genericInformationtreeView;
+        private System.Windows.Forms.DataGridView genericInformationDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn loadfromLibrary;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn loadFromComponentFile;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.ToolStrip deleteRoleClassesButton;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel20;
+        private System.Windows.Forms.ToolStripButton deleteRoleClassButton;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView genericparametersAttrDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox genericDataNameTxtBx;
+        private System.Windows.Forms.TextBox genericDataIDTxtBx;
+        private System.Windows.Forms.TextBox genericDataAttributePathTxtBx;
+        private System.Windows.Forms.TextBox genericDataRefBaseClassPathTxtBx;
+        private System.Windows.Forms.TextBox genericDataRefClassNameTxtBx;
+        private System.Windows.Forms.TextBox genericDataCopyrightTxtBx;
+        private System.Windows.Forms.Label TableHeader_lbl_Name;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox genericDataDescriptionTxtBx;
+        private System.Windows.Forms.ToolStrip toolStrip5;
+        private System.Windows.Forms.ToolStripLabel genericDataHeaderLabel;
     }
 }
