@@ -29,6 +29,7 @@ namespace Aml.Editor.Plugin
         private MWData.MWFileType filetype;
         private object _row;
         private bool isEditing = false;
+        private bool expertMode = false;
         private OpenFileDialog openFileDialog = new OpenFileDialog();
 
         private List<string> AllInterfaces = new List<string>();
@@ -90,6 +91,8 @@ namespace Aml.Editor.Plugin
         public DeviceDescription()
         {
             InitializeComponent();
+
+            ShowHideElements();
         }
 
         /// <summary>
@@ -108,6 +111,8 @@ namespace Aml.Editor.Plugin
 
             this.mWController = mWController;
             InitializeComponent();
+
+            ShowHideElements();
 
             // After intialization of this GUI, plugin all this function to load Standard Libraries.  
             loadStandardLibrary();
@@ -4689,6 +4694,41 @@ namespace Aml.Editor.Plugin
 
         private void filePathLabel_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void advancedModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Switch mode
+            expertMode = !expertMode;
+
+            // Change text
+            if (expertMode)
+            {
+                this.advancedModeToolStripMenuItem.Text = "Easy mode";
+            }
+            else
+            {
+                this.advancedModeToolStripMenuItem.Text = "Expert mode";
+            }
+
+            // Show/hide elements
+            this.ShowHideElements();
+        }
+
+
+        private void ShowHideElements()
+        {
+            genericparametersAttrDataGridView.Columns[2].Visible = expertMode;
+            genericparametersAttrDataGridView.Columns[3].Visible = expertMode;
+            genericparametersAttrDataGridView.Columns[4].Visible = expertMode;
+            genericparametersAttrDataGridView.Columns[5].Visible = expertMode;
+
+
+            elecInterAttDataGridView.Columns[2].Visible = expertMode;
+            elecInterAttDataGridView.Columns[3].Visible = expertMode;
+            elecInterAttDataGridView.Columns[4].Visible = expertMode;
+            elecInterAttDataGridView.Columns[5].Visible = expertMode;
 
         }
     }
