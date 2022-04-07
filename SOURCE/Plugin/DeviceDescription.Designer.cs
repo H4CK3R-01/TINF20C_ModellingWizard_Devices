@@ -304,7 +304,6 @@ namespace Aml.Editor.Plugin
             this.toolStrip1.Size = new System.Drawing.Size(1750, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // fileButton
             // 
@@ -497,7 +496,6 @@ namespace Aml.Editor.Plugin
             this.filePathLabel.Name = "filePathLabel";
             this.filePathLabel.Size = new System.Drawing.Size(53, 20);
             this.filePathLabel.Text = "  Vendor:";
-            this.filePathLabel.Click += new System.EventHandler(this.filePathLabel_Click);
             // 
             // deviceNameTextBox
             // 
@@ -579,7 +577,6 @@ namespace Aml.Editor.Plugin
             this.splitContainer1.SplitterDistance = 1333;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
-            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // dataTabControl
             // 
@@ -598,8 +595,6 @@ namespace Aml.Editor.Plugin
             this.dataTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.dataTabControl.TabIndex = 0;
             this.dataTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.dataTabControl_DrawItem);
-            this.dataTabControl.SelectedIndexChanged += new System.EventHandler(this.dataTabControl_SelectedIndexChanged);
-            this.dataTabControl.Click += new System.EventHandler(this.dataTabControl_Click);
             // 
             // genericData
             // 
@@ -624,7 +619,6 @@ namespace Aml.Editor.Plugin
             this.Page1_MainPanel.Name = "Page1_MainPanel";
             this.Page1_MainPanel.Size = new System.Drawing.Size(1325, 809);
             this.Page1_MainPanel.TabIndex = 1;
-            this.Page1_MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_FrontPage_Paint);
             // 
             // splitContainer2
             // 
@@ -661,6 +655,8 @@ namespace Aml.Editor.Plugin
             this.genericInformationtreeView.SelectedImageIndex = 0;
             this.genericInformationtreeView.Size = new System.Drawing.Size(1325, 75);
             this.genericInformationtreeView.TabIndex = 6;
+            this.genericInformationtreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.genericInformationtreeView_AfterSelect);
+            this.genericInformationtreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.genericInformationtreeView_NodeMouseClick);
             // 
             // imageList2
             // 
@@ -693,6 +689,7 @@ namespace Aml.Editor.Plugin
             this.genericInformationDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.genericInformationDataGridView.Size = new System.Drawing.Size(1325, 176);
             this.genericInformationDataGridView.TabIndex = 5;
+            this.genericInformationDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericInformationDataGridView_CellClick);
             this.genericInformationDataGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.genericInformationDataGridView_MouseUp);
             // 
             // dataGridViewTextBoxColumn31
@@ -820,6 +817,7 @@ namespace Aml.Editor.Plugin
             this.genericparametersAttrDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.genericparametersAttrDataGridView.Size = new System.Drawing.Size(1313, 340);
             this.genericparametersAttrDataGridView.TabIndex = 8;
+            this.genericparametersAttrDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.genericParametersAttrDataGridView_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn24
             // 
@@ -1124,7 +1122,6 @@ namespace Aml.Editor.Plugin
             this.electricalInterfacesPanel.Name = "electricalInterfacesPanel";
             this.electricalInterfacesPanel.Size = new System.Drawing.Size(1325, 809);
             this.electricalInterfacesPanel.TabIndex = 0;
-            this.electricalInterfacesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.electricalInterfacesPanel_Paint);
             // 
             // Page3_BottomPanel
             // 
@@ -1184,8 +1181,6 @@ namespace Aml.Editor.Plugin
             this.elecInterAttDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.elecInterAttDataGridView.Size = new System.Drawing.Size(1313, 339);
             this.elecInterAttDataGridView.TabIndex = 8;
-            this.elecInterAttDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elecInterAttDataGridView_CellClick);
-            this.elecInterAttDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elecInterAttDataGridView_CellContentClick);
             this.elecInterAttDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elecInterAttDataGridView_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn17
@@ -1630,7 +1625,6 @@ namespace Aml.Editor.Plugin
             this.addPicturesandDocsPanel.Name = "addPicturesandDocsPanel";
             this.addPicturesandDocsPanel.Size = new System.Drawing.Size(1325, 809);
             this.addPicturesandDocsPanel.TabIndex = 0;
-            this.addPicturesandDocsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.addPicturesAndDocsPanel_Paint);
             // 
             // Page2_BottomPanel
             // 
@@ -1859,7 +1853,6 @@ namespace Aml.Editor.Plugin
             this.selectedFileLocationTxtBx.ReadOnly = true;
             this.selectedFileLocationTxtBx.Size = new System.Drawing.Size(1149, 25);
             this.selectedFileLocationTxtBx.TabIndex = 0;
-            this.selectedFileLocationTxtBx.TextChanged += new System.EventHandler(this.selectedFileLocationTxtBx_TextChanged);
             // 
             // AMLfileLabel
             // 
@@ -1891,7 +1884,6 @@ namespace Aml.Editor.Plugin
             this.selectedFileURLTextBox.Name = "selectedFileURLTextBox";
             this.selectedFileURLTextBox.Size = new System.Drawing.Size(1149, 25);
             this.selectedFileURLTextBox.TabIndex = 1;
-            this.selectedFileURLTextBox.TextChanged += new System.EventHandler(this.selectedFileURLTextBox_TextChanged);
             // 
             // treeViewPanel
             // 
@@ -2319,7 +2311,6 @@ namespace Aml.Editor.Plugin
             this.identificationDataBtn.TabIndex = 0;
             this.identificationDataBtn.Text = "Identification Data";
             this.identificationDataBtn.UseVisualStyleBackColor = true;
-            this.identificationDataBtn.Click += new System.EventHandler(this.IdentificationDataBtn_Click);
             // 
             // toolStripButton7
             // 
@@ -2363,7 +2354,6 @@ namespace Aml.Editor.Plugin
             this.commercialDataBtn.TabIndex = 0;
             this.commercialDataBtn.Text = "Commercial Data";
             this.commercialDataBtn.UseVisualStyleBackColor = true;
-            this.commercialDataBtn.Click += new System.EventHandler(this.CommercialDataBtn_Click);
             // 
             // toolStripButton13
             // 
