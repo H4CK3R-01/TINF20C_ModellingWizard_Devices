@@ -7,7 +7,6 @@ using System.IO.Packaging;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace Aml.Editor.Plugin
 {
@@ -16,7 +15,7 @@ namespace Aml.Editor.Plugin
         // holds the controller to report created devices to
         private readonly MWController mWController;
 
-        
+
         /// <summary>
         /// Create the MWData Object
         /// </summary>
@@ -58,7 +57,7 @@ namespace Aml.Editor.Plugin
         /// <returns></returns>
         public string CreateDevice(MWDevice device, bool isEdit)
         {
-           
+
             CAEXDocument document = null;
             AutomationMLContainer amlx = null;
 
@@ -76,18 +75,18 @@ namespace Aml.Editor.Plugin
             }
             else
             {
-               amlFilePath = System.IO.Path.Combine(device.filepath, fileName + ".amlx");
+                amlFilePath = System.IO.Path.Combine(device.filepath, fileName + ".amlx");
             }
 
 
 
             FileInfo file = new FileInfo(amlFilePath);
-           
-           
+
+
 
             // Create directory if it's not existing
             file.Directory.Create();
-           
+
 
             // Init CAEX Document
             if (isEdit)
@@ -123,22 +122,22 @@ namespace Aml.Editor.Plugin
                 {
 
                 }
-                 
+
 
             }
 
-           
+
 
             // Init the default Libs
-            AutomationMLBaseRoleClassLibType.RoleClassLib(document) ;
-            AutomationMLInterfaceClassLibType.InterfaceClassLib(document) ;
+            AutomationMLBaseRoleClassLibType.RoleClassLib(document);
+            AutomationMLInterfaceClassLibType.InterfaceClassLib(document);
 
             var structureRoleFamilyType = AutomationMLBaseRoleClassLibType.RoleClassLib(document).Structure;
-            
+
 
             SystemUnitFamilyType systemUnitClass = null;
             // Create the SystemUnitClass for our device
-           if (!isEdit)
+            if (!isEdit)
             {
                 systemUnitClass = document.CAEXFile.SystemUnitClassLib.Append("ComponentSystemUnitClassLib").SystemUnitClass.Append(device.deviceName);
 
@@ -153,13 +152,13 @@ namespace Aml.Editor.Plugin
                     }
                     else
                     {
-                       
+
                         Boolean myBool;
                         Boolean.TryParse(eachparameter.AddToFile, out myBool);
-                        
+
                         if (myBool == true)
                         {
-                          
+
                         }
 
                         Uri eachUri = null;
@@ -171,7 +170,7 @@ namespace Aml.Editor.Plugin
                         device.listWithURIConvertedToString.Add(par);
 
                     }
-                   
+
                 }
 
                 foreach (var pair in device.DictionaryForRoleClassofComponent)
@@ -336,7 +335,7 @@ namespace Aml.Editor.Plugin
             if (device.vendorName != null)
             {
                 InternalElementType electricalInterface = null;
-                RoleRequirementsType roleRequirements = null ;
+                RoleRequirementsType roleRequirements = null;
                 foreach (var internalElement in systemUnitClass.InternalElement)
                 {
                     if (internalElement.Name.Equals("Interfaces"))
@@ -349,9 +348,9 @@ namespace Aml.Editor.Plugin
                 }
                 if (electricalInterface == null)
                     electricalInterface = systemUnitClass.InternalElement.Append("Interfaces");
-                   roleRequirements = electricalInterface.RoleRequirements.Append();
+                roleRequirements = electricalInterface.RoleRequirements.Append();
 
-                    roleRequirements.RefBaseRoleClassPath = structureRoleFamilyType.CAEXPath();
+                roleRequirements.RefBaseRoleClassPath = structureRoleFamilyType.CAEXPath();
 
                 foreach (var pair in device.DictionaryForInterfaceClassesInElectricalInterfaces)
                 {
@@ -461,7 +460,7 @@ namespace Aml.Editor.Plugin
                             }
 
 
-                           
+
                         }
                     }
 
@@ -473,9 +472,9 @@ namespace Aml.Editor.Plugin
 
                         string electricalConnectorPinName = Regex.Replace(pairofList.Key.ToString(), @"\(.*?\)", "");
                         electricalConnectorPinName = Regex.Replace(electricalConnectorPinName, @"\{.*?\}", "");
-                        electricalConnectorPinName = electricalConnectorPinName.Replace(electricalConnectorTypeName,"");
+                        electricalConnectorPinName = electricalConnectorPinName.Replace(electricalConnectorTypeName, "");
 
-                        
+
 
 
                         if (initialnumberbetweenparanthesisofElectricalConnectorType == initialnumberbetweenparanthesisElectricalConnectorPins)
@@ -590,7 +589,7 @@ namespace Aml.Editor.Plugin
             {
                 // delete the old aml file
                 amlx.Package.DeletePart(partUri);
-                
+
                 // delete all files in the amlx package.
                 // Directory.Delete(Path.GetFullPath(amlx.ContainerFilename), true);
 
@@ -598,9 +597,9 @@ namespace Aml.Editor.Plugin
 
             // write the new aml file into the package
             PackagePart root = amlx.AddRoot(path, partUri);
-            
-            
-           if (!isEdit)
+
+
+            if (!isEdit)
             {
                 foreach (AttachablesDataGridViewParameters listWithUri in device.listWithURIConvertedToString)
                 {
@@ -612,16 +611,16 @@ namespace Aml.Editor.Plugin
                     }
                 }
             }
-            DirectoryInfo directory = new DirectoryInfo(Path.GetDirectoryName(amlFilePath)); 
-            
+            DirectoryInfo directory = new DirectoryInfo(Path.GetDirectoryName(amlFilePath));
+
             foreach (FileInfo fileInfos in directory.GetFiles())
-             {
-                 if (fileInfos.Extension != ".amlx")
-                 {
-                     fileInfos.Delete();
-                 }
-             }
-           
+            {
+                if (fileInfos.Extension != ".amlx")
+                {
+                    fileInfos.Delete();
+                }
+            }
+
 
             amlx.Save();
             amlx.Close();
@@ -634,7 +633,7 @@ namespace Aml.Editor.Plugin
             {
                 return "Device description file created!\nFilepath " + amlFilePath;
             }
-            
+
         }
 
         public void SearchForAttributesInsideAttributesofAutomationComponent(string searchName, AttributeType attribute, ClassOfListsFromReferencefile item, SupportedRoleClassType SRC)
@@ -667,14 +666,14 @@ namespace Aml.Editor.Plugin
                     SearchForAttributesInsideAttributesofAutomationComponent(searchName, nestedAttribute, item, SRC);
                 }
             }
-           
+
         }
 
         public void SearchAttributesInsideAttributesOFElectricConnectorType(string searchName, AttributeType attribute, ClassOfListsFromReferencefile item, ExternalInterfaceType electricConnectorType)
         {
             foreach (var nestedAttribute in attribute.Attribute)
             {
-                
+
                 if (nestedAttribute.Name == searchName)
                 {
                     var eachattribute = nestedAttribute.Attribute.Append(item.Name.ToString());
@@ -697,14 +696,14 @@ namespace Aml.Editor.Plugin
                     electricConnectorType.RefBaseClassPath = item.RefBaseClassPath;
 
                 }
-               
+
                 if (nestedAttribute.Attribute.Exists)
                 {
                     SearchAttributesInsideAttributesOFElectricConnectorType(searchName, nestedAttribute, item, electricConnectorType);
                 }
             }
         }
-      
+
         /// <summary>
         /// Takes the url of the picture and setup in the value attribute of the corresponding internal element <paramref name="pic"/>.
         /// </summary>
@@ -753,7 +752,7 @@ namespace Aml.Editor.Plugin
             }
             urlAtt.AttributeDataType = "xs:anyURI";
             urlAtt.Value = url.ToString();
-            
+
         }
 
         /// <summary>
@@ -809,7 +808,7 @@ namespace Aml.Editor.Plugin
             }
             pictureAtt.AttributeDataType = "xs:anyURI";
             pictureAtt.Value = picturePart.ToString();
-            
+
 
             return picturePart;
         }
@@ -1007,11 +1006,11 @@ namespace Aml.Editor.Plugin
 
             if (name.Contains(".amlx"))
             {
-                 amlx = new AutomationMLContainer(".\\modellingwizard\\" + name, FileMode.Create);
+                amlx = new AutomationMLContainer(".\\modellingwizard\\" + name, FileMode.Create);
             }
             else
             {
-                 amlx = new AutomationMLContainer(".\\modellingwizard\\" + name + ".amlx", FileMode.Create);
+                amlx = new AutomationMLContainer(".\\modellingwizard\\" + name + ".amlx", FileMode.Create);
             }
 
             // create the aml package path
@@ -1045,7 +1044,7 @@ namespace Aml.Editor.Plugin
             // Just as an interface
         }
 
-        public void copyFiles(string sourceFilePath, string destinationFilePath )
+        public void copyFiles(string sourceFilePath, string destinationFilePath)
         {
             string sourFile = Path.GetFileName(sourceFilePath);
             string destFile = Path.Combine(destinationFilePath, sourFile);

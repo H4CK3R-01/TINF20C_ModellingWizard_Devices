@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aml.Engine.AmlObjects;
-using Aml.Engine.CAEX;
+﻿using Aml.Engine.CAEX;
 
 namespace Aml.Editor.Plugin
 {
@@ -20,7 +14,7 @@ namespace Aml.Editor.Plugin
         public string CopyRight { get; set; }
         public string AttributePath { get; set; }
         public string RefBaseClassPath { get; set; }
-        public string  ID { get; set; }
+        public string ID { get; set; }
         public string ReferencedClassName { get; set; }
         public CAEXSequence<RefSemanticType> RefSemanticList { get; set; }
         public string SupportesRoleClassType { get; set; }
@@ -31,14 +25,14 @@ namespace Aml.Editor.Plugin
 
         public ClassOfListsFromReferencefile()
         {
-           // RefSemanticList = new List<CAEXSequence<RefSemanticType>>();
+            // RefSemanticList = new List<CAEXSequence<RefSemanticType>>();
         }
 
         public ClassOfListsFromReferencefile(string name, string value,
             string _default, string unit,
-            string reference, string description, 
-            string copyRight, string semantic, string 
-            attributePath, string refBaseClassPath, 
+            string reference, string description,
+            string copyRight, string semantic, string
+            attributePath, string refBaseClassPath,
             string id, string referencedClassName, CAEXSequence<RefSemanticType> refSemanticList, string supportesRoleClassType, string dataType)
             : this()
         {
@@ -61,8 +55,8 @@ namespace Aml.Editor.Plugin
 
         public override string ToString()
         {
-            return "ClassOfListsFromReferencefile("+Name+"="+Value+"="+Default+"="+Unit+"="+Reference+"="
-                +Description+"="+CopyRight+"="+Semantic+"="+AttributePath+ "=" + RefBaseClassPath + "=" + ID
+            return "ClassOfListsFromReferencefile(" + Name + "=" + Value + "=" + Default + "=" + Unit + "=" + Reference + "="
+                + Description + "=" + CopyRight + "=" + Semantic + "=" + AttributePath + "=" + RefBaseClassPath + "=" + ID
                 + "=" + ReferencedClassName + "=" + RefSemanticList + "=" + SupportesRoleClassType + "=" + DataType + ")";
         }
     }

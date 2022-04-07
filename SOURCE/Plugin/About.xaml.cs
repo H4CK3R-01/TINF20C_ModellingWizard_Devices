@@ -1,7 +1,6 @@
 ﻿
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace Aml.Editor.Plugin
@@ -18,10 +17,10 @@ namespace Aml.Editor.Plugin
 
             var assembly = Assembly.GetCallingAssembly();
 
-            txtVersion.Text = "Version "+ assembly.GetName().Version.ToString();
-            
-            
-        }       
+            txtVersion.Text = "Version " + assembly.GetName().Version.ToString();
+
+
+        }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {

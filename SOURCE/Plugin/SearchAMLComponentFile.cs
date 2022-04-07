@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Aml.Engine.CAEX;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aml.Engine.CAEX;
 
 namespace Aml.Editor.Plugin
 {
@@ -19,7 +16,7 @@ namespace Aml.Editor.Plugin
 
         public SearchAMLComponentFile()
         {
-            
+
         }
 
         public void CheckForAttributesOfExternalIterface(int i, ExternalInterfaceType externalInterface)
@@ -30,8 +27,8 @@ namespace Aml.Editor.Plugin
                 foreach (var attribute in externalInterface.Attribute)
                 {
                     StoreEachAttributeValueInListOfExternalIterface(i, attributelist, attribute, externalInterface);
-                    CkeckForNestedAttributesOfExternalIterface(i,attribute,  externalInterface);
-                    
+                    CkeckForNestedAttributesOfExternalIterface(i, attribute, externalInterface);
+
                 }
 
             }
@@ -43,7 +40,7 @@ namespace Aml.Editor.Plugin
                 list.Add(sublist);
                 try
                 {
-                    if (DictionaryofElectricalConnectorType.ContainsKey( "("+i+")"+ externalInterface.Name.ToString()+ "{" + "Class:" + "  " + externalInterface.BaseClass + "}"))
+                    if (DictionaryofElectricalConnectorType.ContainsKey("(" + i + ")" + externalInterface.Name.ToString() + "{" + "Class:" + "  " + externalInterface.BaseClass + "}"))
                     {
                         DictionaryofElectricalConnectorType["(" + i + ")" + externalInterface.Name.ToString()
                             + "{" + "Class:" + "  " + externalInterface.BaseClass + "}"].AddRange(list);
@@ -63,8 +60,8 @@ namespace Aml.Editor.Plugin
 
 
         }
-        
-        public void CkeckForNestedAttributesOfExternalIterface(int i, AttributeType attributeType,  ExternalInterfaceType externalInterface)
+
+        public void CkeckForNestedAttributesOfExternalIterface(int i, AttributeType attributeType, ExternalInterfaceType externalInterface)
         {
             List<List<ClassOfListsFromReferencefile>> attributelist = new List<List<ClassOfListsFromReferencefile>>();
             if (attributeType.Attribute.Exists)
@@ -73,8 +70,8 @@ namespace Aml.Editor.Plugin
                 foreach (var attributeinattribute in attributeType.Attribute)
                 {
                     StoreEachAttributeValueInListOfExternalIterface(i, attributelist, attributeinattribute, attributeType, externalInterface);
-                    CkeckForNestedAttributesOfExternalIterface(i,attributeinattribute,  externalInterface);
-                   
+                    CkeckForNestedAttributesOfExternalIterface(i, attributeinattribute, externalInterface);
+
                 }
 
             }
@@ -116,7 +113,7 @@ namespace Aml.Editor.Plugin
             attributeparameters.CopyRight = attributeType.Copyright;
             attributeparameters.AttributePath = attributeType.AttributePath;
             attributeparameters.RefSemanticList = attributeType.RefSemantic;
-           // attributeparameters.ReferencedClassName = externalInterface.BaseClass.ToString();
+            // attributeparameters.ReferencedClassName = externalInterface.BaseClass.ToString();
             attributeparameters.RefBaseClassPath = externalInterface.RefBaseClassPath;
             attributeparameters.ID = externalInterface.ID;
 
@@ -163,7 +160,7 @@ namespace Aml.Editor.Plugin
             attributeparameters.CopyRight = AttributeInAttribute.Copyright;
             attributeparameters.AttributePath = AttributeInAttribute.AttributePath;
             attributeparameters.RefSemanticList = AttributeInAttribute.RefSemantic;
-           // attributeparameters.ReferencedClassName = externalInterface.BaseClass.ToString();
+            // attributeparameters.ReferencedClassName = externalInterface.BaseClass.ToString();
             attributeparameters.RefBaseClassPath = externalInterface.RefBaseClassPath;
             attributeparameters.ID = externalInterface.ID;
 
@@ -193,7 +190,7 @@ namespace Aml.Editor.Plugin
                 {
                     StoreEachAttributeValueInListOfElectricalConnectorPins(i, attributelist, attribute, externalInterface, classType);
                     CkeckForNestedAttributesOfElectricalConnectorPins(i, attribute, externalInterface, classType);
-                   
+
                 }
 
             }
@@ -226,7 +223,7 @@ namespace Aml.Editor.Plugin
 
 
         }
-        
+
         public void CkeckForNestedAttributesOfElectricalConnectorPins(int i, AttributeType attributeType, ExternalInterfaceType externalInterface, ExternalInterfaceType classType)
         {
             List<List<ClassOfListsFromReferencefile>> attributelist = new List<List<ClassOfListsFromReferencefile>>();
@@ -237,7 +234,7 @@ namespace Aml.Editor.Plugin
                 {
                     StoreEachAttributeValueInListOfElectricalConnectorPins(i, attributelist, attributeinattribute, attributeType, externalInterface, classType);
                     CkeckForNestedAttributesOfElectricalConnectorPins(i, attributeinattribute, externalInterface, classType);
-                    
+
                 }
 
             }
@@ -279,7 +276,7 @@ namespace Aml.Editor.Plugin
             attributeparameters.CopyRight = attributeType.Copyright;
             attributeparameters.AttributePath = attributeType.AttributePath;
             attributeparameters.RefSemanticList = attributeType.RefSemantic;
-           // attributeparameters.ReferencedClassName = externalInterface.BaseClass.ToString();
+            // attributeparameters.ReferencedClassName = externalInterface.BaseClass.ToString();
             attributeparameters.RefBaseClassPath = externalInterface.RefBaseClassPath;
             attributeparameters.ID = externalInterface.ID;
 
@@ -357,7 +354,7 @@ namespace Aml.Editor.Plugin
                 {
                     StoreEachAttributeValueInListOfComponent(i, attributelist, attribute, supportedRoleClass, classType);
                     CkeckForNestedAttributesOfComponent(i, attribute, supportedRoleClass, classType);
-                    
+
                 }
 
             }
@@ -369,7 +366,7 @@ namespace Aml.Editor.Plugin
                 list.Add(sublist);
                 try
                 {
-                    if (DictionaryofRolesforAutomationComponenet.ContainsKey("(" + i + ")" + supportedRoleClass.RoleReference.ToString() ))
+                    if (DictionaryofRolesforAutomationComponenet.ContainsKey("(" + i + ")" + supportedRoleClass.RoleReference.ToString()))
                     {
                         DictionaryofRolesforAutomationComponenet["(" + i + ")" + supportedRoleClass.RoleReference.ToString()].AddRange(list);
                     }
@@ -387,7 +384,7 @@ namespace Aml.Editor.Plugin
 
 
         }
-        
+
         public void CkeckForNestedAttributesOfComponent(int i, AttributeType attributeType, SupportedRoleClassType supportedRoleClass, SystemUnitFamilyType classType)
         {
             List<List<ClassOfListsFromReferencefile>> attributelist = new List<List<ClassOfListsFromReferencefile>>();
@@ -398,7 +395,7 @@ namespace Aml.Editor.Plugin
                 {
                     StoreEachAttributeValueInListOfComponent(i, attributelist, attributeinattribute, attributeType, supportedRoleClass, classType);
                     CkeckForNestedAttributesOfComponent(i, attributeinattribute, supportedRoleClass, classType);
-                    
+
                 }
 
             }

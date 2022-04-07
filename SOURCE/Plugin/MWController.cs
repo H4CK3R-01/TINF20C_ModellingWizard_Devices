@@ -9,11 +9,11 @@ namespace Aml.Editor.Plugin
     public class MWController
     {
         // the (initialised) GUIs
-        
-      
-      
+
+
+
         private DeviceDescription deviceDescriptionForm;
-        
+
 
         // the interface class to the AML Editor
         private ModellingWizard modellingWizard;
@@ -37,7 +37,7 @@ namespace Aml.Editor.Plugin
         /// Create the new CreateDevice GUI or return the previously created GUI
         /// </summary>
         /// <returns>the CreateDevice GUI for this session</returns>
-       
+
         /// <summary>
         /// create the new DeviceDescription GUI or return the previously created GUI
         /// </summary>
@@ -63,21 +63,21 @@ namespace Aml.Editor.Plugin
             if (newDevice.deviceName != null && newDevice.vendorName != null)
             {
                 // create the device
-                 result = mWData.CreateDevice(newDevice, isEdit);
+                result = mWData.CreateDevice(newDevice, isEdit);
             }
 
             // update the device list
             if (isEdit)
             {
-               
+
             }
             else
             {
                 devices.Add(newDevice);
-               
+
             }
 
-          
+
             return result;
 
         }
@@ -86,11 +86,11 @@ namespace Aml.Editor.Plugin
         /// Show the correct GUI for the selected device
         /// </summary>
         /// <param name="selectedIndex">The index of the selected item in the dropdown</param>
-        
+
         /// <summary>
         /// Reload all .amlx files in ./modellingwizard/ and update the dropdown.
         /// </summary>
-        
+
 
         /// <summary>
         /// Switch the displayed 
@@ -101,7 +101,7 @@ namespace Aml.Editor.Plugin
             // TODO modellingWizard is null
             switch (targetGUI)
             {
-               
+
                 case MWGUIType.DeviceDescription:
                     modellingWizard.changeGUI(GetDeviceDescriptionForm());
                     break;
@@ -137,7 +137,7 @@ namespace Aml.Editor.Plugin
                     result = "Invalid Filetype";
                     break;
             }
-           
+
             return result;
         }
     }

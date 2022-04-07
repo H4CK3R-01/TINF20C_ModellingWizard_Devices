@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aml.Editor.Plugin
 {
     // this class initialize the parameters exclusively for the "Device Identofication", "DataGridViews in "Generic Data Tab" AND "Field Attachables Tab""
-    public class MWDevice: MWData.MWObject
+    public class MWDevice : MWData.MWObject
     {
         public string environment { get; set; }
         public string fileName { get; set; }
         public string filepath { get; set; }
-       
-       
+
+
         public string vendorName { get; set; }
-       
+
         public string deviceName { get; set; }
-       
+
         // Can contain letters:
         public List<DataGridParameters> dataGridParametersLists { get; set; }
-        
+
 
         //Properties for Electrical Interface
         public List<ElectricalParameters> ElectricalInterfaces { get; set; }
@@ -61,13 +58,13 @@ namespace Aml.Editor.Plugin
         public string RefSemantics { get; set; }
         public string Attributes { get; set; }
         public string Values { get; set; }
-        
+
 
         public DataGridParameters() { }
 
         public DataGridParameters(string refSemantic, string attributes, string value)
         {
-            this.RefSemantics  = refSemantic;
+            this.RefSemantics = refSemantic;
             this.Attributes = attributes;
             this.Values = value;
         }
@@ -76,8 +73,8 @@ namespace Aml.Editor.Plugin
             return "DataGridParameters(" + RefSemantics + "=" + Attributes + "=" + Values + ")";
         }
     }
-  
-    
+
+
 
 
     /// <summary>
@@ -98,19 +95,19 @@ namespace Aml.Editor.Plugin
         //public string Units { get; set; }
 
 
-        public ElectricalParameters() 
+        public ElectricalParameters()
         {
-           
+
         }
-        
-        public ElectricalParameters(string connector, string connectorCode, string connectorType,string pins,string lis)
-            
+
+        public ElectricalParameters(string connector, string connectorCode, string connectorType, string pins, string lis)
+
         {
             this.Connector = connector;
             this.ConnectorCode = connectorCode;
             this.ConnectorType = connectorType;
             this.Pins = pins;
-            
+
         }
         //public ElectricalParameters(string referenceID, string attribute, string values, string units, string pins)
         //{ 
@@ -120,19 +117,19 @@ namespace Aml.Editor.Plugin
         //    this.Units = units;
         //    this.Pins = pins;
         //}
-       
+
         public override string ToString()
         {
-          
-            return "ElectricalParameters(" + Connector + "=" + ConnectorCode + "=" + ConnectorType + "="+Pins+")";
+
+            return "ElectricalParameters(" + Connector + "=" + ConnectorCode + "=" + ConnectorType + "=" + Pins + ")";
         }
-       
+
     }
     //This Class is responsible to hold the parameters in "ElectricalDataDataGrid View"
 
     public class ElectricalParametersInElectricalDataDataGridView
     {
-       
+
         public string ReferenceID { get; set; }
         public string Attributes { get; set; }
         public string Values { get; set; }
@@ -148,11 +145,11 @@ namespace Aml.Editor.Plugin
             this.Attributes = attribute;
             this.Values = values;
             this.Units = units;
-            
+
         }
         public override string ToString()
         {
-            return "ElectricalParametersInElectricalDataDataGridView("+ ReferenceID + "=" + Attributes + "=" + Values + "=" + Units + ")";
+            return "ElectricalParametersInElectricalDataDataGridView(" + ReferenceID + "=" + Attributes + "=" + Values + "=" + Units + ")";
         }
     }
 
@@ -168,7 +165,7 @@ namespace Aml.Editor.Plugin
         {
 
         }
-        public PinParametersInPinInfoDataGridView(string pinNumber,string referenceID, string attribute, string values, string units)
+        public PinParametersInPinInfoDataGridView(string pinNumber, string referenceID, string attribute, string values, string units)
         {
             this.PinNumber = pinNumber;
             this.ReferenceID = referenceID;
@@ -179,7 +176,7 @@ namespace Aml.Editor.Plugin
         }
         public override string ToString()
         {
-            return "PinParametersInPinInfoDataGridView(" +PinNumber+"="+ ReferenceID + "=" + Attributes + "=" + Values + "=" + Units + ")";
+            return "PinParametersInPinInfoDataGridView(" + PinNumber + "=" + ReferenceID + "=" + Attributes + "=" + Values + "=" + Units + ")";
         }
     }
 
@@ -188,7 +185,7 @@ namespace Aml.Editor.Plugin
     {
         public string ElementName { get; set; }
         public string FilePath { get; set; }
-        public string  AddToFile { get; set; }
+        public string AddToFile { get; set; }
 
         public AttachablesDataGridViewParameters()
         {
@@ -202,7 +199,7 @@ namespace Aml.Editor.Plugin
         }
         public override string ToString()
         {
-            return "AttachablesDataGridViewParameters(" + ElementName + "=" + FilePath +"="+ AddToFile + ")";
+            return "AttachablesDataGridViewParameters(" + ElementName + "=" + FilePath + "=" + AddToFile + ")";
         }
     }
 

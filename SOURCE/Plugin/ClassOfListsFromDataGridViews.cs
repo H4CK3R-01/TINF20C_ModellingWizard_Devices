@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Aml.Editor.Plugin
+﻿namespace Aml.Editor.Plugin
 {
     class ClassOfListsFromDataGridViews
     {
@@ -23,7 +17,7 @@ namespace Aml.Editor.Plugin
         //public CAEXSequence<RefSemanticType> RefSemanticList { get; set; }
 
 
-       
+
 
         public ClassOfListsFromDataGridViews()
         {

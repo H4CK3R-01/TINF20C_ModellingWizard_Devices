@@ -1,18 +1,8 @@
-﻿using System;
+﻿using Aml.Engine.CAEX;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using Aml.Engine.AmlObjects;
-using Aml.Engine.CAEX;
-using System.IO;
-using System.IO.Packaging;
-using System.Xml;
-using System.Collections;
-using System.IO.Compression;
-using Aml.Editor.Plugin.Contracts;
 
 namespace Aml.Editor.Plugin
 {
@@ -85,7 +75,7 @@ namespace Aml.Editor.Plugin
                                     //This method search for "Referenced Class" of "External Interface"
                                     SearchForReferencedClassNameofExternalIterface(doc, referencedClassName, classType, externalInterface);
                                 }
-                               
+
                             }
                         }
 
@@ -107,7 +97,7 @@ namespace Aml.Editor.Plugin
 
                     }
 
-                    
+
                 }
             }
 
@@ -129,7 +119,7 @@ namespace Aml.Editor.Plugin
             foreach (var item in classTypeSearchForReferencedClassName.InterfaceClass)
             {
                 //If "Refrenced Class Name" is existing...
-                 if (item.Name == referencedClassName)
+                if (item.Name == referencedClassName)
                 {
                     //If external Interface is existing....
                     if (item.ExternalInterface.Exists)
@@ -144,7 +134,7 @@ namespace Aml.Editor.Plugin
                                 //This method search for "Referenced Class" of "External Interface"
                                 SearchForReferencedClassNameofExternalIterface(doc, referencedClassName, classType, externalInterface);
                             }
-                            
+
                         }
                     }
 
@@ -159,7 +149,7 @@ namespace Aml.Editor.Plugin
                     }
 
                 }
-                 //If "Interface Class" inside "Interface Class" is existng....
+                //If "Interface Class" inside "Interface Class" is existng....
                 if (item.InterfaceClass.Exists)
                 {
                     //This class is responsible to search for interface classes ´nested inside Interface classes and recursion of 
@@ -179,7 +169,7 @@ namespace Aml.Editor.Plugin
                 {
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, classType, attribute);
                     CkeckForNestedAttributesOfReferencedClassName(attribute, classType);
-                   
+
                 }
 
             }
@@ -191,7 +181,7 @@ namespace Aml.Editor.Plugin
                 list.Add(sublist);
                 try
                 {
-                    if (DictionaryForInterfaceClassInstancesAttributes.ContainsKey(classType.Name.ToString()+"{"+ "Class:" + "  "  +classType.ReferencedClassName+"}"))
+                    if (DictionaryForInterfaceClassInstancesAttributes.ContainsKey(classType.Name.ToString() + "{" + "Class:" + "  " + classType.ReferencedClassName + "}"))
                     {
                         DictionaryForInterfaceClassInstancesAttributes[classType.Name.ToString() + "{" + "Class:" + "  " + classType.ReferencedClassName + "}"].AddRange(list);
                     }
@@ -206,7 +196,7 @@ namespace Aml.Editor.Plugin
                     throw;
                 }
             }
-            
+
 
         }
 
@@ -220,7 +210,7 @@ namespace Aml.Editor.Plugin
                 {
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, attributeinattribute, classType, attributeType);
                     CkeckForNestedAttributesOfReferencedClassName(attributeinattribute, classType);
-                   
+
                 }
 
             }
@@ -239,7 +229,7 @@ namespace Aml.Editor.Plugin
                     DictionaryForInterfaceClassInstancesAttributes.Add(classType.Name.ToString() + "{" + "Class:" + "  " + classType.ReferencedClassName + "}", list);
                 }
             }
-           
+
         }
 
         /// <summary>
@@ -261,7 +251,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, classType, attribute);
                     //This method is responsible to check nested attributes of "Referenced Class Name" 
                     CkeckForNestedAttributesOfReferencedClassName(classTypeSearchForReferencedClassName, attribute, classType);
-                   
+
                 }
 
             }
@@ -296,7 +286,7 @@ namespace Aml.Editor.Plugin
             }
 
         }
-        
+
         /// <summary>
         /// This method is responsible to check nested attributes of "Referenced Class Name" 
         /// </summary>
@@ -317,7 +307,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, attributeinattribute, classType, attributeType);
                     //This method is recursion of it self.
                     CkeckForNestedAttributesOfReferencedClassName(classTypeSearchForReferencedClassName, attributeinattribute, classType);
-                   
+
                 }
 
             }
@@ -328,7 +318,7 @@ namespace Aml.Editor.Plugin
                 List<List<ClassOfListsFromReferencefile>> list = new List<List<ClassOfListsFromReferencefile>>();
                 List<ClassOfListsFromReferencefile> sublist = new List<ClassOfListsFromReferencefile>();
 
-               //Add sublist to list 
+                //Add sublist to list 
                 list.Add(sublist);
                 //If dictioanry contains key , update the values under the key
                 if (DictionaryForInterfaceClassInstancesAttributes.ContainsKey(classType.Name.ToString() + "{" + "Class:" + "  " + classType.ReferencedClassName + "}"))
@@ -396,7 +386,7 @@ namespace Aml.Editor.Plugin
 
 
         }
-        
+
         /// <summary>
         /// This method store nested attributes of each attribute of "Referenced CLASS name" in the dictionary.
         /// </summary>
@@ -547,7 +537,7 @@ namespace Aml.Editor.Plugin
 
                     //This method check for the "Nested Attributes" inside the "Attribute" of "External Interface".
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(attribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -557,7 +547,7 @@ namespace Aml.Editor.Plugin
                 //Initiate empty list of "Attributes values".....
                 List<List<ClassOfListsFromReferencefile>> list = new List<List<ClassOfListsFromReferencefile>>();
                 List<ClassOfListsFromReferencefile> sublist = new List<ClassOfListsFromReferencefile>();
-               
+
                 list.Add(sublist);
                 try
                 {
@@ -584,10 +574,10 @@ namespace Aml.Editor.Plugin
                     throw;
                 }
             }
-           
+
 
         }
-        
+
         /// <summary>
         /// This method is responsible to check "Nested ATtributes" of "External Interface's Attribute "
         /// </summary>
@@ -608,7 +598,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassNameofExternalIterface(attributelist, attributeinattribute, classType, attributeType, externalInterface);
                     //This method is recursion of itself.
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(attributeinattribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -619,12 +609,12 @@ namespace Aml.Editor.Plugin
                 List<List<ClassOfListsFromReferencefile>> list = new List<List<ClassOfListsFromReferencefile>>();
                 List<ClassOfListsFromReferencefile> sublist = new List<ClassOfListsFromReferencefile>();
 
-               //Add sub list to list
+                //Add sub list to list
                 list.Add(sublist);
 
                 //IF dictionary is having the key, the update the values for the key.
                 if (DictionaryForExternalInterfacesInstanceAttributesofInterfaceClassLib.ContainsKey(classType.Name.ToString()
-                    + "{" + "Class:" + "  " + classType.ReferencedClassName + "}" + externalInterface.Name.ToString() 
+                    + "{" + "Class:" + "  " + classType.ReferencedClassName + "}" + externalInterface.Name.ToString()
                     + "{" + "Class:" + "  " + externalInterface.BaseClass + "}"))
                 {
                     DictionaryForExternalInterfacesInstanceAttributesofInterfaceClassLib[classType.Name.ToString()
@@ -663,7 +653,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassNameofExternalIterface(attributelist, classType, attribute, externalInterface);
                     // This method is responsible to check the "Nested Attributes" of "Attributes" of"Interface Class's External interafce"
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(classTypeSearchForReferencedClassName, attribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -703,7 +693,7 @@ namespace Aml.Editor.Plugin
             }
 
         }
-        
+
         /// <summary>
         /// This method is responsible to check the "Nested Attributes" of "Attributes" of"Interface Class's External interafce"
         /// </summary>
@@ -725,7 +715,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassNameofExternalIterface(attributelist, attributeinattribute, classType, attributeType, externalInterface);
                     //This method is the recursion of itself....
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(classTypeSearchForReferencedClassName, attributeinattribute, classType, externalInterface);
-                    
+
                 }
 
             }
@@ -814,7 +804,7 @@ namespace Aml.Editor.Plugin
 
 
         }
-        
+
         /// <summary>
         /// This method stores "Attributes" of "Referenced Class's External Interface"
         /// </summary>
@@ -908,7 +898,7 @@ namespace Aml.Editor.Plugin
                                     SearchForReferencedClassNameofExternalIterface(doc, referencedClassName, classType, externalInterface);
                                     // This function is responsible to search for "Attributes" inside the "Referencd Class Name" of "eXTERNAL iNTERFACE"
                                     CheckForAttributesOfReferencedClassNameofExternalIterface(classType, externalInterface);
-                                   
+
                                 }
                             }
                         }
@@ -936,7 +926,7 @@ namespace Aml.Editor.Plugin
             }
 
         }
-        
+
         /// <summary>
         /// This method is responsible for checking "Attributes" under "Referenced Class Name"
         /// </summary>
@@ -956,7 +946,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, classType, attribute);
                     //This function check for nested attributes in the attributes of "Refernced Class Name"
                     CkeckForNestedAttributesOfReferencedClassName(classTypeSearchForReferencedClassName, attribute, classType);
-                    
+
                 }
 
             }
@@ -990,7 +980,7 @@ namespace Aml.Editor.Plugin
             }
 
         }
-        
+
         /// <summary>
         /// This method check for nested attributes under attributes of "Referenced Class Name"
         /// </summary>
@@ -1011,7 +1001,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, attributeinattribute, classType, attributeType);
                     //This method is recursion of itself
                     CkeckForNestedAttributesOfReferencedClassName(classTypeSearchForReferencedClassName, attributeinattribute, classType);
-                    
+
                 }
 
             }
@@ -1049,7 +1039,7 @@ namespace Aml.Editor.Plugin
             List<ClassOfListsFromReferencefile> sublist = new List<ClassOfListsFromReferencefile>();
             ClassOfListsFromReferencefile attributeparameters = new ClassOfListsFromReferencefile();
 
-          //Store every parameter value....
+            //Store every parameter value....
 
             attributeparameters.Name = attributeType.Name;
             attributeparameters.Value = attributeType.Value;
@@ -1108,8 +1098,8 @@ namespace Aml.Editor.Plugin
 
             // In the following parameters on right hand side "attributeType" has been changed to "AttributeInAttribute" this has been repeated to all 
             // methods of name "StoreEachAttributeValuesInList" with four parameters.
-            
-          
+
+
 
             attributeparameters.Name = AttributeInAttribute.Name;
             attributeparameters.Value = AttributeInAttribute.Value;
@@ -1162,7 +1152,7 @@ namespace Aml.Editor.Plugin
 
                     // This method look for nested attributes.
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(attribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -1202,7 +1192,7 @@ namespace Aml.Editor.Plugin
             }
 
         }
-       
+
         /// <summary>
         /// This function is responsible for checking "nested attributes" under "attributes" of the "External Interface"
         /// </summary>
@@ -1223,7 +1213,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassNameofExternalIterface(attributelist, attributeinattribute, classType, attributeType, externalInterface);
                     // This method allows tocheck for nested attribute inside attributes i.e. recursion of this own method.
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(attributeinattribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -1278,7 +1268,7 @@ namespace Aml.Editor.Plugin
 
                     // This method looks for "nested attributes" under each "attribute"
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(classTypeSearchForReferencedClassName, attribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -1345,7 +1335,7 @@ namespace Aml.Editor.Plugin
 
                     //Do recursion of this method untill the nested attributes were ended
                     CkeckForNestedAttributesOfReferencedClassNameofExternalIterface(classTypeSearchForReferencedClassName, attributeinattribute, classType, externalInterface);
-                   
+
                 }
 
             }
@@ -1393,7 +1383,7 @@ namespace Aml.Editor.Plugin
             List<ClassOfListsFromReferencefile> sublist = new List<ClassOfListsFromReferencefile>();
             ClassOfListsFromReferencefile attributeparameters = new ClassOfListsFromReferencefile();
 
-           
+
 
             attributeparameters.Name = attributeType.Name;
             attributeparameters.Value = attributeType.Value;
@@ -1440,7 +1430,7 @@ namespace Aml.Editor.Plugin
 
 
         }
-        
+
         /// <summary>
         /// This method stores the nested attributes in "DictionaryForExternalInterfacesInstancesAttributesOfRoleClassLib"
         /// </summary>
@@ -1459,7 +1449,7 @@ namespace Aml.Editor.Plugin
 
             // In the following parameters on right hand side "attributeType" has been changed to "AttributeInAttribute" this has been repeated to all 
             // methods of name "StoreEachAttributeValuesInList" with four parameters.
-           
+
 
             attributeparameters.Name = AttributeInAttribute.Name;
             attributeparameters.Value = AttributeInAttribute.Value;
@@ -1577,7 +1567,7 @@ namespace Aml.Editor.Plugin
                                 SearchForReferencedClassNameofExternalIterface(doc, referencedClassName, classType, externalInterface);
                                 //This Function is responsible to search attributes under the "Referenced Classs Name" i.e. in this part "RoleFamilyType"
                                 CheckForAttributesOfReferencedClassNameofExternalIterface(classType, externalInterface);
-                                
+
                             }
                         }
                     }
@@ -1644,7 +1634,7 @@ namespace Aml.Editor.Plugin
 
             }
         }
-        
+
         /// <summary>
         /// This method is responsible for checking attributes under "Referenced Class Name"
         /// </summary>
@@ -1663,7 +1653,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, classType, attribute);
                     //This function check for nested attributes of referenced Class Name.
                     CkeckForNestedAttributesOfReferencedClassName(attribute, classType);
-                   
+
                 }
 
             }
@@ -1697,7 +1687,7 @@ namespace Aml.Editor.Plugin
             }
 
         }
-        
+
         /// <summary>
         /// This method check for "nested attributes" of "referenced class name"
         /// </summary>
@@ -1717,7 +1707,7 @@ namespace Aml.Editor.Plugin
                     StoreEachAttributeValueInListOfReferencedClassName(attributelist, attributeinattribute, classType, attributeType);
                     //This method is recursion of itself...
                     CkeckForNestedAttributesOfReferencedClassName(attributeinattribute, classType);
-                   
+
                 }
 
             }
@@ -1762,20 +1752,20 @@ namespace Aml.Editor.Plugin
 
                     //This method is responsible for checking attributes under "Referenced Class Name"
                     CheckForAttributesOfReferencedClassName(classType);
-                    
+
                 }
                 else
                 {
                     newnode = oParentNode.Nodes.Add(item.ToString(), item.ToString(), 1);
                 }
 
-               
+
                 if (item.ExternalInterface.Exists)
                 {
                     foreach (var externalinterfaces in item.ExternalInterface)
                     {
                         TreeNode externalinterafcenode;
-                        if (externalinterfaces.BaseClass != null && externalinterfaces.BaseClass.ToString() != externalinterfaces.Name.ToString() )
+                        if (externalinterfaces.BaseClass != null && externalinterfaces.BaseClass.ToString() != externalinterfaces.Name.ToString())
                         {
                             referencedClassName = externalinterfaces.BaseClass.ToString();
                             externalinterafcenode = newnode.Nodes.Add(externalinterfaces.ToString(), externalinterfaces.ToString() + "{" + "Class:" + "  " + referencedClassName + "}", 2);
@@ -1786,7 +1776,7 @@ namespace Aml.Editor.Plugin
 
                             //This Function is responsible to search attributes under the "Referenced Classs Name" i.e. in this part "RoleFamilyType"
                             CheckForAttributesOfReferencedClassNameofExternalIterface(item, externalinterfaces);
-                           
+
                         }
                         else
                         {
@@ -1816,7 +1806,7 @@ namespace Aml.Editor.Plugin
                 TreeNode newnode;
                 if (item.ReferencedClassName != "")
                 {
-                   
+
                     referencedclassName = item.ReferencedClassName;
                     newnode = oParentNode.Nodes.Add(item.ToString(), item.ToString() + "{" + "Class:" + "  " + referencedclassName + "}", 1);
                     CheckForAttributesOfReferencedClassName(item);
@@ -1835,9 +1825,9 @@ namespace Aml.Editor.Plugin
                     foreach (var externalinterfaces in item.ExternalInterface)
                     {
                         TreeNode externalinterafcenode;
-                        if (externalinterfaces.BaseClass!= null)
+                        if (externalinterfaces.BaseClass != null)
                         {
-                           
+
                             referencedclassName = externalinterfaces.BaseClass.ToString();
                             externalinterafcenode = newnode.Nodes.Add(externalinterfaces.ToString(), externalinterfaces.ToString() + "{" + "Class:" + "  " + referencedclassName + "}", 2);
                             externalinterafcenode.ForeColor = SystemColors.GrayText;
@@ -1852,7 +1842,7 @@ namespace Aml.Editor.Plugin
                         }
 
 
-                        PrintExternalInterfaceNodes(document,externalinterafcenode, externalinterfaces, classType);
+                        PrintExternalInterfaceNodes(document, externalinterafcenode, externalinterfaces, classType);
                     }
                 }
 
@@ -1865,15 +1855,15 @@ namespace Aml.Editor.Plugin
         /// </summary>
         /// <param name="oParentNode"></param>
         /// <param name="classType"></param>
-        public void PrintExternalInterfaceNodes(CAEXDocument document,TreeNode oParentNode, ExternalInterfaceType classType, InterfaceFamilyType InterafceclassType)
+        public void PrintExternalInterfaceNodes(CAEXDocument document, TreeNode oParentNode, ExternalInterfaceType classType, InterfaceFamilyType InterafceclassType)
         {
             if (classType.ExternalInterface.Exists)
             {
-                
+
                 foreach (var item in classType.ExternalInterface)
                 {
                     TreeNode newnode;
-                    if (item.BaseClass!= null)
+                    if (item.BaseClass != null)
                     {
                         referencedClassName = item.BaseClass.ToString();
                         newnode = oParentNode.Nodes.Add(item.ToString(), item.ToString() + "{" + "Class:" + "  " + referencedClassName + "}", 2);
@@ -1883,17 +1873,17 @@ namespace Aml.Editor.Plugin
                     }
                     else
                     {
-                        newnode = oParentNode.Nodes.Add(item.ToString(), item.ToString() , 2);
+                        newnode = oParentNode.Nodes.Add(item.ToString(), item.ToString(), 2);
                         newnode.ForeColor = SystemColors.GrayText;
                     }
-                  
+
 
                     PrintExternalInterfaceNodes(document, newnode, item, InterafceclassType);
                 }
             }
 
         }
-        
+
         /// <summary>
         /// This method is called to print "External Interfaces" in both "Role class Library and Interface Class Library" in the plugin.
         /// </summary>
@@ -1907,7 +1897,7 @@ namespace Aml.Editor.Plugin
                 foreach (var item in classType.ExternalInterface)
                 {
                     TreeNode newnode;
-                   
+
 
                     if (item.BaseClass != null)
                     {
@@ -1925,9 +1915,9 @@ namespace Aml.Editor.Plugin
                     {
                         newnode = oParentNode.Nodes.Add(item.ToString(), item.ToString(), 2);
                         newnode.ForeColor = SystemColors.GrayText;
-                       
+
                     }
-                   
+
                     //This is a recursion of this method itself...
                     PrintExternalInterfaceNodes(document, newnode, item, RoleclassType);
                 }

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Aml.Editor.Plugin.Properties;
-using System.IO;
+﻿using Aml.Editor.Plugin.Properties;
+using System;
 using System.Drawing;
-using System.Web;
-using System.Net;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Aml.Editor.Plugin
 {
@@ -22,7 +16,7 @@ namespace Aml.Editor.Plugin
         public Button DisplayBtn { get; set; }
         public DataGridView dataGridView { get; set; }
         public string words { get; set; }
-       // public TreeNode Node { get; set; }
+        // public TreeNode Node { get; set; }
 
 
         public AnimationClass()
@@ -31,7 +25,7 @@ namespace Aml.Editor.Plugin
         }
 
         // Method for window size maximum and minimum
-        public  void WindowSizeChanger(Panel panelNumber,Button buttonNumber)
+        public void WindowSizeChanger(Panel panelNumber, Button buttonNumber)
         {
             PanelNumber = panelNumber;
             ButtonNumber = buttonNumber;
@@ -50,7 +44,7 @@ namespace Aml.Editor.Plugin
         public void WindowSizeChanger(Panel panelNumber)
         {
             PanelNumber = panelNumber;
-           // Node = node;
+            // Node = node;
             if (panelNumber.Size == panelNumber.MaximumSize)
             {
                 panelNumber.Size = panelNumber.MinimumSize;
@@ -66,13 +60,13 @@ namespace Aml.Editor.Plugin
         public string OpenFileDialog(TextBox textboxName)
         {
             TextboxName = textboxName;
-            
+
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Document Files(*.pdf; *.doc;*.jpg; *.jpeg; *.gif; *.bmp; *.png;)|*.pdf; *.doc;*.jpg; *.jpeg; *.gif; *.bmp; *.png;";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 textboxName.Text = open.FileName;
-                
+
             }
             string nameOfFile = Path.GetFileName(open.FileName);
             return nameOfFile;
@@ -90,23 +84,23 @@ namespace Aml.Editor.Plugin
                 textboxName.Text = open.FileName;
                 pdfDisplayBtn.Visible = true;
                 pdfDisplayBtn.Text = Path.GetFileName(open.FileName);
-                
+
             }
         }
-       // method for opening IEC-CDD urls 
-       public void ManualOpener(string btnText)
+        // method for opening IEC-CDD urls 
+        public void ManualOpener(string btnText)
         {
             string mainUrl = "https://cdd.iec.ch/CDD/IEC62683/iec62683.nsf/PropertiesAllVersions/0112-2---62683%23";
             string lastUrl = "?OpenDocument";
             string midUrl = btnText.Substring(15);
-            string finalUrl = mainUrl +midUrl+ lastUrl;
-           
+            string finalUrl = mainUrl + midUrl + lastUrl;
+
             System.Diagnostics.Process.Start(finalUrl);
         }
 
 
         // Open Dialog Box related method that takes parmeters of textbox name and the picture box number.
-        public void OpenFileDialog(TextBox textboxName,PictureBox pictureBoxNumber)
+        public void OpenFileDialog(TextBox textboxName, PictureBox pictureBoxNumber)
         {
             TextboxName = textboxName;
             PictureboxNumber = pictureBoxNumber;
@@ -136,7 +130,7 @@ namespace Aml.Editor.Plugin
         }
 
         // this method dispaly all hidden buttons with the Refsemantic Id in them.
-        public void DispalySemanticBtn(Button refSemanticBtn, DataGridView dataGrids,string word)
+        public void DispalySemanticBtn(Button refSemanticBtn, DataGridView dataGrids, string word)
         {
             words = word;
             DisplayBtn = refSemanticBtn;

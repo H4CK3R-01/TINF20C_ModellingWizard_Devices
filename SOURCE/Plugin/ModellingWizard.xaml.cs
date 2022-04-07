@@ -29,7 +29,7 @@ namespace Aml.Editor.Plugin
         public ModellingWizard()
         {
             mWController = new MWController();
-            
+
             // Defines the Command list, which will contain user commands, which a user can select
             // via the PlugIn Menu.
             Commands = new List<PluginCommand>();
@@ -38,7 +38,7 @@ namespace Aml.Editor.Plugin
             // Every PlugIn needs at least an Activation command, which will be called by a user to activate the PlugIn.
             ActivatePlugin = new PluginCommand()
             {
-                Command = new RelayCommand<object>(this.StartCommandExecute, 
+                Command = new RelayCommand<object>(this.StartCommandExecute,
                     this.StartCommandCanExecute),
                 CommandName = "Start",
                 CommandToolTip = "Start the PlugIn"
@@ -92,7 +92,7 @@ namespace Aml.Editor.Plugin
 
         private void ReloadObjectsExecute(object obj)
         {
-           
+
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Aml.Editor.Plugin
         /// <see cref="StopCommand"/> ).
         /// </summary>
         public event EventHandler PluginTerminated;
-        
+
         /// <summary>
         /// The AboutCommand - Command
         /// </summary>
@@ -294,7 +294,7 @@ namespace Aml.Editor.Plugin
         /// <param name="selectedObject">The selected object, may be null.</param>
         public void PublishAutomationMLFileAndObject(string amlFilePath, CAEXBasicObject selectedObject)
         {
-            
+
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Aml.Editor.Plugin
         private void StartCommandExecute(object parameter)
         {
             this.IsActive = true;
-            
+
             // create the new PlugInUI and add it to the forms host
             mWController.ChangeGui(MWController.MWGUIType.DeviceDescription);
 

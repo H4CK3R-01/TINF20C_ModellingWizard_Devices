@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Aml.Editor.Plugin
 {
-    class AutomationMLDataTables 
+    class AutomationMLDataTables
     {
         public DataTable AMLAttributeParameters()
         {
             DataTable AMLAttributeParameters = new DataTable();
-           
+
             AMLAttributeParameters.Columns.Add("AttributeName");
             AMLAttributeParameters.Columns.Add("Value");
             AMLAttributeParameters.Columns.Add("Default");
@@ -27,19 +24,19 @@ namespace Aml.Editor.Plugin
             return AMLAttributeParameters;
         }
 
-        public void CreateDataTableWithColumns( DataTable dataRowName, DataGridView dataGridViewName,
+        public void CreateDataTableWithColumns(DataTable dataRowName, DataGridView dataGridViewName,
             KeyValuePair<string, List<List<ClassOfListsFromReferencefile>>> pair)
         {
             KeyValuePair<string, List<List<ClassOfListsFromReferencefile>>> Pair = pair;
-            
+
             DataTable DataRowName = dataRowName;
             DataGridView DataGridViewName = dataGridViewName;
 
-           
+
 
             foreach (var valueList in Pair.Value)
             {
-                
+
 
                 foreach (var item in valueList)
                 {
@@ -63,7 +60,7 @@ namespace Aml.Editor.Plugin
                     {
                         DataGridViewName.Rows[num].Cells[0].Value = item.Name;
                     }
-                    
+
                     DataGridViewName.Rows[num].Cells[1].Value = item.Value;
                     DataGridViewName.Rows[num].Cells[2].Value = item.Default;
                     DataGridViewName.Rows[num].Cells[3].Value = item.Unit;
@@ -88,19 +85,19 @@ namespace Aml.Editor.Plugin
                         dgvcbc.Items.Add(items);
                     }
 
-                   
-                    
-                 
+
+
+
                     DataRowName.Rows.Add(row);
 
-                  
+
 
                     break;
                 }
-               
-                
+
+
             }
-          
+
         }
         public void CheckForSameNameTextOfInternalAttributes(DataTable dataRowName, DataGridView dataGridViewName, KeyValuePair<string, List<ClassOfListsFromReferencefile>> pair)
         {
@@ -111,10 +108,10 @@ namespace Aml.Editor.Plugin
             {
                 try
                 {
-                   /* if (eachrow.Cells[0].Value.Equals(item.Name))
-                    {
+                    /* if (eachrow.Cells[0].Value.Equals(item.Name))
+                     {
 
-                    }*/
+                     }*/
                 }
                 catch (Exception) { }
             }
@@ -128,9 +125,9 @@ namespace Aml.Editor.Plugin
 
             foreach (var item in Pair.Value)
             {
-                
+
                 DataRow row = DataRowName.NewRow();
-               
+
 
                 row["AttributeName"] = item.AttributeName;
                 row["Value"] = item.Values;
@@ -143,10 +140,10 @@ namespace Aml.Editor.Plugin
                 DataRowName.Rows.Add(row);
 
 
-               
 
-               /* break;*/
-               
+
+                /* break;*/
+
 
 
             }
