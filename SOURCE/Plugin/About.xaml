@@ -45,13 +45,13 @@
             <ScrollViewer>
                 <StackPanel MinWidth="200">
                     <TextBlock Margin="10,5" Style="{StaticResource Heading2}">
-                        <Run Text="About the Modelling Wizard for Devices PlugIn!" />
+                        <Run Text="About the Modelling Wizard for Devices Application!" />
                     </TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="400"
                             Margin="10,5"
-                            Text="This Modelling Wizard for Devices PlugIn can be used to create or modify Devices and Interfaces. It can also be used to import IODD and GSDML Files which will be converted to an AMLX Package."
+                            Text="This Modelling Wizard for Devices standalone application can be used to create or modify Devices and Interfaces. It can also be used to import IODD and GSDML Files which will be converted to an AMLX Package."
                             TextWrapping="Wrap" />
                     </StackPanel>
 
@@ -90,9 +90,16 @@
                         <TextBlock Margin="15,0,0,0">
                             <Run FontWeight="Bold" Text="DHBW Stuttgart" />
                         </TextBlock>
-
+                        <TextBlock Margin="15,0,0,0">
+                            <Run  Text="and" />
+                        </TextBlock>
+                        <TextBlock FontWeight="Bold" Margin="15,5,0,0" Text="TINF20C" />
+                        <TextBlock Margin="15,0,0,0">
+                            <Run FontWeight="Bold" Text="DHBW Stuttgart" />
+                        </TextBlock>
+                        
                         <TextBlock Margin="15,5,0,10" Text="This Plugin was created as a group project in the class &quot;Software Engineering&quot;" />
-                        <TextBlock Margin="15,5,0,10" Text="Later this plugin was developed as a sample tool that create vendor independent &#x0a;automation component, and included as part of Master Thesis &quot;" />
+                        <TextBlock Margin="15,5,0,10" Text="Later this plugin was developed as a sample tool that create vendor independent &#x0a;automation component, and included as part of Master Thesis" />
 
 
                         <Border Margin="0,2,0,2" BorderThickness="0,2,0,0">
@@ -110,8 +117,13 @@
 
                         <TextBlock
                             Margin="10,5,0,8"
-                            Text="The MIT License (MIT)&#x0a;Copyright (c) 2021 TINF19C DHBW Stuttgart&#x0a;&#x0a;Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files ('the Software'), to deal in the Software without restriction, including without limitation the rights to use, copy,  modify, merge, publish, distribute, sub license, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: &#x0a;&#x0a; The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+                            Text="This project is licensed under the GPL 3.0 license"
                             TextWrapping="Wrap" />
+                        <TextBlock
+                            Margin="10,5,0,8"
+                            TextWrapping="Wrap">
+                            Visit our <Hyperlink NavigateUri="https://github.com/H4CK3R-01/TINF20C_ModellingWizard_Devices/blob/main/LICENSE" RequestNavigate="Hyperlink_RequestNavigate">GitHub-Repository</Hyperlink> to learn more about this.
+                        </TextBlock>
 
 
                         <Border Margin="0,2,0,2" BorderThickness="0,2,0,0">
@@ -124,7 +136,7 @@
                         </Border>
 
                         <TextBlock Margin="10,5,0,0" FontWeight="Bold">
-                            © TINF19C DHBW Stuttgart 2021
+                            © TINF20C DHBW Stuttgart 2022
                             <!--  Copyright symbol  -->
                         </TextBlock>
 
@@ -136,12 +148,8 @@
                             Name="TextBlock2WithHyperlink"
                             Margin="10,5,0,0"
                             TextWrapping="Wrap">
-                            Visit <Hyperlink NavigateUri="https://github.com/DekaAthlos/TINF19C-ModellingWizard" RequestNavigate="Hyperlink_RequestNavigate">ModellingWizard</Hyperlink>
+                            Visit <Hyperlink NavigateUri="https://github.com/H4CK3R-01/TINF20C_ModellingWizard_Devices" RequestNavigate="Hyperlink_RequestNavigate">ModellingWizard</Hyperlink>
                             on GitHub to get more informations about this project.</TextBlock>
-
-
-
-
 
                     </StackPanel>
 
