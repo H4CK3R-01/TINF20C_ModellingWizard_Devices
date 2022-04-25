@@ -29,6 +29,7 @@ namespace Aml.Editor.Plugin
         private object _row;
         private bool isEditing = false;
         private bool expertMode = false;
+        private bool useCaex2_15 = false;
         private OpenFileDialog openFileDialog = new OpenFileDialog();
 
         private List<string> AllInterfaces = new List<string>();
@@ -1591,10 +1592,11 @@ namespace Aml.Editor.Plugin
 
             try
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-                saveFileDialog.Filter = "AML Files( *.amlx )| *.amlx;";
-                saveFileDialog.FileName = vendorNameTextBox.Text + "-" + deviceNameTextBox.Text + "-V.1.0-" + DateTime.Now.Date.ToShortDateString();
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "AML Files( *.amlx )| *.amlx;",
+                    FileName = vendorNameTextBox.Text + "-" + deviceNameTextBox.Text + "-V.1.0-" + DateTime.Now.Date.ToShortDateString()
+                };
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -1603,11 +1605,10 @@ namespace Aml.Editor.Plugin
                     device.environment = Path.GetDirectoryName(saveFileDialog.FileName);
                     device.fileName = saveFileDialog.FileName;
 
-
                     // storing user defined values of Attachebles data grid view in to list 
 
                     // Pass the device to the controller
-                    string result1 = mWController.CreateDeviceOnClick(device, isEditing);
+                    string result1 = mWController.CreateDeviceOnClick(device, isEditing, useCaex2_15);
 
                     //clear();
 
@@ -1730,7 +1731,7 @@ namespace Aml.Editor.Plugin
                     // storing user defined values of Attachebles data grid view in to list 
 
                     // Pass the device to the controller
-                    string result1 = mWController.CreateDeviceOnClick(device, isEditing);
+                    string result1 = mWController.CreateDeviceOnClick(device, isEditing, useCaex2_15);
 
 
 
@@ -1760,6 +1761,7 @@ namespace Aml.Editor.Plugin
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isEditing = false;
             clear();
 
 
@@ -1827,6 +1829,8 @@ namespace Aml.Editor.Plugin
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isEditing = true;
+
             searchAMLComponentFile.DictionaryofElectricalConnectorType = new Dictionary<string, List<List<ClassOfListsFromReferencefile>>>();
             searchAMLComponentFile.DictioanryofElectricalConnectorPinType = new Dictionary<string, List<List<ClassOfListsFromReferencefile>>>();
 
@@ -4578,6 +4582,22 @@ namespace Aml.Editor.Plugin
 
             }
             catch (Exception) { }
+        }
+
+        private void caexVersionFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Switch mode
+            useCaex2_15 = !useCaex2_15;
+
+            // Change text
+            if (useCaex2_15)
+            {
+                this.caexVersionFileToolStripMenuItem.Text = "Use CAEX 3.0 File";
+            }
+            else
+            {
+                this.caexVersionFileToolStripMenuItem.Text = "Use CAEX 2.15 File";
+            }
         }
     }
 }

@@ -56,14 +56,14 @@ namespace Aml.Editor.Plugin
         /// <param name="newDevice"></param>
         /// <param name="isEdit"></param>
         /// <returns></returns>
-        public String CreateDeviceOnClick(MWDevice newDevice, bool isEdit)
+        public String CreateDeviceOnClick(MWDevice newDevice, bool isEdit, bool useCaex2_15)
         {
             string result = "";
 
             if (newDevice.deviceName != null && newDevice.vendorName != null)
             {
                 // create the device
-                result = mWData.CreateDevice(newDevice, isEdit);
+                result = mWData.CreateDevice(newDevice, isEdit, useCaex2_15);
             }
 
             // update the device list

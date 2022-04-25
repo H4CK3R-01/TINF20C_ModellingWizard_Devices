@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DHBW-Stuttgart")]
 [assembly: AssemblyProduct("ModellingWizard")]
-[assembly: AssemblyCopyright("Copyright © DHBW-Stuttgart TINF19C")]
+[assembly: AssemblyCopyright("Copyright © DHBW-Stuttgart TINF20C")]
 [assembly: AssemblyTrademark("ModellingWizard")]
 [assembly: AssemblyCulture("")]
 

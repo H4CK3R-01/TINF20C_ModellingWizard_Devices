@@ -55,44 +55,27 @@ namespace Aml.Editor.Plugin
         /// <param name="device">The device which will be created</param>
         /// <param name="isEdit">true if an amlx file get update, false if a new file will be created</param>
         /// <returns></returns>
-        public string CreateDevice(MWDevice device, bool isEdit)
+        public string CreateDevice(MWDevice device, bool isEdit, bool useCaex2_15)
         {
-
-            CAEXDocument document = null;
+            CAEXDocument document;
             AutomationMLContainer amlx = null;
 
             // Init final .amlx Filepath
-            //first of all create a folder on "Vendor Name"
-            string vendorCompanyName = device.vendorName;
-
             string amlFilePath;
-
             string fileName = device.fileName;
 
-            if (fileName.Contains(".amlx"))
-            {
-                amlFilePath = System.IO.Path.Combine(device.filepath, fileName);
-            }
-            else
-            {
-                amlFilePath = System.IO.Path.Combine(device.filepath, fileName + ".amlx");
-            }
-
-
+            amlFilePath = fileName.Contains(".amlx") ? Path.Combine(device.filepath, fileName) : Path.Combine(device.filepath, fileName + ".amlx");
 
             FileInfo file = new FileInfo(amlFilePath);
 
-
-
             // Create directory if it's not existing
             file.Directory.Create();
-
 
             // Init CAEX Document
             if (isEdit)
             {
                 // Load the amlx file
-                amlx = new AutomationMLContainer(amlFilePath, FileMode.Open);
+                amlx = new AutomationMLContainer(amlFilePath, FileMode.OpenOrCreate);
 
                 IEnumerable<PackagePart> rootParts = amlx.GetPartsByRelationShipType(AutomationMLContainer.RelationshipType.Root);
 
@@ -107,26 +90,25 @@ namespace Aml.Editor.Plugin
                 else
                 {
                     // the amlx contains no aml file
-                    document = CAEXDocument.New_CAEXDocument();
+                    if (useCaex2_15) document = CAEXDocument.New_CAEXDocument(CAEXDocument.CAEXSchema.CAEX2_15);
+                    else document = CAEXDocument.New_CAEXDocument(CAEXDocument.CAEXSchema.CAEX3_0);
                 }
             }
             else
             {
                 // create a new CAEX document
-                document = CAEXDocument.New_CAEXDocument();
+                if (useCaex2_15) document = CAEXDocument.New_CAEXDocument(CAEXDocument.CAEXSchema.CAEX2_15);
+                else document = CAEXDocument.New_CAEXDocument(CAEXDocument.CAEXSchema.CAEX3_0);
+
                 try
                 {
-                    amlx = new AutomationMLContainer(amlFilePath, FileMode.Create);
+                    amlx = new AutomationMLContainer(amlFilePath, FileMode.OpenOrCreate);
                 }
                 catch (Exception)
                 {
-
+                    Console.WriteLine("Failed to create AutomationMLContainer object");
                 }
-
-
             }
-
-
 
             // Init the default Libs
             AutomationMLBaseRoleClassLibType.RoleClassLib(document);
@@ -152,14 +134,8 @@ namespace Aml.Editor.Plugin
                     }
                     else
                     {
-
                         Boolean myBool;
                         Boolean.TryParse(eachparameter.AddToFile, out myBool);
-
-                        if (myBool == true)
-                        {
-
-                        }
 
                         Uri eachUri = null;
                         AttachablesDataGridViewParameters par = new AttachablesDataGridViewParameters();
@@ -168,14 +144,11 @@ namespace Aml.Editor.Plugin
                         par.FilePath = eachparameter.FilePath;
 
                         device.listWithURIConvertedToString.Add(par);
-
                     }
-
                 }
 
                 foreach (var pair in device.DictionaryForRoleClassofComponent)
                 {
-
                     Match numberfromElectricalConnectorType = Regex.Match(pair.Key.ToString(), @"\((\d+)\)");
                     string initialnumberbetweenparanthesisofElectricalConnectorType =
                         numberfromElectricalConnectorType.Groups[1].Value;
@@ -285,8 +258,6 @@ namespace Aml.Editor.Plugin
 
                                 SRC.RefRoleClassPath = item.SupportesRoleClassType;
                             }
-
-
                         }
                     }
 
@@ -327,8 +298,7 @@ namespace Aml.Editor.Plugin
                         foundSysClassLib = true;
                     }
                 }
-                if (!foundSysClassLib)
-                    systemUnitClass = document.CAEXFile.SystemUnitClassLib.Append("ComponentSystemUnitClassLib").SystemUnitClass.Append(device.deviceName);
+                if (!foundSysClassLib) systemUnitClass = document.CAEXFile.SystemUnitClassLib.Append("ComponentSystemUnitClassLib").SystemUnitClass.Append(device.deviceName);
             }
 
             // Create the internalElement Interfaces
@@ -458,9 +428,6 @@ namespace Aml.Editor.Plugin
 
                                 electricalConnectorType.RefBaseClassPath = item.RefBaseClassPath;
                             }
-
-
-
                         }
                     }
 
@@ -473,9 +440,6 @@ namespace Aml.Editor.Plugin
                         string electricalConnectorPinName = Regex.Replace(pairofList.Key.ToString(), @"\(.*?\)", "");
                         electricalConnectorPinName = Regex.Replace(electricalConnectorPinName, @"\{.*?\}", "");
                         electricalConnectorPinName = electricalConnectorPinName.Replace(electricalConnectorTypeName, "");
-
-
-
 
                         if (initialnumberbetweenparanthesisofElectricalConnectorType == initialnumberbetweenparanthesisElectricalConnectorPins)
                         {
@@ -625,14 +589,7 @@ namespace Aml.Editor.Plugin
             amlx.Save();
             amlx.Close();
 
-            if (isEdit)
-            {
-                return "Sucessfully updated device!\nFilepath " + amlFilePath;
-            }
-            else
-            {
-                return "Device description file created!\nFilepath " + amlFilePath;
-            }
+            return isEdit ? "Sucessfully updated device!\nFilepath " + amlFilePath : "Device description file created!\nFilepath " + amlFilePath;
 
         }
 
@@ -894,7 +851,7 @@ namespace Aml.Editor.Plugin
 
 
             // Load Libary .dll
-            Assembly assembly = Assembly.Load("Iodd2AmlConverter.Library");
+            Assembly assembly = Assembly.Load(File.ReadAllBytes("Dd2Aml.Lib.dll"));
             Type conversionHandler = null;
             // Iterate over all Types in the Libary and get the ConversionHandler Type
             foreach (Type type in assembly.ExportedTypes)
@@ -945,7 +902,7 @@ namespace Aml.Editor.Plugin
             // If it is, then it's calling the Convert Function
             // Gsd2Aml.Lib.Converter.Convert(string inputFilepath, bool strictValidation)
 
-            Assembly assembly = Assembly.Load("Gsd2Aml.Lib");
+            Assembly assembly = Assembly.Load(File.ReadAllBytes("Gsd2Aml.Lib.dll"));
             Type conversionHandler = null;
             // Iterate over all Types in the Libary and get the ConversionHandler Type
             foreach (Type type in assembly.ExportedTypes)
@@ -999,6 +956,7 @@ namespace Aml.Editor.Plugin
             byte[] bytearray = System.Text.Encoding.Unicode.GetBytes(caex);
             CAEXDocument document = CAEXDocument.LoadFromBinary(bytearray);
 
+           
             // create the amlx file
             string name = Path.GetFileNameWithoutExtension(filename);
 
