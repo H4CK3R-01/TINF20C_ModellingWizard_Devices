@@ -57,6 +57,7 @@ namespace Aml.Editor.Plugin
             this.industrialSensorLibraryv100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caexVersionFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -228,7 +229,6 @@ namespace Aml.Editor.Plugin
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
-            this.caexVersionFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.Page0_FullWindow.SuspendLayout();
             this.Page0_FullWindowPanel2.SuspendLayout();
@@ -454,9 +454,16 @@ namespace Aml.Editor.Plugin
             // advancedModeToolStripMenuItem
             // 
             this.advancedModeToolStripMenuItem.Name = "advancedModeToolStripMenuItem";
-            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.advancedModeToolStripMenuItem.Text = "Advanced Mode";
             this.advancedModeToolStripMenuItem.Click += new System.EventHandler(this.advancedModeToolStripMenuItem_Click);
+            // 
+            // caexVersionFileToolStripMenuItem
+            // 
+            this.caexVersionFileToolStripMenuItem.Name = "caexVersionFileToolStripMenuItem";
+            this.caexVersionFileToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.caexVersionFileToolStripMenuItem.Text = "Use CAEX 2.15 File";
+            this.caexVersionFileToolStripMenuItem.Click += new System.EventHandler(this.caexVersionFileToolStripMenuItem_Click);
             // 
             // helpButton
             // 
@@ -472,14 +479,14 @@ namespace Aml.Editor.Plugin
             // 
             this.aboutToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // manualToolStripMenuItem
             // 
             this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manualToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.manualToolStripMenuItem.Text = "Manual";
             this.manualToolStripMenuItem.Click += new System.EventHandler(this.manualToolStripMenuItem_Click);
             // 
@@ -2386,13 +2393,6 @@ namespace Aml.Editor.Plugin
             this.toolStripButton15.Name = "toolStripButton15";
             this.toolStripButton15.Size = new System.Drawing.Size(44, 24);
             this.toolStripButton15.Text = "Save";
-            // 
-            // caexVersionFileToolStripMenuItem
-            // 
-            this.caexVersionFileToolStripMenuItem.Name = "caexVersionFileToolStripMenuItem";
-            this.caexVersionFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.caexVersionFileToolStripMenuItem.Text = "Use CAEX 2.15 File";
-            this.caexVersionFileToolStripMenuItem.Click += new System.EventHandler(this.caexVersionFileToolStripMenuItem_Click);
             // 
             // DeviceDescription
             // 
