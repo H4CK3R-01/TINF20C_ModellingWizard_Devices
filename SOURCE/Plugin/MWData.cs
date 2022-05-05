@@ -80,7 +80,7 @@ namespace Aml.Editor.Plugin
                 IEnumerable<PackagePart> rootParts = amlx.GetPartsByRelationShipType(AutomationMLContainer.RelationshipType.Root);
 
                 // We expect the aml to only have one root part
-                if (rootParts.First() != null)
+                if (rootParts.Count() != 0 && rootParts.First() != null)
                 {
                     PackagePart part = rootParts.First();
 
