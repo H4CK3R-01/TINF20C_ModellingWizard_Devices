@@ -1,0 +1,3717 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gsd2Aml.Lib</name>
+    </assembly>
+    <members>
+        <member name="T:Gsd2Aml.Lib.Logging.ILoggingService">
+            <summary>
+            Interface to provide logging information of the conversion process.
+            </summary>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Logging.ILoggingService.Log(Gsd2Aml.Lib.Logging.LogLevel,System.String)">
+            <summary>
+            Log method which puts a message with the specific log level into the log file.
+            </summary>
+            <param name="level">The level of the log message.</param>
+            <param name="message">The message of the log.</param>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Logging.LogLevel">
+            <summary>
+            Enum which contains all possible log levels.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Info">
+            <summary>
+            Sets the log level to info.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Warning">
+            <summary>
+            Sets the log level to warning.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Error">
+            <summary>
+            Sets the log level to error.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Trace">
+            <summary>
+            Sets the log level to trace.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Debug">
+            <summary>
+            Sets the log level to debug.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Fatal">
+            <summary>
+            Sets the log level to fatal.
+            </summary>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Logging.LogLevel.Off">
+            <summary>
+            Sets the log level to off.
+            </summary>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Converter">
+            <summary>
+            The converter class which contains the logic to convert a GSD formatted file to an AML file.
+            </summary>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.Convert(System.String,System.Boolean)">
+            <summary>
+            Converts a GSDML input file and returns the resulting AML file as a string.
+            </summary>
+            <param name="inputFile">The path to the input file.</param>
+            <param name="strictValidation">A flag which indicates if the GSD should be checked for correctness.</param>
+            <returns>The AML object serialized to a XML string.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.Convert(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Converts a GSDML input file and creates the .amlx package.
+            </summary>
+            <param name="inputFile">The path to the input file.</param>
+            <param name="outputFile">The path to the output file.</param>
+            <param name="overwriteFile">A flag which indicates if the file should be overwritten if it exists.</param>
+            <param name="strictValidation">A flag which indicates if the GSD should be checked for correctness.</param>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.StartConversion(System.String,System.String,System.Boolean)">
+            <summary>
+            Deserializes the translation table and the input file. Then it checks the input file for validity.
+            After that it starts the conversion process.
+            </summary>
+            <param name="inputFile">The path to the input file.</param>
+            <param name="outputFile">The path to the output file.</param>
+            <param name="strictValidation">A flag which indicates if the GSDML should be checked for correctness.</param>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.Handle``1(System.Xml.XmlNode,``0)">
+            <summary>
+            Starts the real conversion process.
+            It iterates over the GSDML properties and translates it to AML.
+            Then it recursively starts a new Handle call with the translated property.
+            </summary>
+            <typeparam name="TA">The type of the current AML head object.</typeparam>
+            <param name="currentAmlHead">The current AML head object.</param>
+            <param name="currentGsdHead">The current GSD head object as a XmlElement.</param>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.Translate``1(``0@,System.Xml.XmlNode)">
+            <summary>
+            The actual translation of the GSD object to an AML object.
+            </summary>
+            <typeparam name="TA">The type of the AML head object.</typeparam>
+            <param name="currentAmlHead">The AML head object in which the translation object will be set.</param>
+            <param name="translationRule">The translation rule which will be used to translate the GSD object to an AML object.</param>
+            <returns>The new AML head object.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.AddSubInstancesToInstance(System.Xml.XmlNode,System.Object,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            This function iterates over all sub properties of the replacement to translate these and set them into the replacementInstance.
+            </summary>
+            <param name="replacement">The replacement rule.</param>
+            <param name="replacementInstance">The replacement instance in which the sub properties will be set.</param>
+            <param name="isReplacementPropertyArray">A flag which indicates whether the current instance is an array or not.</param>
+            <param name="references">Dictionary which contains information about the references.</param>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.HandleRuleCall(System.Xml.XmlNode,System.Object)">
+            <summary>
+            This function handles a new Rule call in the translation table.
+            It takes the inner text of the rule node and translate it with the corresponding rule.
+            </summary>
+            <param name="childNode">The rule node which contains the information which rule should be applied.</param>
+            <param name="replacementInstance">The instance in which the rule instance will be set/added.</param>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.TranslateSubProperties(System.Xml.XmlNode,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Translates the sub properties of a translation rule.
+            </summary>
+            <param name="replacement">The XmlNode replacement rule.</param>
+            <param name="references">Dictionary which contains information about the references of a rule.</param>
+            <returns>The property info which describes the translationInstance and the translation instance in which the sub property instances will be set.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Converter.SetAttributes(System.Xml.XmlNode,System.Object,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            This function sets the attributes of a replacement node to the translation instance.
+            This function assumes that all attributes are of type string.
+            If not, then please contact the developers <see href="https://github.com/TINF17C/GSD2AML-Converter"/>.
+            </summary>
+            <param name="replacement">The replacement node of the translation table which will be used to set those attributes to the instance.</param>
+            <param name="translationInstance">The instance in which the attributes will be set.</param>
+            <param name="references">Dictionary which contains information about the references of a rule.</param>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXFile">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.ExternalReference">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.InstanceHierarchy">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.InterfaceClassLib">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.RoleClassLib">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.SystemUnitClassLib">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.FileName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFile.SchemaVersion">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXFileExternalReference">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFileExternalReference.Path">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFileExternalReference.Alias">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXBasicObject">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObject.Description">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObject.Version">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObject.Revision">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObject.Copyright">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObject.AdditionalInformation">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObject.ChangeMode">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXBasicObjectDescription">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectDescription.ChangeMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectDescription.Value">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ChangeMode">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ChangeMode.state">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ChangeMode.create">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ChangeMode.delete">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ChangeMode.change">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXBasicObjectVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectVersion.ChangeMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectVersion.Value">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXBasicObjectRevision">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectRevision.RevisionDate">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectRevision.OldVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectRevision.NewVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectRevision.AuthorName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectRevision.Comment">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXBasicObjectCopyright">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectCopyright.ChangeMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXBasicObjectCopyright.Value">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MappingType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MappingType.AttributeNameMapping">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MappingType.InterfaceNameMapping">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MappingTypeAttributeNameMapping">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MappingTypeAttributeNameMapping.SystemUnitAttributeName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MappingTypeAttributeNameMapping.RoleAttributeName">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MappingTypeInterfaceNameMapping">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MappingTypeInterfaceNameMapping.SystemUnitInterfaceName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MappingTypeInterfaceNameMapping.RoleInterfaceName">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.AttributeValueRequirementType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementType.Item">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementType.Name">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeNominalScaledType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeNominalScaledType.RequiredValue">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeOrdinalScaledType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeOrdinalScaledType.RequiredMaxValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeOrdinalScaledType.RequiredValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeOrdinalScaledType.RequiredMinValue">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeUnknownType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeValueRequirementTypeUnknownType.Requirements">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXObject">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXObject.ID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXObject.Name">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemUnitClassType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassType.Attribute">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassType.ExternalInterface">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassType.InternalElement">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassType.SupportedRoleClass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassType.InternalLink">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.AttributeType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.Value">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.RefSemantic">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.Constraint">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.Attribute">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.Unit">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeType.AttributeDataType">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.AttributeTypeRefSemantic">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.AttributeTypeRefSemantic.CorrespondingAttributePath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceClassType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceClassType.Attribute">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceClassType.RefBaseClassPath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceFamilyType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceFamilyType.InterfaceClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InternalElementType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InternalElementType.RoleRequirements">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InternalElementType.MappingObject">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InternalElementType.RefBaseSystemUnitPath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InternalElementTypeRoleRequirements">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InternalElementTypeRoleRequirements.Attribute">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InternalElementTypeRoleRequirements.ExternalInterface">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InternalElementTypeRoleRequirements.RefBaseRoleClassPath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemUnitClassTypeSupportedRoleClass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassTypeSupportedRoleClass.MappingObject">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassTypeSupportedRoleClass.RefRoleClassPath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemUnitClassTypeInternalLink">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassTypeInternalLink.RefPartnerSideA">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitClassTypeInternalLink.RefPartnerSideB">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemUnitFamilyType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitFamilyType.SystemUnitClass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemUnitFamilyType.RefBaseClassPath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RoleClassType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RoleClassType.Attribute">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RoleClassType.ExternalInterface">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RoleClassType.RefBaseClassPath">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RoleClassTypeExternalInterface">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RoleFamilyType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RoleFamilyType.RoleClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXFileInstanceHierarchy">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFileInstanceHierarchy.InternalElement">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXFileInterfaceClassLib">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFileInterfaceClassLib.InterfaceClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXFileRoleClassLib">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFileRoleClassLib.RoleClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CAEXFileSystemUnitClassLib">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CAEXFileSystemUnitClassLib.SystemUnitClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ISO15745Profile">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ISO15745Profile.ProfileHeader">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ISO15745Profile.ProfileBody">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ISO15745Profile.Signature">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileHeaderT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileIdentification">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileRevision">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileSource">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileClassID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileDate">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ProfileDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.AdditionalInformation">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.ISO15745Reference">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileHeaderT.IASInterfaceType">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileClassID_EnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.AIP">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.Process">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.InformationExchange">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.Resource">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.Device">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.CommunicationNetwork">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.Equipment">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.Human">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProfileClassID_EnumT.Material">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ISO15745ReferenceT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ISO15745ReferenceT.ISO15745Part">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ISO15745ReferenceT.ISO15745Edition">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ISO15745ReferenceT.ProfileTechnology">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SignaturePropertyType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignaturePropertyType.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignaturePropertyType.Text">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignaturePropertyType.Target">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignaturePropertyType.Id">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SignaturePropertiesType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignaturePropertiesType.SignatureProperty">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignaturePropertiesType.Id">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ManifestType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ManifestType.Reference">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ManifestType.Id">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ReferenceType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReferenceType.Transforms">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReferenceType.DigestMethod">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReferenceType.DigestValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReferenceType.Id">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReferenceType.URI">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReferenceType.Type">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.TransformType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.TransformType.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.TransformType.Text">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.TransformType.Algorithm">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DigestMethodType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DigestMethodType.Any">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DigestMethodType.Algorithm">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ObjectType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ObjectType.Any">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ObjectType.Id">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ObjectType.MimeType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ObjectType.Encoding">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SPKIDataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SPKIDataType.SPKISexp">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SPKIDataType.Any">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PGPDataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PGPDataType.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PGPDataType.ItemsElementName">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ItemsChoiceType1">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType1.Item">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType1.PGPKeyID">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType1.PGPKeyPacket">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.X509IssuerSerialType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.X509IssuerSerialType.X509IssuerName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.X509IssuerSerialType.X509SerialNumber">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.X509DataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.X509DataType.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.X509DataType.ItemsElementName">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ItemsChoiceType">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType.Item">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType.X509CRL">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType.X509Certificate">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType.X509IssuerSerial">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType.X509SKI">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType.X509SubjectName">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RetrievalMethodType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RetrievalMethodType.Transforms">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RetrievalMethodType.URI">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RetrievalMethodType.Type">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RSAKeyValueType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RSAKeyValueType.Modulus">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RSAKeyValueType.Exponent">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DSAKeyValueType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.P">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.Q">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.G">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.Y">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.J">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.Seed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DSAKeyValueType.PgenCounter">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.KeyValueType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.KeyValueType.Item">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.KeyValueType.Text">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.KeyInfoType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.KeyInfoType.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.KeyInfoType.ItemsElementName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.KeyInfoType.Text">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.KeyInfoType.Id">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ItemsChoiceType2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.Item">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.KeyName">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.KeyValue">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.MgmtData">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.PGPData">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.RetrievalMethod">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.SPKIData">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ItemsChoiceType2.X509Data">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SignatureValueType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureValueType.Id">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureValueType.Value">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SignatureMethodType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureMethodType.HMACOutputLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureMethodType.Any">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureMethodType.Algorithm">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CanonicalizationMethodType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CanonicalizationMethodType.Any">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CanonicalizationMethodType.Algorithm">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SignedInfoType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignedInfoType.CanonicalizationMethod">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignedInfoType.SignatureMethod">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignedInfoType.Reference">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignedInfoType.Id">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SignatureType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureType.SignedInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureType.SignatureValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureType.KeyInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureType.Object">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SignatureType.Id">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExternalTextDocumentT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExternalTextDocumentT.Text">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExternalTextDocumentT.lang">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExternalTextT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExternalTextT.TextId">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExternalTextT.Value">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.LanguageT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.LanguageT.Text">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.LanguageT.lang">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ErrorCode2T">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ErrorCode2T.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ErrorCode2T.Help">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExternalTextRefT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExternalTextRefT.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ErrorCode2ItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ErrorCode2ItemT.ErrorCode2">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.LogBookEntryItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.LogBookEntryItemT.Item">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.LogBookEntryItemT.Status">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.LogBookEntryItemTErrorCode2List">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.LogBookEntryItemTErrorCode2List.ErrorCode2Item">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemT.Ref">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemT.API">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemT.UserStructureIdentifier">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemTRef">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemTRef.DataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileUnitDiagTypeItemTRef.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Bit">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.BitArea">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Integer8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Integer16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Integer32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Integer64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Unsigned16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Unsigned32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Unsigned64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Float32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.Float64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.VisibleString">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.UnitDiagRefTypeEnumT.OctetString">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ValueItemReferenceT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.ValueItemTarget">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.ByteOffset">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.BitOffset">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.BitLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.TextId">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.Length">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemReferenceT.LengthSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RecordDataRefT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataRefT.ID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataRefT.DataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataRefT.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataRefT.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataRefT.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataRefT.Visible">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Bit">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.BitArea">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Integer8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Integer16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Integer32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Integer64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Float32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Float64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Date">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeOfDaywithdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeOfDaywithoutdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeDifferencewithdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeDifferencewithoutdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.NetworkTime">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.NetworkTimeDifference">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.VisibleString">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.OctetString">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned8Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Float32Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Boolean">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.UnicodeString8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Item61131_STRING">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Item61131_WSTRING">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeStamp">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeStampDifference">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.TimeStampDifferenceShort">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.OctetString2Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned16_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Integer16_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unsigned8_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.OctetString_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.N2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.N4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.V2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.L2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.R2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.T2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.T4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.D2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.E2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.C4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.X2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.X4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RecordDataRefTypeEnumT.Unipolar216">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.UnitDiagTypeItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UnitDiagTypeItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UnitDiagTypeItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UnitDiagTypeItemT.Ref">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UnitDiagTypeItemT.UserStructureIdentifier">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.UnitDiagTypeItemTRef">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UnitDiagTypeItemTRef.DataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UnitDiagTypeItemTRef.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileChannelProcessAlarmItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelProcessAlarmItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelProcessAlarmItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelProcessAlarmItemT.ExtChannelProcessAlarmList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelProcessAlarmItemT.API">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelProcessAlarmItemT.Reason">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExtChannelProcessAlarmItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelProcessAlarmItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelProcessAlarmItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelProcessAlarmItemT.ProcessAlarmReasonAddValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelProcessAlarmItemT.Reason">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueItemT.Id">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueItemT.DataType">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Integer8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Integer16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Integer32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Integer64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Unsigned16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Unsigned32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Unsigned64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Float32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ProcessAlarmReasonAddValueDataItemTypeEnumT.Float64">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileExtChannelProcessAlarmItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelProcessAlarmItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelProcessAlarmItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelProcessAlarmItemT.ProcessAlarmReasonAddValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelProcessAlarmItemT.Reason">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemDefinedChannelProcessAlarmItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemDefinedChannelProcessAlarmItemT.ExtChannelProcessAlarmList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemDefinedChannelProcessAlarmItemT.Reason">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemDefinedChannelProcessAlarmItemTProfileExtChannelProcessAlarmItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemDefinedChannelProcessAlarmItemTProfileExtChannelProcessAlarmItem.API">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ChannelProcessAlarmItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelProcessAlarmItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelProcessAlarmItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelProcessAlarmItemT.ExtChannelProcessAlarmList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelProcessAlarmItemT.Reason">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT.ExtChannelDiagList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT.API">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT.ErrorType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileChannelDiagItemT.MaintenanceAlarmState">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExtChannelDiagItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelDiagItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelDiagItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelDiagItemT.ExtChannelAddValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelDiagItemT.ErrorType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelDiagItemT.MaintenanceAlarmState">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExtChannelAddValueItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelAddValueItemT.Id">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ExtChannelAddValueItemT.DataType">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Integer8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Integer16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Integer32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Unsigned16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Unsigned32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.ExtChannelAddValueDataItemTypeEnumT.Float32">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileExtChannelDiagItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelDiagItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelDiagItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelDiagItemT.ExtChannelAddValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelDiagItemT.ErrorType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileExtChannelDiagItemT.MaintenanceAlarmState">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemDefinedChannelDiagItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemDefinedChannelDiagItemT.ExtChannelDiagList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemDefinedChannelDiagItemT.ErrorType">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemDefinedChannelDiagItemTProfileExtChannelDiagItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemDefinedChannelDiagItemTProfileExtChannelDiagItem.API">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ChannelDiagItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelDiagItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelDiagItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelDiagItemT.ExtChannelDiagList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelDiagItemT.ErrorType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ChannelDiagItemT.MaintenanceAlarmState">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SystemRedundancyT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.DeviceType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.MaxSwitchOverTime">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.PrimaryAR_OnBothNAPsSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.PrimaryAR_OnBothNAPsSupportedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.RT_InputOnBackupAR_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.NumberOfAR_Sets">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.MinRDHT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.MinRDHTSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.DataInvalidOnBackupAR_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.S2MaxInputOnBackupDelay">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.S2MaxInputOnBackupDelaySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.R2MaxInputOnBackupDelay">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SystemRedundancyT.R2MaxInputOnBackupDelaySpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SRDeviceTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SRDeviceTypeEnumT.S2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SRDeviceTypeEnumT.R1">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SRDeviceTypeEnumT.R2">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteT.TimingProperties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteT.AR_BlockVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteT.IOCR_BlockVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteT.AlarmCR_BlockVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteT.SubmoduleDataBlockVersion">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteTTimingProperties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteTTimingProperties.SendClock">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsObsoleteTTimingProperties.ReductionRatio">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MAUTypeItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MAUTypeItemT.Value">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MAUTypeItemT.Extension">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MAUTypeItemT.AdjustSupported">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationRelationsT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.TimingProperties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.RT_Class3TimingProperties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.StartupMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.NumberOfAdditionalInputCR">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.NumberOfAdditionalOutputCR">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.NumberOfAdditionalMulticastProviderCR">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.NumberOfMulticastConsumerCR">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.PullModuleAlarmSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsT.NumberOfAR">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationRelationsTTimingProperties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTTimingProperties.SendClock">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTTimingProperties.ReductionRatio">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTTimingProperties.ReductionRatioPow2">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTTimingProperties.PreferredSendClock">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTTimingProperties.PreferredSendClockSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.SendClock">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.ReductionRatio">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.ReductionRatioPow2">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.MaxReductionRatioIsochroneMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.MaxReductionRatioIsochroneModeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.PreferredSendClock">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationRelationsTRT_Class3TimingProperties.PreferredSendClockSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RT_Class3PropertiesT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.StartupMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.ForwardingMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxBridgeDelay">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxBridgeDelayFFW">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxBridgeDelayFFWSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxDFP_Feed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxDFP_FeedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxDFP_Frames">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.AlignDFP_Subframes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.DFP_OutboundTruncationSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.DFP_RedundantPathLayoutSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxNumberIR_FrameData">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxRangeIR_FrameID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.FragmentationType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.FragmentationTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxRedPeriodLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MinFSO">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MinRTC3_Gap">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MinYellowTime">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.YellowSafetyMargin">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxRetentionTime">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RT_Class3PropertiesT.MaxRetentionTimeSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.FragmentationTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FragmentationTypeEnumT.Dynamic">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FragmentationTypeEnumT.Static">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PROFIenergyT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.EnergySavingModeList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.MeasurementList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.ProfileVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.EntityClass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.EntityClassSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.EntitySubclass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.EntitySubclassSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.DynamicTimeAndEnergyValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyT.PESAP_uses_PROFIenergyASE">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.ID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.TimeToPause">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.RTTO">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.TimeMinLengthOfStay">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.PowerConsumption">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.EnergyConsumptionToDestination">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTEnergySavingModeItem.EnergyConsumptionToOperation">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItem.MeasurementValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItem.Number">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItem.NumberSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItemMeasurementValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItemMeasurementValue.ID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItemMeasurementValue.AccuracyDomain">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PROFIenergyTMeasurementItemMeasurementValue.AccuracyClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PE_EntityClassEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.PE_EntityClassEnumT.Class1">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.PE_EntityClassEnumT.Class2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.PE_EntityClassEnumT.Class3">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PE_EntitySubclassEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.PE_EntitySubclassEnumT.Subclass1">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.PE_EntitySubclassEnumT.Subclass2">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Check_iPar">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_SIL">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_CRC_Length">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_CRC_Seed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Passivation">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Block_ID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Par_Version">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Source_Add">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Dest_Add">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_WD_Time">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_Par_CRC">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_iPar_CRC">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_ParamDescCRC">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.F_SupportedParameters">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.Index">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.TransferSequence">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataT.ChangeableWithBump">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Check_iPar">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Check_iPar.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Check_iPar.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Check_iPar.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Check_iPar.Visible">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_Check_iParEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_Check_iParEnumT.Check">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_Check_iParEnumT.NoCheck">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_SIL">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_SIL.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_SIL.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_SIL.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_SIL.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_SIL.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_SIL_EnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_SIL_EnumT.SIL1">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_SIL_EnumT.SIL2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_SIL_EnumT.SIL3">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_SIL_EnumT.NoSIL">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Length">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Length.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Length.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Length.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Length.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Length.Visible">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_CRC_LengthEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_CRC_LengthEnumT.Item3ByteCRC">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_CRC_LengthEnumT.Item4ByteCRC">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.DefaultValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_CRC_Seed.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_CRC_SeedEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_CRC_SeedEnumT.CRCSeed2432">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Passivation.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_PassivationEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_PassivationEnumT.DeviceModule">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.F_PassivationEnumT.Channel">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Block_ID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Block_ID.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Block_ID.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Block_ID.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Block_ID.Visible">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.DefaultValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_Version.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Source_Add.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Dest_Add.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_WD_Time.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_Par_CRC.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC.DefaultValue">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC.Changeable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC.ChangeableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC.Visible">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.F_ParameterRecordDataTF_iPar_CRC.VisibleSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ParameterRecordDataT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.MenuList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.Index">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.Length">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.TransferSequence">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRecordDataT.ChangeableWithBump">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RecordDataConstT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataConstT.ByteOffset">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.RecordDataConstT.Data">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MenuItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MenuItemT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MenuItemT.Items">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MenuRefT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.MenuRefT.MenuTarget">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ParameterRefT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ParameterRefT.ParameterTarget">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ObjectT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ObjectT.ID">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CategoryItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CategoryItemT.InfoText">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CategoryItemT.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.GraphicItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.GraphicItemT.Embedded">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.GraphicItemT.GraphicFile">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.GraphicItemTEmbedded">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.GraphicItemTEmbedded.Text">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ValueItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemT.Help">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueItemT.Assignments">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ValueAssignmentsTAssign">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueAssignmentsTAssign.TextId">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ValueAssignmentsTAssign.Content">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ModuleItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.ModuleInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.SubslotList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.VirtualSubmoduleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.SystemDefinedSubmoduleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.UseableSubmodules">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.Graphics">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.ModuleIdentNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.RequiredSchemaVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.PhysicalSubslots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.FieldbusType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleItemT.FieldbusTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ModuleInfoT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.InfoText">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.Family">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.VendorName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.OrderNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.HardwareRelease">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.SoftwareRelease">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.CategoryRef">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ModuleInfoT.SubCategory1Ref">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.FamilyT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.FamilyT.MainFamily">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.FamilyT.ProductFamily">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.FamilyEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.General">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.Drives">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.SwitchingDevices">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.IO">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.Valves">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.Controllers">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.HMI">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.Encoders">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.NCRC">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.Gateway">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.PLCs">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.IdentSystems">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.PAProfiles">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.NetworkComponents">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.FamilyEnumT.Sensors">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.TokenParameterT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.TokenParameterT.Value">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubslotListTSubslotItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubslotListTSubslotItem.SubslotNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubslotListTSubslotItem.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.BuiltInSubmoduleItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.BuiltInSubmoduleItemT.FixedInSubslots">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubmoduleItemBaseT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.IOData">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.RecordDataList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.ModuleInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.Graphics">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.IsochroneMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.SlotCluster">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.PROFIenergy">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.ReportingSystemEvents">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.SubmoduleIdentNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.API">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.PROFIsafeSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.Writeable_IM_Records">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.IM5_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.Max_iParameterSize">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.SubsysModuleDirIndex">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.SubsysModuleDirIndexSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.SupportedSubstitutionModes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseT.MayIssueProcessAlarm">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIOData">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIOData.Input">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIOData.Output">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIOData.F_IO_StructureDescVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIOData.F_IO_StructureDescCRC">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIOData.F_IO_StructureDescCRCSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataT.DataItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataT.Channel">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataT.Consistency">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataTDataItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.BitDataItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.DataType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.Length">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.LengthSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.UseAsBits">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.Subordinate">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItem.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataTDataItemBitDataItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItemBitDataItem.BitOffset">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTDataItemBitDataItem.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DataItemTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Integer8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Integer16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Integer32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Integer64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned16">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Float32">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Float64">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Date">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeOfDaywithdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeOfDaywithoutdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeDifferencewithdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeDifferencewithoutdateindication">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.NetworkTime">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.NetworkTimeDifference">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.VisibleString">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.OctetString">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Float32Status8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.F_MessageTrailer4Byte">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.F_MessageTrailer5Byte">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned8Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Float32Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Boolean">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.UnicodeString8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Item61131_STRING">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Item61131_WSTRING">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeStamp">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeStampDifference">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.TimeStampDifferenceShort">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.OctetString2Unsigned8">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned16_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Integer16_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unsigned8_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.OctetString_S">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.N2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.N4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.V2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.L2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.R2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.T2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.T4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.D2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.E2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.C4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.X2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.X4">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.DataItemTypeEnumT.Unipolar216">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataTChannel">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannel.Data">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannel.Quality">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannel.Number">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataTChannelData">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannelData.BitOffset">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannelData.BitLength">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataTChannelQuality">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannelQuality.BitOffset">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannelQuality.Format">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.IODataTChannelQuality.OppositeDirection">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.QualityFormat_EnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.QualityFormat_EnumT.Qualifier">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.QualityFormat_EnumT.EmbeddedStatus">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.QualityFormat_EnumT.Status">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.IODataConsistencyEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.IODataConsistencyEnumT.Itemconsistency">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.IODataConsistencyEnumT.Allitemsconsistency">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubmoduleItemBaseTRecordDataList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTRecordDataList.ParameterRecordDataItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTRecordDataList.F_ParameterRecordDataItem">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.GraphicsReferenceTGraphicItemRef">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.GraphicsReferenceTGraphicItemRef.Type">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.GraphicsReferenceTGraphicItemRef.GraphicItemTarget">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.GraphicsTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.GraphicsTypeEnumT.DeviceSymbol">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.GraphicsTypeEnumT.DeviceIcon">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.T_DC_Base">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.T_DC_Min">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.T_DC_Max">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.T_IO_Base">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.T_IO_InputMin">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.T_IO_OutputMin">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTIsochroneMode.IsochroneModeRequired">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubmoduleItemBaseTSlotCluster">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTSlotCluster.Count">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemBaseTSlotCluster.FieldbusType">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ReportingSystemEventsTObserver">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ReportingSystemEventsTObserver.Type">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SubmoduleItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SubmoduleItemT.RequiredSchemaVersion">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.BuiltInPortSubmoduleItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.BuiltInPortSubmoduleItemT.SubslotNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.BuiltInPortSubmoduleItemT.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.RecordDataList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MAUTypeList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.SubmoduleIdentNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MAUType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MAUTypes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.FiberOpticTypes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MaxPortTxDelay">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MaxPortTxDelaySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MaxPortRxDelay">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.MaxPortRxDelaySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.PortDeactivationSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.LinkStateDiagnosisCapability">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.LinkStateDiagnosisCapabilitySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.PowerBudgetControlSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.SupportsRingportConfig">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.IsDefaultRingport">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.SupportsMRP_InterconnPortConfig">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.ParameterizationDisallowed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.Writeable_IM_Records">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.IM5_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.CheckMAUTypeSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.CheckMAUTypeSupportedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.CheckMAUTypeDifferenceSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.CheckMAUTypeDifferenceSupportedSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.ShortPreamble100MBitSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseT.ShortPreamble100MBitSupportedSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseTMAUTypeList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseTMAUTypeList.MAUTypeItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemBaseTMAUTypeList.ExtensionSupported">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.MAUTypeEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item100BASETXFD">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item100BASEFXFD">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item1000BASEXFD">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item1000BASELXFD">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item1000BASESXFD">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item1000BASETFD">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.MAUTypeEnumT.Item10GigBASEFX">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.LinkStateDiagnosisEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.LinkStateDiagnosisEnumT.Up">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.LinkStateDiagnosisEnumT.Down">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.LinkStateDiagnosisEnumT.UpDown">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.PortSubmoduleItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemT.ModuleInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemT.Graphics">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.PortSubmoduleItemT.RequiredSchemaVersion">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.UseableSubmodulesTSubmoduleItemRef">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableSubmodulesTSubmoduleItemRef.SubmoduleItemTarget">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableSubmodulesTSubmoduleItemRef.AllowedInSubslots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableSubmodulesTSubmoduleItemRef.UsedInSubslots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableSubmodulesTSubmoduleItemRef.FixedInSubslots">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.General">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.RecordDataList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.RT_Class3Properties">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.SynchronisationMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.TimeSynchronisation">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.ReportingSystem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.ApplicationRelations">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.MediaRedundancy">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.SubmoduleIdentNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.TextId">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.SubslotNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.SupportedRT_Class">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.SupportedRT_Classes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.IsochroneModeSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.IsochroneModeInRT_Classes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.SupportedProtocols">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.NetworkComponentDiagnosisSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.DCP_HelloSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.PTP_BoundarySupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.DCP_BoundarySupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.MulticastBoundarySupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.ParameterizationDisallowed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.DelayMeasurementSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.Writeable_IM_Records">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.IM5_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.MaxFrameStartTime">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.MinNRT_Gap">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.PDEV_CombinedObjectSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemT.UsesStaticARP_CacheEntries">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTGeneral">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTGeneral.DCP_FlashOnceSignalUnit">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.SupportedRole">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.MaxLocalJitter">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.MaxLocalJitterSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.T_PLL_MAX">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.PeerToPeerJitter">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.PeerToPeerJitterSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTSynchronisationMode.SupportedSyncProtocols">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SyncRoleEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SyncRoleEnumT.SyncMaster">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SyncRoleEnumT.SyncMasterRedundant">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SyncRoleEnumT.SyncSlave">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SyncRoleEnumT.SyncMasterSyncSlave">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.SyncRoleEnumT.SyncMasterRedundantSyncSlave">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTTimeSynchronisation">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTReportingSystem">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.Interconnection">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.SupportedRole">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.SupportedMultipleRole">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.MaxMRP_Instances">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.MaxMRP_InstancesSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.MRPD_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.MRT_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.AdditionalProtocolsSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancy.AdditionalForwardingRulesSupported">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancyInterconnection">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancyInterconnection.SupportedMRP_InterconnRole">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancyInterconnection.MaxMRP_InterconnInstances">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.InterfaceSubmoduleItemTMediaRedundancyInterconnection.MaxMRP_InterconnInstancesSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.RT_ClassEnumT">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RT_ClassEnumT.Class1">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RT_ClassEnumT.Class2">
+            <remarks/>
+        </member>
+        <member name="F:Gsd2Aml.Lib.Models.RT_ClassEnumT.Class3">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceAccessPointItemT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ModuleInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.CertificationInfo">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SubslotList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.IOConfigData">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.UseableModules">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ARVendorBlock">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.VirtualSubmoduleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SystemDefinedSubmoduleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.Graphics">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.AssetManagement">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ApplicationRelations">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SystemRedundancy">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.UseableSubmodules">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SlotList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SlotGroups">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.FieldbusIntegrationSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ModuleIdentNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.PNIO_Version">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.PhysicalSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.MinDeviceInterval">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ImplementationType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.DNS_CompatibleName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.AllowedInSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.FixedInSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ObjectUUID_LocalIndex">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.RequiredSchemaVersion">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.MultipleWriteSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.IOXS_Required">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.AddressAssignment">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.PhysicalSubslots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.RemoteApplicationTimeout">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.MaxSupportedRecordSize">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.PowerOnToCommReady">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ParameterizationSpeedupSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.NameOfStationNotTransferable">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SharedDeviceSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.SharedInputSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.DeviceAccessSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.NumberOfDeviceAccessAR">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.NumberOfDeviceAccessARSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.NumberOfImplicitAR">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.WebServer">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.AutoConfigurationSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.CIR_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.PrmBeginPrmEndSequenceSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.LLDP_NoD_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.ResetToFactoryModes">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.IO_SupervisorSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.CheckDeviceID_Allowed">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.PROFIenergyASE_Supported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.AdaptsRealIdentification">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.NumberOfSubmodules">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemT.NumberOfSubmodulesSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.CertificationInfoT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CertificationInfoT.ConformanceClass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CertificationInfoT.ApplicationClass">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.CertificationInfoT.NetloadClass">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxInputLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxOutputLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxDataLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxDataLengthSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.ApplicationLengthIncludesIOxS">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxApplicationInputLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxApplicationInputLengthSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxApplicationOutputLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxApplicationOutputLengthSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxApplicationDataLength">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTIOConfigData.MaxApplicationDataLengthSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.UseableModulesTModuleItemRef">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableModulesTModuleItemRef.ModuleItemTarget">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableModulesTModuleItemRef.AllowedInSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableModulesTModuleItemRef.UsedInSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.UseableModulesTModuleItemRef.FixedInSlots">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ARVendorBlockRequestT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ARVendorBlockRequestT.Items">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ARVendorBlockRequestT.MenuList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ARVendorBlockRequestT.Length">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ARVendorBlockRequestT.API">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ARVendorBlockRequestT.APStructureIdentifier">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceAccessPointItemTSystemDefinedSubmoduleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTSystemDefinedSubmoduleList.InterfaceSubmoduleItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTSystemDefinedSubmoduleList.PortSubmoduleItem">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceAccessPointItemTAssetManagement">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SlotListTSlotItem">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SlotListTSlotItem.SlotNumber">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SlotListTSlotItem.TextId">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.SlotGroupsTSlotGroup">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SlotGroupsTSlotGroup.Name">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SlotGroupsTSlotGroup.InfoText">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.SlotGroupsTSlotGroup.SlotList">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceAccessPointItemTFieldbusIntegrationSlots">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTFieldbusIntegrationSlots.MaxSupported">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceAccessPointItemTFieldbusIntegrationSlots.Range">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationProcessT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.DeviceAccessPointList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.ModuleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.SubmoduleList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.ValueList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.ChannelDiagList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.ChannelProcessAlarmList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.UnitDiagTypeList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.LogBookEntryList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.GraphicsList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.CategoryList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessT.ExternalTextList">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ApplicationProcessTExternalTextList">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessTExternalTextList.PrimaryLanguage">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ApplicationProcessTExternalTextList.Language">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceFunctionT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceFunctionT.Family">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.DeviceIdentityT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceIdentityT.InfoText">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceIdentityT.VendorName">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceIdentityT.VendorID">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.DeviceIdentityT.DeviceID">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.ProfileBodyT">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileBodyT.DeviceIdentity">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileBodyT.DeviceFunction">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.ProfileBodyT.ApplicationProcess">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Models.TransformsType">
+            <remarks/>
+        </member>
+        <member name="P:Gsd2Aml.Lib.Models.TransformsType.Transform">
+            <remarks/>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Compressor">
+            <summary>
+            Compress an AML file and its resources to an .amlx package using the AML.Engine.
+            </summary>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Compressor.Compress(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            Creates a zip archive from a directory and the relevant GSD resources.
+            </summary>
+            <param name="amlFilePath">The path to the AML file which will be zipped.</param>
+            <param name="destination">The directory you want to store the archive in including the name of the archive.amlx.</param>
+            <param name="resources">An array of paths to the resources to be part of the .amlx package.</param>
+            <param name="overwriteFile">A flag which indicates if the file should be overwritten if it exists.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Compressor.Zip(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Creates a zip archive from a directory.
+            </summary>
+            <param name="sourceAml">The directory you want to be zipped.</param>
+            <param name="destination">The directory you want to store the zip archive in.</param>
+            <param name="resources">An array of paths to the resources to be part of the .amlx package.</param>
+            <param name="overwriteFile">A flag which indicates if the file should be overwritten if it exists.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Compressor.CreateTmpDirectory(System.String)">
+            <summary>
+            Creates a new directory in the temporary folder of Windows.
+            </summary>
+            <param name="folderName">The name of the folder to be created.</param>
+            <returns>The path to the directory as a string.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.IO.PathTooLongException"></exception>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Compressor.CopyFile(System.String,System.String)">
+            <summary>
+            Moves a file from one directory to another.
+            </summary>
+            <param name="source">The source path.</param>
+            <param name="destination">The destination path.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.IO.PathTooLongException"></exception>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Compressor.DeleteFolder(System.String)">
+            <summary>
+            Deletes a folder if it exists.
+            </summary>
+            <param name="destination">The destination path.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.IO.PathTooLongException"></exception>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Compressor.CreateDirectory(System.String)">
+            <summary>
+            Creates a directory path.
+            </summary>
+            <param name="destination">The directory path.</param>
+            <returns>Path to the created directory.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.IO.PathTooLongException"></exception>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Gsd2Aml.Lib.Util">
+            <summary>
+            Contains utility functions which provide helping functionalities for the conversion process.
+            </summary>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.GetProperty(System.String)">
+            <summary>
+            Gets the property information (PropertyInfo, Type, bool isArray) of a string.
+            The string indicates a way through the properties. The different "stations" are separated by dots.
+            </summary>
+            <param name="searchedProperty">The by dots separated string.</param>
+            <returns>The property info, the type of the found property and if the type is an array.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.SearchPropertyByString(System.Type,System.String)">
+            <summary>
+            Recursively searches a class to find a property by string.
+            </summary>
+            <param name="type">The type object, which represents the currently iterated class.</param>
+            <param name="propertyName">The name of the property being searched for.</param>
+            <returns>The PropertyInfo object if the property was found or null if it does not exist.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.IsSimpleType(System.Type)">
+            <summary>
+            Checks if a given type is a simple/primitive type.
+            </summary>
+            <param name="type">The type which should be checked.</param>
+            <returns>A boolean which indicates if the given type is a simple type.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.GetInformationFromRule(System.Xml.XmlNode)">
+            <summary>
+            This function gets the relevant information (replacement, references) from a translation rule.
+            </summary>
+            <param name="translationRule">The translation rule that is parsed.</param>
+            <returns>The replacement node and a list which contains all references.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.ParseReferences(System.Collections.Generic.IEnumerable{System.Xml.XmlNode},System.Xml.XmlNode)">
+            <summary>
+            Parses the references given in the translation table and saves them to a dictionary.
+            </summary>
+            <param name="ruleReferences">The references in a list of XmlNodes.</param>
+            <param name="xmlNode">Optional parameter which is a GSD tag and will be used instead of the iterated one.</param>
+            <returns>A dictionary which contains for each reference identifier the correct value.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.ParseRealReference(System.String,System.Xml.XmlNode,System.String,System.String,System.String,System.String,System.Xml.XmlNode)">
+            <summary>
+            Parse real references (TextRef, GraphicRef) and find the correct value.
+            </summary>
+            <param name="path">Path to the real GSD element.</param>
+            <param name="reference">The reference contains the reference.</param>
+            <param name="referenceIdName">The referenceIdName contains the name of the reference id.</param>
+            <param name="realIdName">The realIdName contains the name of the real id.</param>
+            <param name="realElementName">The realElementname contains the name of the real element tag.</param>
+            <param name="realValueName">The realValueName contains the name of the real value attribute.</param>
+            <param name="xmlNode">Optional parameter which is a GSD tag and will be used instead of the iterated one.</param>
+            <returns>The value of the real reference.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.IterateThroughGsdDocument(System.String,System.Xml.XmlElement)">
+            <summary>
+            Iterates through the GSD document with the given path.
+            </summary>
+            <param name="path">The by dots seperated path through the GSD docment.</param>
+            <param name="alternativeIterator">Optional parameter. If it is set the iteration starts from there.</param>
+            <returns>The last XmlNode of the path.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.CheckGsdFileForCorrectness(System.String)">
+            <summary>
+            This method checks the GSD file against the the xsd-files and validates it.
+            </summary>
+            <param name="inputFile">The path to the GSD file.</param>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.LoadXmlDocument(System.String)">
+            <summary>
+            This method loads an XML file to an XmlDocument and returns it.
+            </summary>
+            <param name="filePath">The file path as a string.</param>
+            <returns>The XmlDocument object which contains the deserialized form of the XML file.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.LoadTranslationTable">
+            <summary>
+            This method loads the translation table. There are two different cases for loading the table.
+            The translation table is in the installation folder located and named like 'gsd2aml.xml'.
+            If the translation table is not in the installation folder, it will be loaded from resources.
+            </summary>
+            <returns>Returns the translation table XmlDocument object.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.GetOutputFileName(System.String)">
+            <summary>
+            This function generates the correct output file name for the string conversion method.
+            </summary>
+            <param name="inputFile">The path to the input file.</param>
+            <returns>The correctly generated output file name.</returns>
+        </member>
+        <member name="M:Gsd2Aml.Lib.Util.CreateInstance(System.Type,System.Boolean)">
+            <summary>
+            This function creates the an instance out of a type and a flag whether an array needs to be created or not.
+            </summary>
+            <param name="propertyType">The type object which describes the type of the instance.</param>
+            <param name="isPropertyArray">Flag which indicates whether an array is needed.</param>
+            <returns>An instance of the type which the propertyType parameter describes. If an array is needed, it creates a list.</returns>
+        </member>
+    </members>
+</doc>
