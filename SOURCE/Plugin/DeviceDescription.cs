@@ -477,7 +477,6 @@ namespace Aml.Editor.Plugin
         {
             string searchName = "";
             var AutomationMLDataTables = new AutomationMLDataTables();
-            ClearHeaderTabPageValuesofElectricalInterfaces();
 
             TreeNode targetNode = treeViewElectricalInterfaces.SelectedNode;
             /* targetNode.SelectedImageIndex = targetNode.ImageIndex;*/
@@ -503,24 +502,6 @@ namespace Aml.Editor.Plugin
                                     AutomationMLDataTables.CreateDataTableWithColumns(AMLDataTable, elecInterAttDataGridView, pair);
                                 }
                             }
-                            foreach (var pair in device.DictionaryForExternalInterfacesUnderInterfaceClassInElectricalInterfaces)
-                            {
-                                if (pair.Key.ToString() == searchName)
-                                {
-                                    foreach (var valueList in pair.Value)
-                                    {
-                                        foreach (var item in valueList)
-                                        {
-                                            descriptionTxtBoxElecAttri.Text = item.Description;
-                                            copyrightTxtBxElecAttri.Text = item.CopyRight;
-                                            RefClassNameTxtBxElecAttri.Text = item.ReferencedClassName;
-                                            RefBaseClassPathTxtBxElecAttri.Text = item.RefBaseClassPath;
-                                            attributepathTxtBxElecAttri.Text = item.AttributePath;
-                                            idTxtBxElecAttri.Text = item.ID;
-                                        }
-                                    }
-                                }
-                            }
                         }
                         else
                         {
@@ -533,25 +514,6 @@ namespace Aml.Editor.Plugin
                                 {
                                     DataTable AMLDataTable = AutomationMLDataTables.AMLAttributeParameters();
                                     AutomationMLDataTables.CreateDataTableWithColumns(AMLDataTable, elecInterAttDataGridView, pair);
-                                }
-                            }
-                            foreach (var pair in device.DictionaryForInterfaceClassesInElectricalInterfaces)
-                            {
-                                if (pair.Key.ToString() == searchName)
-                                {
-
-                                    foreach (var valueList in pair.Value)
-                                    {
-                                        foreach (var item in valueList)
-                                        {
-                                            descriptionTxtBoxElecAttri.Text = item.Description;
-                                            copyrightTxtBxElecAttri.Text = item.CopyRight;
-                                            RefClassNameTxtBxElecAttri.Text = item.ReferencedClassName;
-                                            RefBaseClassPathTxtBxElecAttri.Text = item.RefBaseClassPath;
-                                            attributepathTxtBxElecAttri.Text = item.AttributePath;
-                                            idTxtBxElecAttri.Text = item.ID;
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -1184,7 +1146,6 @@ namespace Aml.Editor.Plugin
             TreeNode targetNode = node;
 
             /* targetNode.SelectedImageIndex = targetNode.ImageIndex;*/
-            ClearHeaderTabPageValuesofgenericData();
             genericparametersAttrDataGridView.Rows.Clear();
 
             try
@@ -1202,24 +1163,6 @@ namespace Aml.Editor.Plugin
                         }
 
                     }
-                    foreach (var pair in device.DictionaryForExternalInterfacesUnderRoleClassofComponent)
-                    {
-                        if (pair.Key.ToString() == searchName)
-                        {
-                            foreach (var valueList in pair.Value)
-                            {
-                                foreach (var item in valueList)
-                                {
-                                    genericDataDescriptionTxtBx.Text = item.Description;
-                                    genericDataCopyrightTxtBx.Text = item.CopyRight;
-                                    genericDataRefClassNameTxtBx.Text = item.ReferencedClassName;
-                                    genericDataRefBaseClassPathTxtBx.Text = item.RefBaseClassPath;
-                                    genericDataAttributePathTxtBx.Text = item.AttributePath;
-                                    genericDataIDTxtBx.Text = item.ID;
-                                }
-                            }
-                        }
-                    }
                 }
                 else
                 {
@@ -1236,25 +1179,6 @@ namespace Aml.Editor.Plugin
                         }
 
                     }
-                    foreach (var pair in device.DictionaryForRoleClassofComponent)
-                    {
-                        if (pair.Key.ToString() == searchName)
-                        {
-
-                            foreach (var valueList in pair.Value)
-                            {
-                                foreach (var item in valueList)
-                                {
-                                    genericDataDescriptionTxtBx.Text = item.Description;
-                                    genericDataCopyrightTxtBx.Text = item.CopyRight;
-                                    genericDataRefClassNameTxtBx.Text = item.ReferencedClassName;
-                                    genericDataRefBaseClassPathTxtBx.Text = item.RefBaseClassPath;
-                                    genericDataAttributePathTxtBx.Text = item.AttributePath;
-                                    genericDataIDTxtBx.Text = item.ID;
-                                }
-                            }
-                        }
-                    }
                 }
             }
             catch (Exception) { }
@@ -1268,7 +1192,6 @@ namespace Aml.Editor.Plugin
             TreeNode targetNode = genericInformationtreeView.SelectedNode;
 
             /* targetNode.SelectedImageIndex = targetNode.ImageIndex;*/
-            ClearHeaderTabPageValuesofgenericData();
             genericparametersAttrDataGridView.Rows.Clear();
 
             try
@@ -1290,25 +1213,6 @@ namespace Aml.Editor.Plugin
                                 }
 
                             }
-                            foreach (var pair in device.DictionaryForExternalInterfacesUnderRoleClassofComponent)
-                            {
-                                if (pair.Key.ToString() == searchName)
-                                {
-                                    foreach (var valueList in pair.Value)
-                                    {
-                                        foreach (var item in valueList)
-                                        {
-                                            genericDataDescriptionTxtBx.Text = item.Description;
-                                            genericDataCopyrightTxtBx.Text = item.CopyRight;
-                                            genericDataRefClassNameTxtBx.Text = item.ReferencedClassName;
-                                            genericDataRefBaseClassPathTxtBx.Text = item.RefBaseClassPath;
-                                            genericDataAttributePathTxtBx.Text = item.AttributePath;
-                                            genericDataIDTxtBx.Text = item.ID;
-                                        }
-                                    }
-                                }
-
-                            }
                         }
                         else
                         {
@@ -1324,25 +1228,6 @@ namespace Aml.Editor.Plugin
 
                                 }
 
-                            }
-                            foreach (var pair in device.DictionaryForRoleClassofComponent)
-                            {
-                                if (pair.Key.ToString() == searchName)
-                                {
-
-                                    foreach (var valueList in pair.Value)
-                                    {
-                                        foreach (var item in valueList)
-                                        {
-                                            genericDataDescriptionTxtBx.Text = item.Description;
-                                            genericDataCopyrightTxtBx.Text = item.CopyRight;
-                                            genericDataRefClassNameTxtBx.Text = item.ReferencedClassName;
-                                            genericDataRefBaseClassPathTxtBx.Text = item.RefBaseClassPath;
-                                            genericDataAttributePathTxtBx.Text = item.AttributePath;
-                                            genericDataIDTxtBx.Text = item.ID;
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
@@ -1360,28 +1245,6 @@ namespace Aml.Editor.Plugin
                 targetNode.SelectedImageIndex = targetNode.ImageIndex;
             }
             catch (Exception) { }
-        }
-
-        public void ClearHeaderTabPageValuesofElectricalInterfaces()
-        {
-            descriptionTxtBoxElecAttri.Text = "";
-            copyrightTxtBxElecAttri.Text = "";
-            RefClassNameTxtBxElecAttri.Text = "";
-            RefBaseClassPathTxtBxElecAttri.Text = "";
-            attributepathTxtBxElecAttri.Text = "";
-            idTxtBxElecAttri.Text = "";
-            nameTxtBxElecAttri.Text = "";
-        }
-
-        public void ClearHeaderTabPageValuesofgenericData()
-        {
-            genericDataDescriptionTxtBx.Text = "";
-            genericDataCopyrightTxtBx.Text = "";
-            genericDataRefClassNameTxtBx.Text = "";
-            genericDataRefBaseClassPathTxtBx.Text = "";
-            genericDataAttributePathTxtBx.Text = "";
-            genericDataIDTxtBx.Text = "";
-            genericDataNameTxtBx.Text = "";
         }
 
         private void deleterowsInelectricalInterfacesDataGridView_Click(object sender, EventArgs e)
@@ -3564,8 +3427,6 @@ namespace Aml.Editor.Plugin
             electricalInterfacesCollectionDataGridView.Rows.Clear();
             elecInterAttDataGridView.Rows.Clear();
             treeViewElectricalInterfaces.Nodes.Clear();
-            ClearHeaderTabPageValuesofgenericData();
-            ClearHeaderTabPageValuesofElectricalInterfaces();
 
 
             device.DictionaryForInterfaceClassesInElectricalInterfaces = new Dictionary<string, List<List<ClassOfListsFromReferencefile>>>();
@@ -3818,7 +3679,6 @@ namespace Aml.Editor.Plugin
 
         private void elecInterAttDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ClearHeaderTabPageValuesofElectricalInterfaces();
             elecInterAttDataGridView.CurrentRow.Selected = true;
 
             string attributeName = "";
@@ -3914,16 +3774,6 @@ namespace Aml.Editor.Plugin
                                 {
                                     if (item.Name.ToString() == attributeName)
                                     {
-
-
-                                        descriptionTxtBoxElecAttri.Text = item.Description;
-                                        copyrightTxtBxElecAttri.Text = item.CopyRight;
-                                        RefClassNameTxtBxElecAttri.Text = item.ReferencedClassName;
-                                        RefBaseClassPathTxtBxElecAttri.Text = item.RefBaseClassPath;
-                                        attributepathTxtBxElecAttri.Text = item.AttributePath;
-                                        idTxtBxElecAttri.Text = item.ID;
-                                        nameTxtBxElecAttri.Text = item.Name;
-
                                         foreach (var pair2 in device.DictionaryForInterfaceClassesInElectricalInterfaces)
                                         {
                                             if (pair2.Key.ToString() == interfaceClass)
@@ -3946,14 +3796,6 @@ namespace Aml.Editor.Plugin
                                                                 var refsems = item2.RefSemanticList.Append();
                                                                 refsems.CorrespondingAttributePath = str;
                                                             }
-
-                                                            item2.Description = descriptionTxtBoxElecAttri.Text;
-                                                            item2.CopyRight = copyrightTxtBxElecAttri.Text;
-                                                            item2.ReferencedClassName = RefClassNameTxtBxElecAttri.Text;
-                                                            item2.RefBaseClassPath = RefBaseClassPathTxtBxElecAttri.Text;
-                                                            item2.AttributePath = attributepathTxtBxElecAttri.Text;
-                                                            item2.ID = idTxtBxElecAttri.Text;
-                                                            item2.Name = nameTxtBxElecAttri.Text;
                                                         }
                                                     }
                                                 }
@@ -3978,16 +3820,6 @@ namespace Aml.Editor.Plugin
                                          item.Default = defaults;
                                          item.Unit = Units;
                                          item.Semantic = semantics;*/
-
-
-                                        descriptionTxtBoxElecAttri.Text = item.Description;
-                                        copyrightTxtBxElecAttri.Text = item.CopyRight;
-                                        RefClassNameTxtBxElecAttri.Text = item.ReferencedClassName;
-                                        RefBaseClassPathTxtBxElecAttri.Text = item.RefBaseClassPath;
-                                        attributepathTxtBxElecAttri.Text = item.AttributePath;
-                                        idTxtBxElecAttri.Text = item.ID;
-                                        nameTxtBxElecAttri.Text = item.Name;
-
                                         foreach (var pair2 in device.DictionaryForExternalInterfacesUnderInterfaceClassInElectricalInterfaces)
                                         {
                                             if (pair2.Key.ToString() == interfaceClass)
@@ -4009,13 +3841,6 @@ namespace Aml.Editor.Plugin
                                                                 var refsems = item2.RefSemanticList.Append();
                                                                 refsems.CorrespondingAttributePath = str;
                                                             }
-                                                            item2.Description = descriptionTxtBoxElecAttri.Text;
-                                                            item2.CopyRight = copyrightTxtBxElecAttri.Text;
-                                                            item2.ReferencedClassName = RefClassNameTxtBxElecAttri.Text;
-                                                            item2.RefBaseClassPath = RefBaseClassPathTxtBxElecAttri.Text;
-                                                            item2.AttributePath = attributepathTxtBxElecAttri.Text;
-                                                            item2.ID = idTxtBxElecAttri.Text;
-                                                            item2.Name = nameTxtBxElecAttri.Text;
                                                         }
                                                     }
                                                 }
@@ -4112,7 +3937,6 @@ namespace Aml.Editor.Plugin
 
         private void genericParametersAttrDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ClearHeaderTabPageValuesofgenericData();
             genericparametersAttrDataGridView.CurrentRow.Selected = true;
 
             string attributeName = "";
@@ -4212,14 +4036,6 @@ namespace Aml.Editor.Plugin
                                 {
                                     if (item.Name.ToString() == attributeName)
                                     {
-                                        genericDataDescriptionTxtBx.Text = item.Description;
-                                        genericDataCopyrightTxtBx.Text = item.CopyRight;
-                                        genericDataRefClassNameTxtBx.Text = item.ReferencedClassName;
-                                        genericDataRefBaseClassPathTxtBx.Text = item.RefBaseClassPath;
-                                        genericDataAttributePathTxtBx.Text = item.AttributePath;
-                                        genericDataIDTxtBx.Text = item.ID;
-                                        genericDataNameTxtBx.Text = item.Name;
-
                                         foreach (var pair2 in device.DictionaryForRoleClassofComponent)
                                         {
                                             if (pair2.Key.ToString() == interfaceClass)
@@ -4241,14 +4057,6 @@ namespace Aml.Editor.Plugin
                                                                 var refsems = item2.RefSemanticList.Append();
                                                                 refsems.CorrespondingAttributePath = str;
                                                             }
-
-                                                            item2.Description = genericDataDescriptionTxtBx.Text;
-                                                            item2.CopyRight = genericDataCopyrightTxtBx.Text;
-                                                            item2.ReferencedClassName = genericDataRefClassNameTxtBx.Text;
-                                                            item2.RefBaseClassPath = genericDataRefBaseClassPathTxtBx.Text;
-                                                            item2.AttributePath = genericDataAttributePathTxtBx.Text;
-                                                            item2.ID = genericDataIDTxtBx.Text;
-                                                            item2.Name = genericDataNameTxtBx.Text;
                                                         }
                                                     }
                                                 }
@@ -4274,14 +4082,6 @@ namespace Aml.Editor.Plugin
                                          item.Unit = Units;
                                          item.Semantic = semantics;*/
 
-                                        genericDataDescriptionTxtBx.Text = item.Description;
-                                        genericDataCopyrightTxtBx.Text = item.CopyRight;
-                                        genericDataRefClassNameTxtBx.Text = item.ReferencedClassName;
-                                        genericDataRefBaseClassPathTxtBx.Text = item.RefBaseClassPath;
-                                        genericDataAttributePathTxtBx.Text = item.AttributePath;
-                                        genericDataIDTxtBx.Text = item.ID;
-                                        genericDataNameTxtBx.Text = item.Name;
-
                                         foreach (var pair2 in device.DictionaryForExternalInterfacesUnderRoleClassofComponent)
                                         {
                                             if (pair2.Key.ToString() == interfaceClass)
@@ -4303,13 +4103,6 @@ namespace Aml.Editor.Plugin
                                                                 var refsems = item2.RefSemanticList.Append();
                                                                 refsems.CorrespondingAttributePath = str;
                                                             }
-                                                            item2.Description = genericDataDescriptionTxtBx.Text;
-                                                            item2.CopyRight = genericDataCopyrightTxtBx.Text;
-                                                            item2.ReferencedClassName = genericDataRefClassNameTxtBx.Text;
-                                                            item2.RefBaseClassPath = genericDataRefBaseClassPathTxtBx.Text;
-                                                            item2.AttributePath = genericDataAttributePathTxtBx.Text;
-                                                            item2.ID = genericDataIDTxtBx.Text;
-                                                            item2.Name = genericDataNameTxtBx.Text;
                                                         }
                                                     }
                                                 }

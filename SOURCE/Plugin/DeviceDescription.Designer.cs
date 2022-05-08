@@ -95,22 +95,6 @@ namespace Aml.Editor.Plugin
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.genericDataNameTxtBx = new System.Windows.Forms.TextBox();
-            this.genericDataIDTxtBx = new System.Windows.Forms.TextBox();
-            this.genericDataAttributePathTxtBx = new System.Windows.Forms.TextBox();
-            this.genericDataRefBaseClassPathTxtBx = new System.Windows.Forms.TextBox();
-            this.genericDataRefClassNameTxtBx = new System.Windows.Forms.TextBox();
-            this.genericDataCopyrightTxtBx = new System.Windows.Forms.TextBox();
-            this.TableHeader_lbl_Name = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.genericDataDescriptionTxtBx = new System.Windows.Forms.TextBox();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.genericDataHeaderLabel = new System.Windows.Forms.ToolStripLabel();
             this.Interface = new System.Windows.Forms.TabPage();
@@ -125,22 +109,6 @@ namespace Aml.Editor.Plugin
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.header = new System.Windows.Forms.TabPage();
-            this.headerpanelTabelLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.nameTxtBxElecAttri = new System.Windows.Forms.TextBox();
-            this.idTxtBxElecAttri = new System.Windows.Forms.TextBox();
-            this.attributepathTxtBxElecAttri = new System.Windows.Forms.TextBox();
-            this.RefBaseClassPathTxtBxElecAttri = new System.Windows.Forms.TextBox();
-            this.RefClassNameTxtBxElecAttri = new System.Windows.Forms.TextBox();
-            this.copyrightTxtBxElecAttri = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.TableHeader_lbl_Copyright = new System.Windows.Forms.Label();
-            this.TableHeader_lbl_Description = new System.Windows.Forms.Label();
-            this.descriptionTxtBoxElecAttri = new System.Windows.Forms.TextBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.electricalInterfacesHeaderlabel = new System.Windows.Forms.ToolStripLabel();
             this.Page3_TopPanel = new System.Windows.Forms.Panel();
@@ -250,8 +218,6 @@ namespace Aml.Editor.Plugin
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genericparametersAttrDataGridView)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip5.SuspendLayout();
             this.Interface.SuspendLayout();
             this.electricalInterfacesPanel.SuspendLayout();
@@ -259,8 +225,6 @@ namespace Aml.Editor.Plugin
             this.tabControlElectricalAttributes.SuspendLayout();
             this.attributestab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elecInterAttDataGridView)).BeginInit();
-            this.header.SuspendLayout();
-            this.headerpanelTabelLayoutPanel.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.Page3_TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.electricalInterfacesCollectionDataGridView)).BeginInit();
@@ -785,7 +749,6 @@ namespace Aml.Editor.Plugin
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 25);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -872,220 +835,6 @@ namespace Aml.Editor.Plugin
             this.dataGridViewTextBoxColumn29.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn29.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage2.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage2.Size = new System.Drawing.Size(1317, 346);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Header";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.09091F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.90909F));
-            this.tableLayoutPanel1.Controls.Add(this.genericDataNameTxtBx, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.genericDataIDTxtBx, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.genericDataAttributePathTxtBx, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.genericDataRefBaseClassPathTxtBx, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.genericDataRefClassNameTxtBx, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.genericDataCopyrightTxtBx, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.TableHeader_lbl_Name, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.genericDataDescriptionTxtBx, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 3);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 300);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1313, 300);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // genericDataNameTxtBx
-            // 
-            this.genericDataNameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataNameTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataNameTxtBx.Location = new System.Drawing.Point(383, 263);
-            this.genericDataNameTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataNameTxtBx.Name = "genericDataNameTxtBx";
-            this.genericDataNameTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataNameTxtBx.TabIndex = 24;
-            // 
-            // genericDataIDTxtBx
-            // 
-            this.genericDataIDTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataIDTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataIDTxtBx.Location = new System.Drawing.Point(383, 219);
-            this.genericDataIDTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataIDTxtBx.Name = "genericDataIDTxtBx";
-            this.genericDataIDTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataIDTxtBx.TabIndex = 23;
-            // 
-            // genericDataAttributePathTxtBx
-            // 
-            this.genericDataAttributePathTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataAttributePathTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataAttributePathTxtBx.Location = new System.Drawing.Point(383, 177);
-            this.genericDataAttributePathTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataAttributePathTxtBx.Name = "genericDataAttributePathTxtBx";
-            this.genericDataAttributePathTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataAttributePathTxtBx.TabIndex = 22;
-            // 
-            // genericDataRefBaseClassPathTxtBx
-            // 
-            this.genericDataRefBaseClassPathTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataRefBaseClassPathTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataRefBaseClassPathTxtBx.Location = new System.Drawing.Point(383, 135);
-            this.genericDataRefBaseClassPathTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataRefBaseClassPathTxtBx.Name = "genericDataRefBaseClassPathTxtBx";
-            this.genericDataRefBaseClassPathTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataRefBaseClassPathTxtBx.TabIndex = 21;
-            // 
-            // genericDataRefClassNameTxtBx
-            // 
-            this.genericDataRefClassNameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataRefClassNameTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataRefClassNameTxtBx.Location = new System.Drawing.Point(383, 93);
-            this.genericDataRefClassNameTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataRefClassNameTxtBx.Name = "genericDataRefClassNameTxtBx";
-            this.genericDataRefClassNameTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataRefClassNameTxtBx.TabIndex = 20;
-            // 
-            // genericDataCopyrightTxtBx
-            // 
-            this.genericDataCopyrightTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataCopyrightTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataCopyrightTxtBx.Location = new System.Drawing.Point(383, 51);
-            this.genericDataCopyrightTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataCopyrightTxtBx.Name = "genericDataCopyrightTxtBx";
-            this.genericDataCopyrightTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataCopyrightTxtBx.TabIndex = 19;
-            // 
-            // TableHeader_lbl_Name
-            // 
-            this.TableHeader_lbl_Name.AccessibleName = "";
-            this.TableHeader_lbl_Name.AutoSize = true;
-            this.TableHeader_lbl_Name.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableHeader_lbl_Name.ForeColor = System.Drawing.Color.Black;
-            this.TableHeader_lbl_Name.Location = new System.Drawing.Point(3, 253);
-            this.TableHeader_lbl_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TableHeader_lbl_Name.Name = "TableHeader_lbl_Name";
-            this.TableHeader_lbl_Name.Size = new System.Drawing.Size(377, 46);
-            this.TableHeader_lbl_Name.TabIndex = 12;
-            this.TableHeader_lbl_Name.Text = "Name";
-            this.TableHeader_lbl_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(3, 211);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(377, 41);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "ID";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(3, 169);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(377, 41);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Attribute Path";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(3, 127);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(377, 41);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Referenced Base Class Path";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(3, 85);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(377, 41);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Referenced Class Name";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(3, 43);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(377, 41);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Copyright";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(3, 1);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(377, 41);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Description";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // genericDataDescriptionTxtBx
-            // 
-            this.genericDataDescriptionTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.genericDataDescriptionTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.genericDataDescriptionTxtBx.Location = new System.Drawing.Point(383, 9);
-            this.genericDataDescriptionTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.genericDataDescriptionTxtBx.Name = "genericDataDescriptionTxtBx";
-            this.genericDataDescriptionTxtBx.Size = new System.Drawing.Size(929, 25);
-            this.genericDataDescriptionTxtBx.TabIndex = 18;
-            // 
             // toolStrip5
             // 
             this.toolStrip5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
@@ -1149,7 +898,6 @@ namespace Aml.Editor.Plugin
             // tabControlElectricalAttributes
             // 
             this.tabControlElectricalAttributes.Controls.Add(this.attributestab);
-            this.tabControlElectricalAttributes.Controls.Add(this.header);
             this.tabControlElectricalAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlElectricalAttributes.Location = new System.Drawing.Point(0, 25);
             this.tabControlElectricalAttributes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1235,219 +983,6 @@ namespace Aml.Editor.Plugin
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
             this.dataGridViewTextBoxColumn22.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn22.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // header
-            // 
-            this.header.AutoScroll = true;
-            this.header.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.header.Controls.Add(this.headerpanelTabelLayoutPanel);
-            this.header.Location = new System.Drawing.Point(4, 26);
-            this.header.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.header.Name = "header";
-            this.header.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.header.Size = new System.Drawing.Size(1317, 345);
-            this.header.TabIndex = 1;
-            this.header.Text = "Header";
-            // 
-            // headerpanelTabelLayoutPanel
-            // 
-            this.headerpanelTabelLayoutPanel.AutoSize = true;
-            this.headerpanelTabelLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.headerpanelTabelLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.headerpanelTabelLayoutPanel.ColumnCount = 2;
-            this.headerpanelTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.02047F));
-            this.headerpanelTabelLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.97953F));
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.nameTxtBxElecAttri, 1, 6);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.idTxtBxElecAttri, 1, 5);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.attributepathTxtBxElecAttri, 1, 4);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.RefBaseClassPathTxtBxElecAttri, 1, 3);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.RefClassNameTxtBxElecAttri, 1, 2);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.copyrightTxtBxElecAttri, 1, 1);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.label31, 0, 6);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.label29, 0, 5);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.label27, 0, 4);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.label25, 0, 3);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.label21, 0, 2);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.TableHeader_lbl_Copyright, 0, 1);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.TableHeader_lbl_Description, 0, 0);
-            this.headerpanelTabelLayoutPanel.Controls.Add(this.descriptionTxtBoxElecAttri, 1, 0);
-            this.headerpanelTabelLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.headerpanelTabelLayoutPanel.Location = new System.Drawing.Point(2, 3);
-            this.headerpanelTabelLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.headerpanelTabelLayoutPanel.MaximumSize = new System.Drawing.Size(0, 300);
-            this.headerpanelTabelLayoutPanel.Name = "headerpanelTabelLayoutPanel";
-            this.headerpanelTabelLayoutPanel.RowCount = 7;
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.headerpanelTabelLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.headerpanelTabelLayoutPanel.Size = new System.Drawing.Size(1313, 300);
-            this.headerpanelTabelLayoutPanel.TabIndex = 0;
-            // 
-            // nameTxtBxElecAttri
-            // 
-            this.nameTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameTxtBxElecAttri.Location = new System.Drawing.Point(382, 263);
-            this.nameTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.nameTxtBxElecAttri.Name = "nameTxtBxElecAttri";
-            this.nameTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.nameTxtBxElecAttri.TabIndex = 24;
-            // 
-            // idTxtBxElecAttri
-            // 
-            this.idTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.idTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.idTxtBxElecAttri.Location = new System.Drawing.Point(382, 219);
-            this.idTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.idTxtBxElecAttri.Name = "idTxtBxElecAttri";
-            this.idTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.idTxtBxElecAttri.TabIndex = 23;
-            // 
-            // attributepathTxtBxElecAttri
-            // 
-            this.attributepathTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.attributepathTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.attributepathTxtBxElecAttri.Location = new System.Drawing.Point(382, 177);
-            this.attributepathTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.attributepathTxtBxElecAttri.Name = "attributepathTxtBxElecAttri";
-            this.attributepathTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.attributepathTxtBxElecAttri.TabIndex = 22;
-            // 
-            // RefBaseClassPathTxtBxElecAttri
-            // 
-            this.RefBaseClassPathTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.RefBaseClassPathTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RefBaseClassPathTxtBxElecAttri.Location = new System.Drawing.Point(382, 135);
-            this.RefBaseClassPathTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.RefBaseClassPathTxtBxElecAttri.Name = "RefBaseClassPathTxtBxElecAttri";
-            this.RefBaseClassPathTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.RefBaseClassPathTxtBxElecAttri.TabIndex = 21;
-            // 
-            // RefClassNameTxtBxElecAttri
-            // 
-            this.RefClassNameTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.RefClassNameTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RefClassNameTxtBxElecAttri.Location = new System.Drawing.Point(382, 93);
-            this.RefClassNameTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.RefClassNameTxtBxElecAttri.Name = "RefClassNameTxtBxElecAttri";
-            this.RefClassNameTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.RefClassNameTxtBxElecAttri.TabIndex = 20;
-            // 
-            // copyrightTxtBxElecAttri
-            // 
-            this.copyrightTxtBxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.copyrightTxtBxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.copyrightTxtBxElecAttri.Location = new System.Drawing.Point(382, 51);
-            this.copyrightTxtBxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.copyrightTxtBxElecAttri.Name = "copyrightTxtBxElecAttri";
-            this.copyrightTxtBxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.copyrightTxtBxElecAttri.TabIndex = 19;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label31.ForeColor = System.Drawing.Color.Black;
-            this.label31.Location = new System.Drawing.Point(3, 253);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(376, 46);
-            this.label31.TabIndex = 12;
-            this.label31.Text = "Name";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(3, 211);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(376, 41);
-            this.label29.TabIndex = 10;
-            this.label29.Text = "ID";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(3, 169);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(376, 41);
-            this.label27.TabIndex = 8;
-            this.label27.Text = "Attribute Path";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(3, 127);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(376, 41);
-            this.label25.TabIndex = 6;
-            this.label25.Text = "Referenced Base Class Path";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(3, 85);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(376, 41);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "Referenced Class Name";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // TableHeader_lbl_Copyright
-            // 
-            this.TableHeader_lbl_Copyright.AutoSize = true;
-            this.TableHeader_lbl_Copyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableHeader_lbl_Copyright.ForeColor = System.Drawing.Color.Black;
-            this.TableHeader_lbl_Copyright.Location = new System.Drawing.Point(3, 43);
-            this.TableHeader_lbl_Copyright.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TableHeader_lbl_Copyright.Name = "TableHeader_lbl_Copyright";
-            this.TableHeader_lbl_Copyright.Size = new System.Drawing.Size(376, 41);
-            this.TableHeader_lbl_Copyright.TabIndex = 2;
-            this.TableHeader_lbl_Copyright.Text = "Copyright";
-            this.TableHeader_lbl_Copyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // TableHeader_lbl_Description
-            // 
-            this.TableHeader_lbl_Description.AutoSize = true;
-            this.TableHeader_lbl_Description.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableHeader_lbl_Description.ForeColor = System.Drawing.Color.Black;
-            this.TableHeader_lbl_Description.Location = new System.Drawing.Point(3, 1);
-            this.TableHeader_lbl_Description.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TableHeader_lbl_Description.Name = "TableHeader_lbl_Description";
-            this.TableHeader_lbl_Description.Size = new System.Drawing.Size(376, 41);
-            this.TableHeader_lbl_Description.TabIndex = 0;
-            this.TableHeader_lbl_Description.Text = "Description";
-            this.TableHeader_lbl_Description.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // descriptionTxtBoxElecAttri
-            // 
-            this.descriptionTxtBoxElecAttri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.descriptionTxtBoxElecAttri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.descriptionTxtBoxElecAttri.Location = new System.Drawing.Point(382, 9);
-            this.descriptionTxtBoxElecAttri.Margin = new System.Windows.Forms.Padding(0);
-            this.descriptionTxtBoxElecAttri.Name = "descriptionTxtBoxElecAttri";
-            this.descriptionTxtBoxElecAttri.Size = new System.Drawing.Size(930, 25);
-            this.descriptionTxtBoxElecAttri.TabIndex = 18;
             // 
             // toolStrip2
             // 
@@ -2431,10 +1966,6 @@ namespace Aml.Editor.Plugin
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.genericparametersAttrDataGridView)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.toolStrip5.ResumeLayout(false);
             this.toolStrip5.PerformLayout();
             this.Interface.ResumeLayout(false);
@@ -2445,10 +1976,6 @@ namespace Aml.Editor.Plugin
             this.tabControlElectricalAttributes.ResumeLayout(false);
             this.attributestab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.elecInterAttDataGridView)).EndInit();
-            this.header.ResumeLayout(false);
-            this.header.PerformLayout();
-            this.headerpanelTabelLayoutPanel.ResumeLayout(false);
-            this.headerpanelTabelLayoutPanel.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.Page3_TopPanel.ResumeLayout(false);
@@ -2584,23 +2111,7 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TabControl tabControlElectricalAttributes;
         private System.Windows.Forms.TabPage attributestab;
-        private System.Windows.Forms.TabPage header;
         private System.Windows.Forms.ToolStripLabel electricalInterfacesHeaderlabel;
-        private System.Windows.Forms.TableLayoutPanel headerpanelTabelLayoutPanel;
-        private System.Windows.Forms.TextBox nameTxtBxElecAttri;
-        private System.Windows.Forms.TextBox idTxtBxElecAttri;
-        private System.Windows.Forms.TextBox attributepathTxtBxElecAttri;
-        private System.Windows.Forms.TextBox RefBaseClassPathTxtBxElecAttri;
-        private System.Windows.Forms.TextBox RefClassNameTxtBxElecAttri;
-        private System.Windows.Forms.TextBox copyrightTxtBxElecAttri;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label TableHeader_lbl_Copyright;
-        private System.Windows.Forms.Label TableHeader_lbl_Description;
-        private System.Windows.Forms.TextBox descriptionTxtBoxElecAttri;
         private System.Windows.Forms.TreeView treeViewElectricalInterfaces;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
@@ -2665,22 +2176,6 @@ namespace Aml.Editor.Plugin
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn29;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox genericDataNameTxtBx;
-        private System.Windows.Forms.TextBox genericDataIDTxtBx;
-        private System.Windows.Forms.TextBox genericDataAttributePathTxtBx;
-        private System.Windows.Forms.TextBox genericDataRefBaseClassPathTxtBx;
-        private System.Windows.Forms.TextBox genericDataRefClassNameTxtBx;
-        private System.Windows.Forms.TextBox genericDataCopyrightTxtBx;
-        private System.Windows.Forms.Label TableHeader_lbl_Name;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox genericDataDescriptionTxtBx;
         private System.Windows.Forms.ToolStrip toolStrip5;
         private System.Windows.Forms.ToolStripLabel genericDataHeaderLabel;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
